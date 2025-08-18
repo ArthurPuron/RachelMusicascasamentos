@@ -100,22 +100,35 @@
         }
     </style>
     <script>
-        tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                'primary-dark': '#4a2e2a',  // Ex: Um tom de marrom escuro
-                'primary-light': '#fdfaf6', // Ex: Um branco-gelo ou bege claro
-                'accent-color': '#cba373', // Ex: Um tom de dourado/ocre
-                'accent-hover': '#b59061', // Ex: Dourado um pouco mais escuro
-                'text-dark': '#4a2e2a',
-                'text-light': '#fdfaf6',
-                'gray-medium': '#6c757d'  // Um cinza neutro
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    // O azul-petróleo bem escuro da logo, para fundos como o rodapé.
+                    'primary-dark': '#0A2B34', 
+
+                    // Um branco "quente" e suave, para o fundo principal do site. É mais chique que o branco puro.
+                    'primary-light': '#FAF7F5',
+
+                    // O tom principal de Cobre / Ouro Rosé da logo, para botões e links.
+                    'accent-color': '#C0A084', 
+
+                    // Um tom um pouco mais escuro para quando o mouse passar por cima do botão.
+                    'accent-hover': '#AD8B6E', 
+
+                    // Cor do texto principal para usar sobre fundos claros.
+                    'text-dark': '#0A2B34', 
+
+                    // Cor do texto para usar sobre fundos escuros (ex: no rodapé).
+                    'text-light': '#FAF7F5',
+
+                    // Um cinza suave para textos secundários e detalhes.
+                    'gray-medium': '#6c757d' 
+                }
             }
         }
     }
-}
-    </script>
+</script>
 </head>
 <body class="bg-primary-light text-text-dark">
 
