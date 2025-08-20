@@ -278,21 +278,13 @@ document.addEventListener('DOMContentLoaded', function () {
             carouselCards.forEach((card, index) => {
                 card.style.left = '50%';
                 if (index === currentIndex) {
-                    card.style.transform = 'translateX(-50%) scale(1)';
-                    card.style.opacity = '1';
-                    card.style.zIndex = '20';
+                    card.style.transform = 'translateX(-50%) scale(1)'; card.style.opacity = '1'; card.style.zIndex = '20';
                 } else if (index === (currentIndex - 1 + carouselCards.length) % carouselCards.length) {
-                    card.style.transform = 'translateX(-120%) scale(0.8)';
-                    card.style.opacity = '0.4';
-                    card.style.zIndex = '10';
+                    card.style.transform = 'translateX(-120%) scale(0.8)'; card.style.opacity = '0.4'; card.style.zIndex = '10';
                 } else if (index === (currentIndex + 1) % carouselCards.length) {
-                    card.style.transform = 'translateX(20%) scale(0.8)';
-                    card.style.opacity = '0.4';
-                    card.style.zIndex = '10';
+                    card.style.transform = 'translateX(20%) scale(0.8)'; card.style.opacity = '0.4'; card.style.zIndex = '10';
                 } else {
-                    card.style.transform = 'translateX(-50%) scale(0.7)';
-                    card.style.opacity = '0';
-                    card.style.zIndex = '5';
+                    card.style.transform = 'translateX(-50%) scale(0.7)'; card.style.opacity = '0'; card.style.zIndex = '5';
                 }
             });
             updateIndicators();
@@ -321,9 +313,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (carouselCards.length > 0) updateCarouselUI();
     }
-    
-    // ... (outros scripts como FAQ e Fade-in image podem ser adicionados aqui)...
 
+    // =================================================================
+    // LÓGICA DO FADE-IN DA IMAGEM (SEÇÃO SOBRE) - CORRIGIDO
+    // =================================================================
+    const sobreImage = document.querySelector('#sobre img');
+    if(sobreImage){
+        // Adiciona a classe inicial para que a imagem comece invisível
+        sobreImage.classList.add('fade-in-image');
+
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        imageObserver.observe(sobreImage);
+    }
+    
+    // =================================================================
+    // LÓGICA DO FAQ (SANFONA)
+    // =================================================================
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+                if(content) content.classList.toggle('hidden');
+                if (icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+            });
+        });
 });
 </script>
 
