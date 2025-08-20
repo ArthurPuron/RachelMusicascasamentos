@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MusicGroup", // Ou "PerformingGroup"
-  "name": "Rachel Puron",
-  "image": "URL_DA_FOTO_DA_EQUIPE.jpeg",
-  "@id": "URL_DO_NOVO_SITE.com",
-  "url": "URL_DO_NOVO_SITE.com",
-  "telephone": "+5519NUMERO_DE_CONTATO",
-  "description": "Especializados em criar a trilha sonora perfeita para casamentos.",
-  "address": {
-    // Pode manter o endereço se for o mesmo, ou remover se não tiverem local físico.
-  },
-  "sameAs": [
-    // Links para o Instagram, YouTube, Facebook da equipe
-  ]
-}
-  "openingHoursSpecification": [
+    <script type="application/ld+json">
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "08:00",
-      "closes": "18:00"
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Rachel Puron",
+      "image": "URL_DA_FOTO_DA_EQUIPE.jpeg",
+      "url": "URL_DO_SEU_SITE_QUANDO_TIVER_DOMINIO.com",
+      "telephone": "+5519SEUNUMEROAQUI",
+      "description": "Especializados em criar a trilha sonora perfeita para casamentos em Campinas e região.",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ]
     }
-  ],
-  "sameAs": [
-    "https://g.co/kgs/VrbJCG1"
-  ]
-}
-</script>
-<link rel="icon" type="image/x-icon" href="./imagem/favicon.ico">
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./imagem/favicon.ico">
     <title>Rachel Puron | Música para Casamentos em Campinas</title>
     <meta name="description" content="Música ao vivo para cerimônias e festas de casamento em Campinas e região. Deixe seu grande dia inesquecível com uma trilha sonora emocionante e personalizada.">
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -55,28 +42,6 @@
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
-        .active-nav {
-            color: #122947; /* New accent blue */
-            font-weight: 600;
-        }
-        .modal-overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-        /* New style for fade-in effect */
         .fade-in-image {
             opacity: 0;
             transition: opacity 1s ease-out;
@@ -85,1051 +50,227 @@
             opacity: 1;
         }
         /* Estilo para a miniatura de vídeo que está ativa */
-    .video-thumbnail.active img {
-        border: 4px solid #C0A084; /* Usa a cor de destaque (accent-color) */
-        transform: scale(1.1);
-    }
-        
+        .video-thumbnail.active img {
+            border: 4px solid #C0A084; /* Usa a cor de destaque (accent-color) */
+            transform: scale(1.1);
+        }
     </style>
+    
     <script>
     tailwind.config = {
         theme: {
             extend: {
                 colors: {
-                    // O azul-petróleo bem escuro da logo, para fundos como o rodapé.
                     'primary-dark': '#0A2B34', 
-
-                    // Um branco "quente" e suave, para o fundo principal do site. É mais chique que o branco puro.
                     'primary-light': '#FAF7F5',
-
-                    // O tom principal de Cobre / Ouro Rosé da logo, para botões e links.
                     'accent-color': '#C0A084', 
-
-                    // Um tom um pouco mais escuro para quando o mouse passar por cima do botão.
                     'accent-hover': '#AD8B6E', 
-
-                    // Cor do texto principal para usar sobre fundos claros.
                     'text-dark': '#0A2B34', 
-
-                    // Cor do texto para usar sobre fundos escuros (ex: no rodapé).
                     'text-light': '#FAF7F5',
-
-                    // Um cinza suave para textos secundários e detalhes.
                     'gray-medium': '#6c757d' 
                 }
             }
         }
     }
-</script>
+    </script>
 </head>
+
 <body class="bg-primary-light text-text-dark">
 
-    <header id="header" class="bg-primary-light/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
-  <div class="container mx-auto px-6 relative flex justify-center items-center transition-all duration-300 ease-in-out">
+    <header id="header" class="bg-primary-light/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 relative flex justify-center items-center transition-all duration-300 ease-in-out">
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#sobre" class="nav-link text-gray-medium hover:text-accent-color duration-300">Rahel</a>
+                <a href="#videos" class="nav-link text-gray-medium hover:text-accent-color duration-300">Vídeos</a>
+                <a href="#formacoes" class="nav-link text-gray-medium hover:text-accent-color duration-300">Formações</a>
+                
+                <a href="#home" class="px-4">
+                   <img src="./imagem/logopreta.png" alt="Logo Rachel Purón" class="h-28 w-auto transition-all duration-300 ease-in-out">
+                </a>
 
-        <nav class="hidden md:flex items-center space-x-8">
-            <a href="#sobre" class="nav-link text-gray-medium hover:text-accent-color duration-300">Rahel</a>
-            <a href="#sobre" class="nav-link text-gray-medium hover:text-accent-color duration-300">Videos</a>
- <a href="#portfolio" class="nav-link text-gray-medium hover:text-accent-color duration-300">Formações</a>
-            
-            <a href="#home" class="px-4">
-               <img src="./imagem/logopreta.png" alt="Logo Rachel Purón" class="h-28 w-auto transition-all duration-300 ease-in-out">
+                <a href="#sugestoes" class="nav-link text-gray-medium hover:text-accent-color duration-300">Sugestões</a>
+                <a href="#depoimentos" class="nav-link text-gray-medium hover:text-accent-color duration-300">Depoimentos</a>
+                <a href="#duvidas" class="nav-link text-gray-medium hover:text-accent-color duration-300">Dúvidas</a>
+            </nav>
 
-            <a href="#depoimentos" class="nav-link text-gray-medium hover:text-accent-color duration-300">Sugestões</a>
-            <a href="#faq" class="nav-link text-gray-medium hover:text-accent-color duration-300">Depoimentos</a>
-            <a href="#contato" class="nav-link text-gray-medium hover:text-accent-color duration-300">Dúvidas</a>
-        </nav>
-
-       
-
-        <div class="w-full flex justify-between items-center md:hidden">
-            <a href="#home">
-                <img src="./imagem/logo-rachel-puron.png" alt="Logo Rachel Purón" class="h-16 w-auto">
-            </a>
-            <button id="mobile-menu-button" class="text-primary-dark text-3xl">
-                ☰
-            </button>
+            <div class="w-full flex justify-between items-center md:hidden">
+                <a href="#home">
+                    <img src="./imagem/logopreta.png" alt="Logo Rachel Purón" class="h-16 w-auto">
+                </a>
+                <button id="mobile-menu-button" class="text-primary-dark text-3xl">
+                    ☰
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-primary-light text-center">
-        <a href="#home" class="block py-2 text-gray-medium hover:text-accent-color">Rahel</a>
-        <a href="#sobre" class="block py-2 text-gray-medium hover:text-accent-color">Videos</a> <a href="#portfolio" class="block py-2 text-gray-medium hover:text-accent-color">Portfólio</a>
-        <a href="#depoimentos" class="block py-2 text-gray-medium hover:text-accent-color">Formações</a>
-        <a href="#faq" class="block py-2 text-gray-medium hover:text-accent-color">Sugestões</a>
-        <a href="#contato" class="block py-2 text-gray-medium hover:text-accent-color">Depoimentos</a>
-        <a href="#contato" class="block py-2 text-gray-medium hover:text-accent-color">Dúvidas</a>
-       
-    </div>
-</header>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-primary-light text-center">
+            <a href="#sobre" class="block py-2 text-gray-medium hover:text-accent-color">Rahel</a>
+            <a href="#videos" class="block py-2 text-gray-medium hover:text-accent-color">Vídeos</a>
+            <a href="#formacoes" class="block py-2 text-gray-medium hover:text-accent-color">Formações</a>
+            <a href="#sugestoes" class="block py-2 text-gray-medium hover:text-accent-color">Sugestões</a>
+            <a href="#depoimentos" class="block py-2 text-gray-medium hover:text-accent-color">Depoimentos</a>
+            <a href="#duvidas" class="block py-2 text-gray-medium hover:text-accent-color">Dúvidas</a>
+        </div>
+    </header>
 
     <main>
         <section id="home" class="relative min-h-screen text-center overflow-hidden pt-20">
-
- <video autoplay loop muted playsinline ...>
-    <source src="https://res.cloudinary.com/dvagappe3/video/upload/v1755714270/background-loop_aijwzl.mp4" type="video/mp4">
-</video>
-
-    <div class="absolute top-0 left-0 w-full h-full bg-primary-dark/60 z-20"></div>
-
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 container w-full px-6">
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-text-light leading-tight">A Trilha Sonora do Seu Sim.</h1>
-        <p class="mt-4 text-lg md:text-xl text-text-light max-w-3xl mx-auto">
-            Música ao vivo que emociona e encanta, do altar à pista de dança.
-        </p>
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            <a href="https://wa.me/SEU_NUMERO_DE_WHATSAPP?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20m%C3%BAsica%20de%20casamento%21" target="_blank" class="bg-accent-color text-text-light font-bold text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg hover:bg-accent-hover transition-transform duration-300 transform hover:scale-105 text-center">
-                Pedir um Orçamento
-            </a>
-            <a href="#servicos" class="bg-white/90 text-primary-dark font-bold text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105 border border-primary-dark/20 text-center">
-                Conheça Nossos Serviços
-            </a>
-        </div>
-    </div>
-    
-</section>
+            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-10">
+                <source src="https://res.cloudinary.com/dvagappe3/video/upload/v1755714270/background-loop_aijwzl.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-0 left-0 w-full h-full bg-primary-dark/60 z-20"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 container w-full px-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-text-light leading-tight">A Trilha Sonora do Seu Sim.</h1>
+                <p class="mt-4 text-lg md:text-xl text-text-light max-w-3xl mx-auto">
+                    Música ao vivo que emociona e encanta, do altar à pista de dança.
+                </p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20m%C3%BAsica%20de%20casamento%21" target="_blank" class="bg-accent-color text-text-light font-bold text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg hover:bg-accent-hover transition-transform duration-300 transform hover:scale-105 text-center">
+                        Pedir um Orçamento
+                    </a>
+                    <a href="#videos" class="bg-white/90 text-primary-dark font-bold text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105 border border-primary-dark/20 text-center">
+                        Veja nossos vídeos
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <section id="sobre" class="py-20 md:py-32 bg-primary-light">
+            </section>
+
+        <section id="videos" class="py-20 md:py-32 bg-primary-light">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Rachel Puron</h2>
-                    <p class="mt-2 text-gray-medium">Tocando corações.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
+                    <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
                 </div>
-                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="md:w-1/2">
-                        <img src="https://i.imgur.com/5IbR61G.jpeg" alt="" class="rounded-lg shadow-2xl w-full h-auto object-cover fade-in-image is-visible">
+                <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe id="main-video-player" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <div class="md:w-1/2 text-gray-medium text-base md:text-lg">
-                        <p class="mb-4">
-                            Com uma paixão pela odontologia que vai além da técnica, a Dra. Amanda Ferreira se dedica a oferecer tratamentos personalizados que unem estética e funcionalidade. Formada pela Universidade de São Paulo (USP), busca constantemente o aperfeiçoamento em cursos e congressos para trazer as mais modernas soluções para seus pacientes.
-                        </p>
-                        <p class="mb-4">
-                            Em meu consultório, que faz parte de uma clínica moderna e bem equipada, você encontrará um ambiente acolhedor e tecnologia de ponta para garantir tratamentos eficazes, seguros e confortáveis. Minha filosofia é baseada na confiança e no cuidado individualizado, visando sempre o seu bem-estar.
-                        </p>
-                        <p class="font-semibold text-primary-dark">Minha missão: Transformar sorrisos e vidas.</p>
-                        <p class="font-semibold text-primary-dark mt-2">CRO-SP: 123.456</p>
+                </div>
+                <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
+                        <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail da música Hallelujah" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Hallelujah (Cover)</p>
+                    </div>
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
+                         <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail da música A Thousand Years" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">A Thousand Years (Cover)</p>
+                    </div>
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
+                         <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail da música Perfect" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Perfect - Ed Sheeran (Cover)</p>
+                    </div>
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
+                         <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail da música Thinking Out Loud" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Thinking Out Loud (Cover)</p>
                     </div>
                 </div>
             </div>
         </section>
 
-<section id="videos" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
-            <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
-        </div>
-
-        <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden">
-            <div class="aspect-w-16 aspect-h-9">
-                <iframe id="main-video-player"
-                        width="560" height="315"
-                        src=""
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-
-        <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
-            <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
-                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail da música Hallelujah" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
-                    </div>
-                </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Hallelujah (Cover)</p>
-            </div>
-
-            <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
-                 <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail da música A Thousand Years" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
-                    </div>
-                </div>
-                <p class="text-center font-semibold text-text-dark mt-2">A Thousand Years (Cover)</p>
-            </div>
-
-            <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
-                 <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail da música Perfect" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
-                    </div>
-                </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Perfect - Ed Sheeran (Cover)</p>
-            </div>
-            
-            <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
-                 <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail da música Thinking Out Loud" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
-                    </div>
-                </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Thinking Out Loud (Cover)</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-        <section id="servicos" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6">
-        <div id="service-list-container">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Meus Serviços</h2>
-                <p class="mt-2 text-gray-medium">Soluções completas para a sua saúde bucal e estética.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="estetica">
-                    <img src="https://i.imgur.com/73VtQmQ.png" alt="Ícone de Odontologia Estética" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Estética dental</h3>
-                    <p class="text-gray-medium text-center">Transforme seu sorriso com clareamento dental, lentes de contato, facetas de porcelana e restaurações estéticas de alta qualidade.</p>
-                </a>
-                
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="implantes">
-                     <img src="https://i.imgur.com/6ZdN6cI.png" alt="Ícone de Implantes Dentários" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Implantes Dentários</h3>
-                    <p class="text-gray-medium text-center">Recupere a função e a estética de dentes perdidos com implantes de titânio, a solução mais segura e duradoura para a reabilitação oral.</p>
-                </a>
-                
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="clinica-geral">
-                    <img src="https://i.imgur.com/3chMweu.png" alt="Ícone de Clínica Geral" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Clínica Geral</h3>
-                    <p class="text-gray-medium text-center">Realizo limpezas, restaurações, extrações e tratamentos de canal, garantindo a saúde e a prevenção de problemas bucais.</p>
-                </a>
-                
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="periodontia">
-                    <img src="https://i.imgur.com/F3UAqMM.png" alt="Ícone de Periodontia" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Periodontia</h3>
-                    <p class="text-gray-medium text-center">Tratamento de doenças da gengiva e tecidos de suporte dos dentes, essencial para a manutenção da saúde bucal a longo prazo.</p>
-                </a>
-                
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="odontopediatria">
-                    <img src="https://i.imgur.com/dJVpY2V.png" alt="Ícone de Odontopediatria" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Odontopediatria</h3>
-                    <p class="text-gray-medium text-center">Cuidado especializado para a saúde bucal de crianças, com foco em prevenção, educação e um ambiente acolhedor para os pequenos.</p>
-                </a>
-
-                <a href="#" class="service-card bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 block" data-service-id="laserterapia">
-                    <img src="https://i.imgur.com/Ysp23yR.png" alt="Ícone de Laserterapia" class="w-12 h-12 mx-auto mb-4">
-                    <h3 class="text-2xl font-bold text-primary-dark mb-3 text-center">Laserterapia</h3>
-                    <p class="text-gray-medium text-center">Alívio da dor, aceleração da cicatrização e tratamento de aftas e herpes com tecnologia a laser. Rápido, indolor e não invasivo.</p>
-                </a>
-                
-            </div>
-        </div>
-
-        <div id="service-detail-container" class="hidden pt-10">
-            <button id="back-to-services" class="mb-8 bg-gray-medium text-white px-4 py-2 rounded-lg hover:bg-gray-dark transition-colors duration-300">
-                ← Voltar aos Serviços
-            </button>
-
-            <!-- Seções Detalhadas de cada serviço -->
-
-            <!-- Odontologia Estética Detail -->
-            <div id="detail-estetica" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Odontologia Estética</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>A Odontologia Estética é a área que busca aprimorar a beleza do seu sorriso, corrigindo imperfeições e realçando a harmonia facial. Não se trata apenas de estética, mas também de restaurar a função e a saúde dos dentes de forma natural e duradoura.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>Indicado para pessoas que desejam melhorar a cor, forma, tamanho ou alinhamento dos dentes, fechar espaços, corrigir fraturas ou substituir restaurações antigas. Se você busca um sorriso mais branco, alinhado e confiante, a odontologia estética é para você.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Aumento significativo da autoestima e confiança.</li>
-                            <li>Sorriso mais harmonioso e atraente.</li>
-                            <li>Correção de imperfeições estéticas e funcionais.</li>
-                            <li>Melhora na saúde bucal geral através de restaurações e tratamentos.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>O processo começa com uma avaliação detalhada e um planejamento personalizado. Dependendo do seu objetivo, podemos realizar clareamento dental (para dentes mais brancos), aplicação de lentes de contato ou facetas de porcelana (para mudar forma e cor), ou restaurações estéticas para corrigir imperfeições.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Odontologia Estética:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>O clareamento dental dói?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    A maioria dos pacientes não sente dor durante o clareamento, mas pode haver sensibilidade temporária aos dentes. Utilizamos técnicas e produtos para minimizar qualquer desconforto.
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Lentes de contato dental são permanentes?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    As lentes de contato dental são um tratamento duradouro, mas não são consideradas 100% permanentes. Com os devidos cuidados, podem durar muitos anos, mas podem precisar de manutenção ou substituição no futuro.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Implantes Dentários Detail -->
-            <div id="detail-implantes" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Implantes Dentários</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>Implantes dentários são a solução mais moderna e eficaz para substituir dentes perdidos. Consistem em pequenos pinos de titânio, biocompatíveis, que são inseridos cirurgicamente no osso maxilar ou mandibular para funcionar como raízes artificiais. Sobre esses pinos, são fixadas próteses dentárias que se assemelham aos dentes naturais.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>Indicado para qualquer pessoa que perdeu um ou mais dentes, seja por cárie, doença periodontal, trauma ou outras causas. É uma excelente opção para quem busca restaurar a função mastigatória, a estética do sorriso e prevenir a perda óssea que ocorre após a perda de dentes.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Restauração completa da função mastigatória e da fala.</li>
-                            <li>Melhora significativa da estética do sorriso e da autoestima.</li>
-                            <li>Prevenção da reabsorção óssea e do deslocamento dos dentes vizinhos.</li>
-                            <li>Solução duradoura e com alta taxa de sucesso.</li>
-                            <li>Conforto e segurança, sem a necessidade de próteses removíveis.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>O tratamento geralmente envolve duas fases: a cirúrgica e a protética. Na fase cirúrgica, o implante de titânio é inserido no osso. Após um período de cicatrização (osseointegração), onde o implante se une ao osso, a prótese dentária é fixada sobre ele. Todo o processo é realizado com anestesia local e o máximo de conforto para o paciente.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Implantes Dentários:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>A cirurgia de implante é dolorosa?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    A cirurgia é realizada sob anestesia local, garantindo que o procedimento seja indolor. No pós-operatório, o desconforto é mínimo e pode ser controlado com medicação.
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Quanto tempo dura um implante dentário?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    Com higiene bucal adequada e visitas regulares ao dentista, os implantes dentários podem durar por toda a vida, sendo uma solução de longo prazo.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Clínica Geral Detail -->
-            <div id="detail-clinica-geral" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Clínica Geral</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>A Clínica Geral é a base da odontologia, focada na prevenção, diagnóstico e tratamento de problemas bucais comuns. É o ponto de partida para a manutenção da sua saúde oral e o encaminhamento para especialidades, se necessário.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>Indicado para todas as idades e para quem busca manter a saúde bucal em dia. Ideal para check-ups de rotina, limpezas, tratamento de cáries, restaurações, pequenas extrações e orientações sobre higiene bucal.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Prevenção de doenças bucais mais graves.</li>
-                            <li>Diagnóstico precoce de problemas, facilitando o tratamento.</li>
-                            <li>Manutenção de uma boca saudável e hálito fresco.</li>
-                            <li>Orientação personalizada sobre higiene e cuidados diários.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>As consultas de clínica geral envolvem um exame completo da boca, dentes e gengivas. Realizamos limpezas profissionais para remover tártaro e placa, tratamos cáries com restaurações e, se necessário, fazemos pequenas extrações. A prevenção é a palavra-chave, com foco na educação do paciente.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Clínica Geral:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Qual a frequência ideal para a limpeza dental?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    Para a maioria das pessoas, uma limpeza profissional a cada 6 meses é o ideal. No entanto, em casos específicos, pode ser recomendado um intervalo menor ou maior.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Periodontia Detail -->
-            <div id="detail-periodontia" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Periodontia</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>A Periodontia é a especialidade que cuida da saúde da gengiva e dos tecidos que dão suporte aos dentes (osso e ligamentos). Ela trata e previne doenças periodontais como a gengivite (inflamação da gengiva) e a periodontite (infecção que afeta o osso).</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>Indicado para pacientes que apresentam sangramento na gengiva, inchaço, vermelhidão, mau hálito persistente, retração gengival ou mobilidade dos dentes. É crucial para quem busca manter os dentes firmes e saudáveis por mais tempo.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Eliminação de inflamações e infecções na gengiva.</li>
-                            <li>Prevenção da perda ósea e, consequentemente, da perda dentária.</li>
-                            <li>Melhora do hálito e da estética gengival.</li>
-                            <li>Manutenção da saúde geral, já que doenças periodontais podem afetar o corpo todo.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>O tratamento periodontal geralmente envolve a raspagem e alisamento radicular, que removem a placa bacteriana e o tártaro acumulados acima e abaixo da linha da gengiva. Em casos mais avançados, podem ser necessárias pequenas cirurgias para limpar profundamente as raízes e corrigir defeitos ósseos.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Periodontia:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Gengiva sangrando é normal?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    Não, sangramento na gengiva não é normal e é um sinal de inflamação (gengivite). É importante procurar um dentista para diagnóstico e tratamento.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Odontopediatria Detail -->
-            <div id="detail-odontopediatria" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Odontopediatria</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>A Odontopediatria é a especialidade dedicada à saúde bucal de bebês, crianças e adolescentes. O foco é na prevenção, diagnóstico e tratamento de problemas dentários nessa faixa etária, sempre com uma abordagem lúdica e acolhedora para que a criança se sinta segura e confortável.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>Indicado para todos os pais que desejam garantir um desenvolvimento bucal saudável para seus filhos. Desde a erupção dos primeiros dentes até a adolescência, a odontopediatria é essencial para prevenir cáries, orientar sobre higiene e acompanhar o crescimento da face e dos dentes.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Prevenção eficaz de cáries e outros problemas bucais.</li>
-                            <li>Desenvolvimento de hábitos de higiene bucal corretos desde cedo.</li>
-                            <li>Criação de uma relação positiva da criança com o dentista, sem medo.</li>
-                            <li>Acompanhamento do crescimento e desenvolvimento da arcada dentária.</li>
-                            <li>Intervenção precoce em problemas que podem se agravar no futuro.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>As consultas de odontopediatria são adaptadas para cada idade, com uma linguagem e ambiente que a criança entenda e goste. Incluem exames, limpezas, aplicação de flúor e selantes, e tratamento de cáries. O foco principal é na educação dos pais e das crianças sobre a importância da higiene e da alimentação.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Odontopediatria:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Quando devo levar meu filho ao odontopediatra pela primeira vez?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    A primeira consulta deve ocorrer logo após o surgimento do primeiro dente de leite ou, no máximo, até o primeiro ano de vida. Isso permite orientações preventivas e um acompanhamento saudável.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Laserterapia Detail -->
-            <div id="detail-laserterapia" class="service-detail hidden">
-                <h3 class="text-3xl font-bold text-primary-dark mb-6 text-center md:text-left">Laserterapia</h3>
-                <div class="space-y-6 text-gray-medium text-lg">
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">O que é o tratamento?</h4>
-                        <p>A Laserterapia é um tratamento moderno e não invasivo que utiliza um laser de baixa intensidade para estimular processos biológicos no corpo. Essa luz especial acelera a cicatrização, reduz inflamações e alivia dores de forma segura e indolor, promovendo a recuperação dos tecidos.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Para quem é indicado?</h4>
-                        <p>É indicado para uma ampla gama de pacientes, especialmente aqueles que sofrem com aftas e herpes, dores na articulação da mandíbula (DTM), sensibilidade nos dentes, ou que buscam uma recuperação mais rápida e confortável após cirurgias, extrações ou implantes.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Quais os benefícios?</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Tratamento rápido, seguro e totalmente indolor.</li>
-                            <li>Acelera significativamente a cicatrização de feridas, aftas e herpes.</li>
-                            <li>Efeito analgésico, aliviando dores de forma eficaz.</li>
-                            <li>Ação anti-inflamatória, reduzindo inchaços e desconfortos.</li>
-                            <li>Diminui a necessidade de medicamentos para dor e inflamação.</li>
-                            <li>Melhora a microcirculação e a reparação dos tecidos.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Como funciona (de forma simplificada)?</h4>
-                        <p>O feixe de laser de baixa potência é aplicado diretamente sobre a área a ser tratada por alguns minutos. A luz é absorvida pelas células, que "ganham energia" para trabalhar de forma mais eficiente, acelerando a regeneração, controlando a inflamação e bloqueando os estímulos de dor. O paciente não sente dor, apenas, em alguns casos, um leve calor no local.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl text-primary-dark mb-2">Dúvidas Frequentes sobre Laserterapia:</h4>
-                        <div class="space-y-4 mt-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>O tratamento com laser dói?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    Não. A laserterapia é completamente indolor. A maioria dos pacientes não sente nada durante a aplicação, o que torna o tratamento muito confortável.
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                                    <span>Quantas sessões são necessárias?</span>
-                                    <span class="faq-icon text-accent-color text-xl">+</span>
-                                </button>
-                                <div class="faq-content mt-2 hidden text-gray-medium">
-                                    O número de sessões varia conforme a condição tratada. Para casos agudos, como uma afta, 1 ou 2 sessões podem trazer grande alívio. Para condições crônicas, como DTM, pode ser necessário um plano de tratamento com mais sessões.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="mt-16 text-center">
-    <h3 class="text-2xl font-bold text-primary-dark mb-4">Pronto para transformar seu sorriso?</h3>
-    <a href="https://wa.me/5519998291133?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta%21" target="_blank" class="bg-accent-color text-text-light font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-accent-hover transition-transform duration-300 transform hover:scale-105 inline-block">
-        Agende Sua Consulta
-    </a>
-</div>
-        </div>
-</section>
-
-<section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6 relative">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Meus Pacientes Dizem</h2>
-            <p class="mt-2 text-gray-medium">Histórias de sorrisos transformados.</p>
-        </div>
-
-        <div class="carousel-container relative w-full overflow-hidden">
-            <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-20 hover:bg-gray-200 transition-all hidden md:block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-
-            <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-20 hover:bg-gray-200 transition-all hidden md:block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-            
-            <div id="carousel-cards" class="flex items-center justify-center relative w-full transition-all duration-500 ease-in-out">
-                
-                <div class="carousel-card absolute w-11/12 md:w-1/2 lg:w-1/3 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                        <img src="https://i.imgur.com/BmFrzDD.png" alt="" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <div class="testimonial-content">
-                            <p class="italic text-gray-medium mb-4 testimonial-text">"Doutora muito experiente e cuidadosa! Me passou muita confiança, além de ter um consultório muito arrumado, higiene nota 10! Mãos de fada! Amei!"</p>
-                        </div>
-                        <p class="font-semibold text-primary-dark">- Mariana Corradini Antunes</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card absolute w-11/12 md:w-1/2 lg:w-1/3 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                        <img src="https://placehold.co/80x80/06031b/f6f1ef?text=A.E.R." alt="" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <div class="testimonial-content">
-                            <p class="italic text-gray-medium mb-4 testimonial-text">"A Dra Amanda é uma profissional excelente, muito acima da média. Entre tantos profissionais que já fiz profilaxia (limpeza nos dentes), com ela foi uma experiência muito melhor, resultado muito satisfatório. Além de entregar um serviço de qualidade, ela ainda tem uma mão muito leve, ela faz tudo com muita delicadeza, o que deixa o procedimento muito confortável. Ela também tratou meus pais, sendo o caso do meu pai muito complicado, por ser um paciente com diabetes, o que dificulta a cicatrização e ele precisava fazer cirurgias para extração de dentes, pois ele estava com muita inflamação nas gengivas o que deixava os dentes moles e estava prejudicando a saúde bucal e geral dele. Ela resolveu tudo, com muito estudo do caso e um atendimento com todo cuidado possível, conseguiu restaurar a saúde bucal dele, fazendo um bem imenso pra saúde geral dele. Pra mim é a melhor, sem dúvidas."</p>
-                        </div>
-                        <p class="font-semibold text-primary-dark">- Ana Eloise Reis</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card absolute w-11/12 md:w-1/2 lg:w-1/3 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                        <img src="https://placehold.co/80x80/06031b/f6f1ef?text=H.B." alt="" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <div class="testimonial-content">
-                            <p class="italic text-gray-medium mb-4 testimonial-text">"O atendimento e profissionalismo da Dra são impecáveis! Ambiente muito organizado, agradável e relaxante! Trabalho incrível! Recomento muito"</p>
-                        </div>
-                        <p class="font-semibold text-primary-dark">- hela belezaria</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card absolute w-11/12 md:w-1/2 lg:w-1/3 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                        <img src="https://placehold.co/80x80/06031b/f6f1ef?text=F.G." alt="" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <div class="testimonial-content">
-                            <p class="italic text-gray-medium mb-4 testimonial-text">"Uma excelente profissional,muito atenciosa e dedicada aos seus pacientes. Já me atendeu algumas vezes e em todas as consultas sempre me tranquilizou e me passou muita confiança. Uma pessoa extremamente gentil e educada. Que Deus abençoe e ilumine grandemente sua carreira profissional,e seja repleta de aprendizado, oportunidade e crescimento🙏 Índico de olhos fechados🌷"</p>
-                        </div>
-                        <p class="font-semibold text-primary-dark">- fabiola gomes</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card absolute w-11/12 md:w-1/2 lg:w-1/3 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                        <img src="https://i.imgur.com/plad7i6.png" alt="" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <div class="testimonial-content">
-                            <p class="italic text-gray-medium mb-4 testimonial-text">"O atendimento com a Dra. Amanda foi excelente. Muito simpática! Tem todo um cuidado em nós deixar tranquilo na consulta. Super indico!"</p>
-                        </div>
-                        <p class="font-semibold text-primary-dark">- Aline Costa</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="carousel-indicators" class="flex justify-center mt-8">
-                </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // =================================================================
-        // LÓGICA DO HEADER (MENU QUE ENCOLHE AO ROLAR)
-        // =================================================================
-        const header = document.getElementById('header');
-        if (header) {
-            const headerContainer = header.querySelector('.container');
-            const logoImgDesktop = header.querySelector('nav img'); // Pega a logo do menu desktop
-            
-            function updateHeaderOnScroll() {
-                // Garante que o código só execute se os elementos existirem
-                if (!headerContainer || !logoImgDesktop) return;
-
-                if (window.scrollY > 50) {
-                    // ESTADO AO ROLAR: Menu compacto
-                    headerContainer.classList.remove('py-4');
-                    headerContainer.classList.add('py-1');
-                    logoImgDesktop.classList.remove('h-28');
-                    logoImgDesktop.classList.add('h-20');
-                } else {
-                    // ESTADO INICIAL (Topo da página): Menu alto
-                    headerContainer.classList.remove('py-1');
-                    headerContainer.classList.add('py-1');
-                    logoImgDesktop.classList.remove('h-20');
-                    logoImgDesktop.classList.add('h-28');
-                }
-            }
-
-            window.addEventListener('scroll', updateHeaderOnScroll);
-            updateHeaderOnScroll(); // Define o estado inicial ao carregar a página
-        }
-
-
-        // =================================================================
-        // LÓGICA DO MENU MOBILE
-        // =================================================================
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
-            // Fecha o menu ao clicar em um link
-            mobileMenu.addEventListener('click', function (e) {
-                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        }
-
-
-        // =================================================================
-        // LÓGICA DO CARROSSEL DE DEPOIMENTOS
-        // =================================================================
-        const carouselContainer = document.getElementById('carousel-cards');
-        if (carouselContainer) {
-            const carouselCards = document.querySelectorAll('.carousel-card');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const indicatorsContainer = document.getElementById('carousel-indicators');
-            let currentIndex = 0;
-            let touchstartX = 0;
-            let touchendX = 0;
-
-            function updateCarousel() {
-                if (!carouselContainer) return; // Segurança extra
-                carouselContainer.style.height = 'auto';
-                carouselCards.forEach((card, index) => {
-                    const isCurrent = index === currentIndex;
-                    card.style.transform = `translateX(${(index - currentIndex) * 100}%) scale(${isCurrent ? 1 : 0.8})`;
-                    card.style.opacity = isCurrent ? '1' : '0.5';
-                    card.style.zIndex = isCurrent ? '20' : '10';
-                    card.style.position = 'absolute';
-                });
-                const activeCard = carouselCards[currentIndex];
-                if (activeCard) {
-                    requestAnimationFrame(() => {
-                        carouselContainer.style.height = `${activeCard.offsetHeight}px`;
-                    });
-                }
-                updateIndicators();
-            }
-
-            function handleSwipe() {
-                if (touchendX < touchstartX - 50) {
-                    currentIndex = (currentIndex + 1) % carouselCards.length;
-                }
-                if (touchendX > touchstartX + 50) {
-                    currentIndex = (currentIndex - 1 + carouselCards.length) % carouselCards.length;
-                }
-                updateCarousel();
-            }
-
-            function createIndicators() {
-                if (!indicatorsContainer) return;
-                indicatorsContainer.innerHTML = '';
-                carouselCards.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.classList.add('w-2', 'h-2', 'rounded-full', 'mx-1', 'cursor-pointer', 'bg-gray-400', 'transition-all', 'duration-300');
-                    if (index === currentIndex) {
-                        indicator.classList.add('!bg-primary-dark', 'w-3', 'h-3');
-                    }
-                    indicator.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateCarousel();
-                    });
-                    indicatorsContainer.appendChild(indicator);
-                });
-            }
-
-            function updateIndicators() {
-                if (!indicatorsContainer) return;
-                const indicators = indicatorsContainer.querySelectorAll('div');
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.remove('!bg-primary-dark', 'w-3', 'h-3');
-                    indicator.classList.add('bg-gray-400', 'w-2', 'h-2');
-                    if (index === currentIndex) {
-                        indicator.classList.remove('bg-gray-400', 'w-2', 'h-2');
-                        indicator.classList.add('!bg-primary-dark', 'w-3', 'h-3');
-                    }
-                });
-            }
-            
-            // Re-escrevi a lógica do carousel para ser mais simples e funcionar melhor
-            if (prevBtn) {
-              prevBtn.addEventListener('click', () => {
-                  currentIndex = (currentIndex - 1 + carouselCards.length) % carouselCards.length;
-                  updateCarousel();
-              });
-            }
-            if (nextBtn) {
-              nextBtn.addEventListener('click', () => {
-                  currentIndex = (currentIndex + 1) % carouselCards.length;
-                  updateCarousel();
-              });
-            }
-
-            carouselContainer.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
-            carouselContainer.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleSwipe(); });
-            
-            updateCarousel();
-            createIndicators();
-            window.addEventListener('resize', () => { updateCarousel(); createIndicators(); });
-        }
-
-
-        // =================================================================
-        // LÓGICA DO FAQ (SANFONA)
-        // =================================================================
-        const faqToggles = document.querySelectorAll('.faq-toggle');
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('.faq-icon');
-                if (content && icon) {
-                    content.classList.toggle('hidden');
-                    icon.textContent = content.classList.contains('hidden') ? '+' : '−';
-                }
-            });
-        });
-
-    });
-
-// =================================================================
-        // LÓGICA DA GALERIA DE VÍDEOS
-        // =================================================================
-        const mainVideoPlayer = document.getElementById('main-video-player');
-        const thumbnails = document.querySelectorAll('.video-thumbnail');
-
-        if (mainVideoPlayer && thumbnails.length > 0) {
-            // Função para carregar um vídeo no player principal
-            function loadVideo(videoId) {
-                mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-            }
-
-            // Função para marcar a miniatura ativa
-            function setActiveThumbnail(selectedThumbnail) {
-                // Remove a classe 'active' de todas as miniaturas
-                thumbnails.forEach(thumb => thumb.classList.remove('active'));
-                // Adiciona a classe 'active' apenas na selecionada
-                selectedThumbnail.classList.add('active');
-            }
-
-            // Carrega o primeiro vídeo da lista como padrão ao iniciar a página
-            const firstVideoId = thumbnails[0].dataset.videoId;
-            loadVideo(firstVideoId);
-            setActiveThumbnail(thumbnails[0]);
-
-            // Adiciona o evento de clique para cada miniatura
-            thumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener('click', function() {
-                    const videoId = this.dataset.videoId;
-                    loadVideo(videoId);
-                    setActiveThumbnail(this);
-                });
-            });
-        }
-    });
-
-</script>
-
-<section id="faq" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Perguntas Frequentes (FAQ)</h2>
-            <p class="mt-2 text-gray-medium">Respostas para suas dúvidas mais comuns.</p>
-        </div>
-        <div class="max-w-3xl mx-auto space-y-4">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                    <span>Qual a frequência ideal para ir ao dentista?</span>
-                    <span class="faq-icon text-accent-color text-xl">+</span>
-                </button>
-                <div class="faq-content mt-4 hidden text-gray-medium">
-                    Recomendo visitas a cada 6 meses para limpeza e check-up de rotina, mas a frequência pode variar de acordo com suas necessidades individuais.
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                    <span>O clareamento dental dói?</span>
-                    <span class="faq-icon text-accent-color text-xl">+</span>
-                </button>
-                <div class="faq-content mt-4 hidden text-gray-medium">
-                    A maioria dos pacientes não sente dor, mas pode haver sensibilidade temporária. Utilizo técnicas para minimizar qualquer desconforto.
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold text-primary-dark">
-                    <span>Implantes dentários são seguros?</span>
-                    <span class="faq-icon text-accent-color text-xl">+</span>
-                </button>
-                <div class="faq-content mt-4 hidden text-gray-medium">
-                    Sim, são procedimentos altamente seguros e com altas taxas de sucesso, quando realizados por profissionais qualificados e com materiais de qualidade.
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contato" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Entre em Contato com a Dra. Amanda Ferreira</h2>
-            <p class="mt-2 text-gray-medium">Estou pronta para cuidar do seu sorriso. Agende sua consulta!</p>
-        </div>
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
-            <div class="space-y-6">
-                <div class="flex items-start space-x-4">
-                    <span class="text-accent-color text-2xl mt-1">📍</span> <div>
-                        <h4 class="font-bold text-lg text-primary-dark">Endereço</h4>
-                        <p class="text-gray-medium">R. Mogi Guaçu, 403 - sala 2<br>Chácara da Barra, Campinas - SP, 13090-605</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                   <span class="text-accent-color text-2xl mt-1">📞</span> <div>
-                        <h4 class="font-bold text-lg text-primary-dark">Telefone</h4>
-                        <a href="tel:+551938741234" class="text-gray-medium hover:text-accent-color">(19) 3874-1234</a>
-                    </div>
-                </div>
-                 <div class="flex items-start space-x-4">
-                   <span class="text-accent-color text-2xl mt-1">📱</span> <div>
-                        <h4 class="font-bold text-lg text-primary-dark">WhatsApp</h4>
-                        <a href="https://wa.me/5519998291133?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%21" target="_blank" class="text-gray-medium hover:text-accent-color">(19) 99829-1133</a>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <span class="text-accent-color text-2xl mt-1">✉</span> <div>
-                        <h4 class="font-bold text-lg text-primary-dark">E-mail</h4>
-                        <a href="mailto:contato@draamandaferreira.com.br" class="text-gray-medium hover:text-accent-color">contato@draamandaferreira.com.br</a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="rounded-lg shadow-lg overflow-hidden h-full min-h-[300px] md:min-h-[400px]">
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.297479709873!2d-47.05436662446736!3d-22.90563457920336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c704f7e2c949%3A0x7d2b0e8c7c1b2c1!2sR.%20Mogi%20Gua%C3%A7u%2C%20403%20-%20Ch%C3%A1cara%20da%20Barra%2C%20Campinas%20-%20SP%2C%2013090-605!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Clínica no Google Maps"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-        
-    </main>
+        </main>
 
     <footer class="bg-primary-dark text-text-light py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>© 2025 Dra. Amanda Ferreira. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2">Desenvolvido com carinho para construir sorrisos.</p>
+            <p>© 2025 Rachel Puron. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Desenvolvido com carinho para construir a trilha sonora dos seus sonhos.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
 
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            mobileMenu.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.4
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active-nav');
-                            if (link.getAttribute('href') === `#${entry.target.id}`) {
-                                link.classList.add('active-nav');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
+            // =================================================================
+            // LÓGICA DO HEADER (MENU QUE ENCOLHE AO ROLAR)
+            // =================================================================
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('py-2', 'shadow-lg');
-                    header.classList.remove('py-4', 'shadow-md');
-                } else {
-                    header.classList.add('py-4', 'shadow-md');
-                    header.classList.remove('py-2', 'shadow-lg');
-                }
-            });
+            if (header) {
+                const headerContainer = header.querySelector('.container');
+                const logoImgDesktop = header.querySelector('nav img');
+                
+                function updateHeaderOnScroll() {
+                    if (!headerContainer || !logoImgDesktop) return;
 
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('.faq-icon');
-
-                    content.classList.toggle('hidden');
-                    if (content.classList.contains('hidden')) {
-                        icon.innerHTML = '+';
+                    if (window.scrollY > 50) {
+                        // ESTADO AO ROLAR: Menu compacto
+                        headerContainer.classList.remove('py-4');
+                        headerContainer.classList.add('py-1');
+                        logoImgDesktop.classList.remove('h-28');
+                        logoImgDesktop.classList.add('h-20');
                     } else {
-                        icon.innerHTML = '−';
+                        // ESTADO INICIAL (Topo da página): Menu alto
+                        headerContainer.classList.remove('py-1');
+                        headerContainer.classList.add('py-4');
+                        logoImgDesktop.classList.remove('h-20');
+                        logoImgDesktop.classList.add('h-28');
                     }
-                });
-            });
-
-            // Removed appointment modal and its related logic
-            // The buttons now directly link to WhatsApp
-
-
-            // Intersection Observer for fade-in image
-            const sobreImage = document.querySelector('#sobre img');
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once visible
-                    }
-                });
-            }, { threshold: 0.5 }); // Trigger when 50% of image is visible
-
-            if (sobreImage) {
-                sobreImage.classList.add('fade-in-image'); // Add initial hidden state
-                imageObserver.observe(sobreImage);
+                }
+                window.addEventListener('scroll', updateHeaderOnScroll);
+                updateHeaderOnScroll();
             }
 
-            // Service Detail Logic
-            const serviceListContainer = document.getElementById('service-list-container');
-            const serviceDetailContainer = document.getElementById('service-detail-container');
-            const serviceDetailSections = document.querySelectorAll('.service-detail');
-            const serviceCards = document.querySelectorAll('.service-card');
-            const backToServicesButton = document.getElementById('back-to-services');
-
-            serviceCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const serviceId = this.dataset.serviceId;
-                    
-                    serviceListContainer.classList.add('hidden');
-                    serviceDetailContainer.classList.remove('hidden');
-
-                    serviceDetailSections.forEach(detail => {
-                        detail.classList.add('hidden');
-                    });
-
-                    const targetDetail = document.getElementById(`detail-${serviceId}`);
-                    if (targetDetail) {
-                        targetDetail.classList.remove('hidden');
-                        window.scrollTo({
-                            top: serviceDetailContainer.offsetTop - header.offsetHeight, // Scroll to detail section, considering fixed header
-                            behavior: 'smooth'
-                        });
+            // =================================================================
+            // LÓGICA DO MENU MOBILE
+            // =================================================================
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                        mobileMenu.classList.add('hidden');
                     }
                 });
-            });
+            }
 
-            backToServicesButton.addEventListener('click', function() {
-                serviceDetailContainer.classList.add('hidden');
-                serviceListContainer.classList.remove('hidden');
-                window.scrollTo({
-                    top: serviceListContainer.offsetTop - header.offsetHeight, // Scroll back to service list
-                    behavior: 'smooth'
+            // =================================================================
+            // LÓGICA DA GALERIA DE VÍDEOS
+            // =================================================================
+            const mainVideoPlayer = document.getElementById('main-video-player');
+            const thumbnails = document.querySelectorAll('.video-thumbnail');
+
+            if (mainVideoPlayer && thumbnails.length > 0) {
+                function loadVideo(videoId) {
+                    mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                }
+
+                function setActiveThumbnail(selectedThumbnail) {
+                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                    selectedThumbnail.classList.add('active');
+                }
+
+                const firstVideoId = thumbnails[0].dataset.videoId;
+                loadVideo(firstVideoId);
+                setActiveThumbnail(thumbnails[0]);
+
+                thumbnails.forEach(thumbnail => {
+                    thumbnail.addEventListener('click', function() {
+                        const videoId = this.dataset.videoId;
+                        loadVideo(videoId);
+                        setActiveThumbnail(this);
+                    });
                 });
-            });
+            }
         });
     </script>
+
 </body>
 </html>
