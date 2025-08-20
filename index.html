@@ -84,7 +84,11 @@
         .fade-in-image.is-visible {
             opacity: 1;
         }
-        
+        /* Estilo para a miniatura de vídeo que está ativa */
+    .video-thumbnail.active img {
+        border: 4px solid #C0A084; /* Usa a cor de destaque (accent-color) */
+        transform: scale(1.1);
+    }
         
     </style>
     <script>
@@ -208,6 +212,65 @@
                 </div>
             </div>
         </section>
+
+<section id="videos" class="py-20 md:py-32 bg-primary-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
+            <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
+        </div>
+
+        <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe id="main-video-player"
+                        width="560" height="315"
+                        src=""
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="dQw4w9WgXcQ">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg" alt="Thumbnail do Vídeo 1" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Título do Vídeo 1</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="3tmd-ClpJxA">
+                 <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/3tmd-ClpJxA/mqdefault.jpg" alt="Thumbnail do Vídeo 2" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Título do Vídeo 2</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="u9_pD6n-OHw">
+                 <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/u9_pD6n-OHw/mqdefault.jpg" alt="Thumbnail do Vídeo 3" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <svg class="w-12 h-12 text-white/80 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Título do Vídeo 3</p>
+            </div>
+
+        </div>
+    </div>
+</section>
 
         <section id="servicos" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
@@ -800,6 +863,43 @@
         });
 
     });
+
+// =================================================================
+        // LÓGICA DA GALERIA DE VÍDEOS
+        // =================================================================
+        const mainVideoPlayer = document.getElementById('main-video-player');
+        const thumbnails = document.querySelectorAll('.video-thumbnail');
+
+        if (mainVideoPlayer && thumbnails.length > 0) {
+            // Função para carregar um vídeo no player principal
+            function loadVideo(videoId) {
+                mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            }
+
+            // Função para marcar a miniatura ativa
+            function setActiveThumbnail(selectedThumbnail) {
+                // Remove a classe 'active' de todas as miniaturas
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                // Adiciona a classe 'active' apenas na selecionada
+                selectedThumbnail.classList.add('active');
+            }
+
+            // Carrega o primeiro vídeo da lista como padrão ao iniciar a página
+            const firstVideoId = thumbnails[0].dataset.videoId;
+            loadVideo(firstVideoId);
+            setActiveThumbnail(thumbnails[0]);
+
+            // Adiciona o evento de clique para cada miniatura
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const videoId = this.dataset.videoId;
+                    loadVideo(videoId);
+                    setActiveThumbnail(this);
+                });
+            });
+        }
+    });
+
 </script>
 
 <section id="faq" class="py-20 md:py-32 bg-primary-light">
