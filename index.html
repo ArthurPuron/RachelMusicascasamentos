@@ -58,7 +58,7 @@
 <body class="bg-primary-light text-text-dark">
 
     <header id="header" class="bg-primary-light/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 relative flex justify-center items-center transition-all duration-300 ease-in-out">
+        <div class="container mx-auto px-6 relative flex justify-center items-center py-1 transition-all duration-300 ease-in-out">
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#sobre" class="nav-link text-gray-medium hover:text-accent-color duration-300">Rahel</a>
                 <a href="#videos" class="nav-link text-gray-medium hover:text-accent-color duration-300">Vídeos</a>
@@ -189,18 +189,25 @@
             const headerContainer = header.querySelector('.container');
             const logoImgDesktop = header.querySelector('nav img');
             function updateHeaderOnScroll() {
-                if (!headerContainer || !logoImgDesktop) return;
-                if (window.scrollY > 50) {
-                    headerContainer.classList.remove('py-1'); headerContainer.classList.add('py-1');
-                    logoImgDesktop.classList.remove('h-28'); logoImgDesktop.classList.add('h-20');
-                } else {
-                    headerContainer.classList.remove('py-1'); headerContainer.classList.add('py-4');
-                    logoImgDesktop.classList.remove('h-20'); logoImgDesktop.classList.add('h-28');
-                }
-            }
-            window.addEventListener('scroll', updateHeaderOnScroll);
-            updateHeaderOnScroll();
-        }
+    // Garante que o código só execute se os elementos existirem
+    if (!headerContainer || !logoImgDesktop) return;
+
+    if (window.scrollY > 50) {
+        // ESTADO AO ROLAR: Menu compacto
+        // A barra continua py-1 (não mexemos), mas a logo fica PEQUENA
+        headerContainer.classList.remove('py-4'); // Apenas para garantir a limpeza
+        headerContainer.classList.add('py-1');
+        logoImgDesktop.classList.remove('h-28');
+        logoImgDesktop.classList.add('h-20');
+    } else {
+        // ESTADO INICIAL (Topo da página): Menu com logo grande
+        // A barra é py-1, mas a logo fica GRANDE
+        headerContainer.classList.remove('py-4'); // Apenas para garantir a limpeza
+        headerContainer.classList.add('py-1');
+        logoImgDesktop.classList.remove('h-20');
+        logoImgDesktop.classList.add('h-28');
+    }
+}
 
         // MOBILE MENU
         const mobileMenuButton = document.getElementById('mobile-menu-button');
