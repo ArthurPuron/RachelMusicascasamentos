@@ -181,52 +181,65 @@
         </div>
     </footer>
 
-    <script>
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // HEADER SHRINK
+
+        // =================================================================
+        // LÓGICA DO HEADER (MENU QUE ENCOLHE AO ROLAR)
+        // =================================================================
         const header = document.getElementById('header');
         if (header) {
             const headerContainer = header.querySelector('.container');
             const logoImgDesktop = header.querySelector('nav img');
+            
             function updateHeaderOnScroll() {
-    // Garante que o código só execute se os elementos existirem
-    if (!headerContainer || !logoImgDesktop) return;
+                if (!headerContainer || !logoImgDesktop) return;
 
-    if (window.scrollY > 50) {
-        // ESTADO AO ROLAR: Menu compacto
-        // A barra continua py-1 (não mexemos), mas a logo fica PEQUENA
-        headerContainer.classList.remove('py-4'); // Apenas para garantir a limpeza
-        headerContainer.classList.add('py-1');
-        logoImgDesktop.classList.remove('h-28');
-        logoImgDesktop.classList.add('h-20');
-    } else {
-        // ESTADO INICIAL (Topo da página): Menu com logo grande
-        // A barra é py-1, mas a logo fica GRANDE
-        headerContainer.classList.remove('py-4'); // Apenas para garantir a limpeza
-        headerContainer.classList.add('py-1');
-        logoImgDesktop.classList.remove('h-20');
-        logoImgDesktop.classList.add('h-28');
-    }
-}
+                if (window.scrollY > 50) {
+                    // ESTADO AO ROLAR: Menu compacto
+                    headerContainer.classList.remove('py-4');
+                    headerContainer.classList.add('py-1');
+                    logoImgDesktop.classList.remove('h-28');
+                    logoImgDesktop.classList.add('h-20');
+                } else {
+                    // ESTADO INICIAL (Topo da página): Menu com logo grande
+                    headerContainer.classList.remove('py-1');
+                    headerContainer.classList.add('py-4'); // Corrigido para ter um estado inicial diferente
+                    logoImgDesktop.classList.remove('h-20');
+                    logoImgDesktop.classList.add('h-28');
+                }
+            }
+            // LINHAS CORRIGIDAS/ADICIONADAS ABAIXO
+            window.addEventListener('scroll', updateHeaderOnScroll);
+            updateHeaderOnScroll(); // Ativa a função ao carregar a página
+        } // <--- ESTE "}" ESTAVA FALTANDO
 
-        // MOBILE MENU
+        // =================================================================
+        // LÓGICA DO MENU MOBILE
+        // =================================================================
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             mobileMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') mobileMenu.classList.add('hidden');
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         }
 
-        // VIDEO GALLERY
+        // =================================================================
+        // LÓGICA DA GALERIA DE VÍDEOS
+        // =================================================================
         const mainVideoPlayer = document.getElementById('main-video-player');
         const thumbnails = document.querySelectorAll('.video-thumbnail');
         if (mainVideoPlayer && thumbnails.length > 0) {
             function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
             function setActiveThumbnail(selected) { thumbnails.forEach(t => t.classList.remove('active')); selected.classList.add('active'); }
+            
             loadVideo(thumbnails[0].dataset.videoId);
             setActiveThumbnail(thumbnails[0]);
+
             thumbnails.forEach(thumb => {
                 thumb.addEventListener('click', function() {
                     loadVideo(this.dataset.videoId);
@@ -235,63 +248,11 @@
             });
         }
 
-        // TESTIMONIALS CAROUSEL
-        const carouselContainer = document.getElementById('carousel-cards');
-        if (carouselContainer) {
-            const cards = carouselContainer.querySelectorAll('.carousel-card');
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const indicatorsContainer = document.getElementById('carousel-indicators');
-            let currentIndex = 0;
-            const totalSlides = cards.length;
-
-            function updateCarousel() {
-                const offset = -currentIndex * 100;
-                cards.forEach(card => {
-                    card.style.transform = `translateX(${offset}%)`;
-                });
-
-                if (indicatorsContainer) {
-                    Array.from(indicatorsContainer.children).forEach((dot, index) => {
-                        dot.classList.toggle('!bg-primary-dark', index === currentIndex);
-                    });
-                }
-                const activeCard = cards[currentIndex];
-                if(activeCard) requestAnimationFrame(() => {carouselContainer.style.height = `${activeCard.offsetHeight}px`});
-            }
-            
-            function createIndicators() {
-                if (!indicatorsContainer) return;
-                indicatorsContainer.innerHTML = '';
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('button');
-                    dot.classList.add('w-2', 'h-2', 'rounded-full', 'mx-1', 'bg-gray-400', 'transition-all');
-                    dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); });
-                    indicatorsContainer.appendChild(dot);
-                }
-            }
-            
-            if (nextBtn) nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); });
-            if (prevBtn) prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); });
-
-            if(totalSlides > 0) { createIndicators(); updateCarousel(); }
-            window.addEventListener('resize', updateCarousel);
-        }
-
-        // FAQ TOGGLE
-        const faqToggles = document.querySelectorAll('.faq-toggle');
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('.faq-icon');
-                content.classList.toggle('hidden');
-                if (icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
-            });
-        });
-
+        // =================================================================
         // FADE-IN IMAGE on #sobre section
+        // =================================================================
         const sobreImage = document.querySelector('#sobre img');
-        if(sobreImage){
+        if (sobreImage) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -300,9 +261,13 @@
                     }
                 });
             }, { threshold: 0.5 });
+            sobreImage.classList.add('fade-in-image'); // Adiciona a classe para o estado inicial
             imageObserver.observe(sobreImage);
         }
+
+        // (Aqui entrariam as lógicas de Carrossel e FAQ se você as trouxer de volta)
+
     });
-    </script>
+</script>
 </body>
 </html>
