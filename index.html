@@ -39,20 +39,21 @@
         .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
         .fade-in-image.is-visible { opacity: 1; }
        /* Estilo base para a transição ser suave em todas as miniaturas */
+    /* Estilo base para a transição ser suave em todas as miniaturas */
     .video-thumbnail {
         transition: all 0.3s ease-in-out;
     }
 
-    /* Efeito ATIVO: um pouco maior e com a borda de destaque */
+    /* Efeito ATIVO: um pouco maior e com brilho normal */
     .video-thumbnail.active {
-        transform: scale(1.05); /* Deixa um pouco maior */
-        opacity: 1; /* Garante que está com 100% da cor */
+        transform: scale(1.05);
+        filter: brightness(1); /* Garante que está com 100% do brilho */
     }
 
-    /* Efeito INATIVO: um pouco mais escuro/transparente */
+    /* Efeito INATIVO: com brilho reduzido (mais escuro) */
     .video-thumbnail.inactive {
-        opacity: 0.6; /* Deixa 40% transparente */
-        transform: scale(1); /* Garante que está no tamanho normal */
+        transform: scale(1);
+        filter: brightness(0.6); /* Deixa 40% mais escuro */
     }
     </style>
     
@@ -136,25 +137,54 @@
             </div>
         </section>
 
-        <section id="videos" class="py-20 md:py-32 bg-gray-100"> <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
-                    <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
-                </div>
-                <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden max-w-5xl mx-auto">
-                    <div class="aspect-w-16 aspect-h-9 bg-black">
-                        <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div></div><p class="text-center font-semibold mt-2">Hallelujah (Cover)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div></div><p class="text-center font-semibold mt-2">A Thousand Years (Cover)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div></div><p class="text-center font-semibold mt-2">Perfect - Ed Sheeran (Cover)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg class="w-12 h-12 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"></path></svg></div></div><p class="text-center font-semibold mt-2">Thinking Out Loud (Cover)</p></div>
-                </div>
+        <section id="videos" class="py-20 md:py-32 bg-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
+            <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
+        </div>
+        <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden max-w-5xl mx-auto">
+            <div class="aspect-w-16 aspect-h-9 bg-black">
+                <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-        </section>
+        </div>
+        <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            
+            <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail da música Hallelujah" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Hallelujah (Cover)</p>
+            </div>
 
+            <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail da música A Thousand Years" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">A Thousand Years (Cover)</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail da música Perfect" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Perfect - Ed Sheeran (Cover)</p>
+            </div>
+            
+            <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                    <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail da música Thinking Out Loud" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Thinking Out Loud (Cover)</p>
+            </div>
+
+        </div>
+    </div>
+</section>
         <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
