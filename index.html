@@ -38,7 +38,22 @@
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
         .fade-in-image.is-visible { opacity: 1; }
-        .video-thumbnail.active img { border: 4px solid #C0A084; transform: scale(1.1); }
+       /* Estilo base para a transição ser suave em todas as miniaturas */
+    .video-thumbnail {
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Efeito ATIVO: um pouco maior e com a borda de destaque */
+    .video-thumbnail.active {
+        transform: scale(1.05); /* Deixa um pouco maior */
+        opacity: 1; /* Garante que está com 100% da cor */
+    }
+
+    /* Efeito INATIVO: um pouco mais escuro/transparente */
+    .video-thumbnail.inactive {
+        opacity: 0.6; /* Deixa 40% transparente */
+        transform: scale(1); /* Garante que está no tamanho normal */
+    }
     </style>
     
     <script>
@@ -251,7 +266,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const thumbnails = document.querySelectorAll('.video-thumbnail');
     if (mainVideoPlayer && thumbnails.length > 0) {
         function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
-        function setActiveThumbnail(selected) { thumbnails.forEach(t => t.classList.remove('active')); selected.classList.add('active'); }
+       function setActiveThumbnail(selectedThumbnail) {
+    // Primeiro, aplica o estilo 'inativo' a TODAS as miniaturas
+    thumbnails.forEach(thumb => {
+        thumb.classList.remove('active');
+        thumb.classList.add('inactive');
+    });
+
+    // Depois, remove o 'inativo' e adiciona o 'ativo' APENAS na que foi clicada
+    selectedThumbnail.classList.remove('inactive');
+    selectedThumbnail.classList.add('active');
+}
         loadVideo(thumbnails[0].dataset.videoId);
         setActiveThumbnail(thumbnails[0]);
         thumbnails.forEach(thumb => {
