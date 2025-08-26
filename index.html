@@ -188,161 +188,425 @@
 
 
 
-<section id="formacoes" class="py-20 md:py-32 bg-gray-900">
+<section class="formacoes">
+
+  <style>
+    /* Adicionando as fontes do Google Fonts usadas no design */
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+
+    /* --- Estilos da Seção Formações --- */
+    /* Usamos seletores mais específicos para evitar conflitos com outros estilos do seu site */
+    .formacoes {
+        background-color: #1a1a1a;
+        font-family: 'Montserrat', sans-serif;
+        color: #e0e0e0;
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .formacoes .formacoes-titulo {
+        font-family: 'Lora', serif;
+        font-size: 2.8rem;
+        color: #f0f0e0;
+        margin-top: 0;
+        margin-bottom: 60px;
+    }
+
+    .formacoes .formacoes-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+    }
+
+    /* --- Estilos dos Cards --- */
+    .formacoes .card {
+        background-color: #2a302a;
+        border-radius: 20px;
+        overflow: hidden;
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        text-align: left; /* Alinha o texto dos cards à esquerda */
+    }
+
+    .formacoes .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .formacoes .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .formacoes .card-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .formacoes .card-body h3 {
+        font-family: 'Lora', serif;
+        font-size: 1.8rem;
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .formacoes .card-subtitulo {
+        font-size: 0.9rem;
+        color: #b0b0b0;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .formacoes .card-codigo {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* --- Lista de Itens --- */
+    .formacoes .card-lista {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 30px;
+        color: #c7c4b6;
+    }
+
+    .formacoes .card-lista li {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .formacoes .card-lista li::before {
+        content: '•';
+        color: #c7c4b6;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    /* --- Botões --- */
+    .formacoes .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-top: auto; /* Empurra o botão para o final do card */
+        text-align: center;
+        background-color: #c7c4b6;
+        color: #1a1a1a;
+    }
+
+    .formacoes .btn:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* --- Card Popular --- */
+    .formacoes .popular {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .formacoes .popular-tag {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #c7c4b6;
+        color: #1a1a1a;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    /* --- Responsividade --- */
+    @media (max-width: 1150px) {
+        .formacoes .formacoes-container {
+            flex-direction: column;
+        }
+
+        .formacoes .popular {
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .formacoes .formacoes-titulo {
+            font-size: 2.2rem;
+        }
+        
+        .formacoes .card {
+            width: 100%;
+            max-width: 380px;
+        }
+    }
+  </style>
+
+  <h2 class="formacoes-titulo">Nossas Formações</h2>
+
+  <div class="formacoes-container">
+    
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1499415479124-a3a41f87dc39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEyfHxzaW5nZXJ8ZW58MHx8fHwxNjYxNTM0MDIx&ixlib=rb-1.2.1&q=80&w=400" alt="Mulher cantando e tocando violão">
+      <div class="card-body">
+        <h3>Pacote Intimista</h3>
+        <p class="card-subtitulo">Formato acústico e emocionante.</p>
+        <p class="card-codigo">S0A2BB3S</p>
+        <a href="#contato" class="btn">Saiba Mais</a>
+      </div>
+    </div>
+
+    <div class="card popular">
+      <span class="popular-tag">POPULAR</span>
+      <img src="https://images.unsplash.com/photo-1518683553253-69a40e1d1a13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fG9yY2hlc3RyYXxlbnwwfHx8fDE2NjE1MzQwNjQ&ixlib=rb-1.2.1&q=80&w=400" alt="Orquestra completa em um palco iluminado">
+      <div class="card-body">
+        <h3>Pacote Assinatura</h3>
+        <p class="card-subtitulo">A experiência completa com nossa orquestra.</p>
+        <ul class="card-lista">
+          <li>Formação com 15 músicos</li>
+          <li>Repertório 100% personalizável</li>
+          <li>Instrumentos clássicos e modernos</li>
+          <li>Sistema de som profissional incluso</li>
+          <li>Ideal para grandes cerimônias e eventos</li>
+        </ul>
+        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1614364922378-1a70e7e435a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDN8fHZpb2xpbnxlbnwwfHx8fDE2NjE1MzQxMDI&ixlib=rb-1.2.1&q=80&w=400" alt="Músicos tocando violino e violão">
+      <div class="card-body">
+        <h3>Pacote Melodia</h3>
+        <p class="card-subtitulo">A combinação perfeita para sua cerimônia.</p>
+        <ul class="card-lista">
+          <li>Formação com 4 a 6 músicos</li>
+          <li>Opções com piano, violinos e voz</li>
+          <li>Perfeito para casamentos e recepções</li>
+          <li>Consultoria para escolha do repertório</li>
+        </ul>
+        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="formacoes" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white">Nossas Formações</h2>
-            <p class="mt-2 text-gray-400">Descubra a melodia perfeita para o seu casamento.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Formações</h2>
+            <p class="mt-2 text-gray-medium">Descubra a melodia perfeita para o seu casamento.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6 max-w-6xl mx-auto items-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-            <div class="package-card flex flex-col rounded-2xl overflow-hidden bg-gray-800 shadow-lg h-full transition-all duration-300">
-                <div class="h-56 bg-cover bg-center" style="background-image: url('https://i.imgur.com/dwvKP3v.png');"></div>
-                
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-3xl font-bold text-white">Intimista</h3>
-                    <p class="mt-1 text-gray-400">Perfeito para cerimônias acolhedoras.</p>
-                    
-                    <div class="package-details hidden mt-6 text-sm text-gray-300">
-                        <h4 class="font-bold text-white mb-2">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li>Receptivo dos convidados (30min)</li>
-                            <li>Cerimônia (DUO - Vocal & Teclado OU Violão) + Equipe Técnica</li>
-                            <li>Repertório personalizado + Reunião online de alinhamento</li>
-                        </ul>
-                        <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!" target="_blank" class="mt-6 inline-block w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
-                    </div>
-
-                    <button class="package-toggle mt-auto pt-6 w-full text-center bg-gray-200 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-white transition-colors duration-300">SAIBA MAIS</button>
+            <div class="relative rounded-xl shadow-lg hover:shadow-2xl overflow-hidden h-96 md:h-[450px] group transition-all duration-300 transform hover:-translate-y-2">
+                <img src="https://i.imgur.com/dwvKP3v.png" class="absolute w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Pacote Intimista">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A2B34]/90 to-transparent"></div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end items-center text-center text-white">
+                    <h3 class="text-3xl font-bold font-serif">Intimista</h3>
+                    <p class="mt-1 text-gray-200">Perfeito para cerimônias acolhedoras.</p>
+                    <button class="open-package-modal mt-6 bg-white/90 text-primary-dark font-bold py-2 px-6 rounded-full shadow-lg w-fit hover:bg-white transition-colors duration-300" data-package-id="intimista">
+                        SAIBA MAIS
+                    </button>
                 </div>
             </div>
 
-            <div class="package-card relative flex flex-col rounded-2xl overflow-hidden bg-gray-800 shadow-2xl h-full lg:scale-105 lg:-translate-y-4 border-2 border-accent-color transition-all duration-300">
-                <div class="absolute top-4 right-4 bg-accent-color text-primary-dark font-bold text-sm px-3 py-1 rounded-full z-10">POPULAR</div>
-                <div class="h-56 bg-cover bg-center" style="background-image: url('https://i.imgur.com/dTHMSAY.png');"></div>
-
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-3xl font-bold text-white">Assinatura</h3>
-                    <p class="mt-1 text-gray-400">A experiência musical completa e inesquecível.</p>
-                    
-                    <div class="mt-6 text-sm text-gray-300">
-                        <div class="mb-3">
-                            <h4 class="font-bold text-white mb-2">CERIMÔNIA + RECEPTIVO (2h00):</h4>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Sexteto (Vocal, Teclado, Violino, Violão, Dueto de Clarins)</li>
-                                <li>Repertório personalizado + Reuniões</li>
-                            </ul>
-                        </div>
-                        <div class="mb-3">
-                            <h4 class="font-bold text-white mb-2">PÓS CERIMÔNIA (2h30):</h4>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Walking Violino (30min)</li>
-                                <li>Show lounge (Quarteto) - Jazz, Bossa, Pop, etc.</li>
-                            </ul>
-                        </div>
-                         <div class="mb-3">
-                            <h4 class="font-bold text-white mb-2">FESTA:</h4>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>DJ do início ao fim</li>
-                                <li>Estrutura de som e iluminação básica</li>
-                            </ul>
-                        </div>
-                        <p class="font-bold text-white text-xs mt-4">PLUS: SHOW DEMONSTRATIVO CERIMÔNIA (1h)</p>
-                    </div>
-
-                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!" target="_blank" class="mt-auto pt-6 w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
+            <div class="relative rounded-xl shadow-lg hover:shadow-2xl overflow-hidden h-96 md:h-[450px] group transition-all duration-300 transform hover:-translate-y-2">
+                <span class="absolute top-4 right-4 z-10 bg-primary-light text-primary-dark font-bold text-xs px-3 py-1 rounded-full uppercase">Popular</span>
+                <img src="https://i.imgur.com/dTHMSAY.png" class="absolute w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Pacote Assinatura">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A2B34]/90 to-transparent"></div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end items-center text-center text-white">
+                    <h3 class="text-3xl font-bold font-serif">Assinatura</h3>
+                    <p class="mt-1 text-gray-200">A experiência musical completa e inesquecível.</p>
+                    <button class="open-package-modal mt-6 bg-white/90 text-primary-dark font-bold py-2 px-6 rounded-full shadow-lg w-fit hover:bg-white transition-colors duration-300" data-package-id="assinatura">
+                        SAIBA MAIS
+                    </button>
                 </div>
             </div>
 
-            <div class="package-card flex flex-col rounded-2xl overflow-hidden bg-gray-800 shadow-lg h-full transition-all duration-300">
-                <div class="h-56 bg-cover bg-center" style="background-image: url('https://i.imgur.com/Jjo9T3S.png');"></div>
-
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-3xl font-bold text-white">Melodia</h3>
-                    <p class="mt-1 text-gray-400">Elegância musical para cerimônia e coquetel.</p>
-
-                    <div class="package-details hidden mt-6 text-sm text-gray-300">
-                        <div class="mb-3">
-                            <h4 class="font-bold text-white mb-2">CERIMÔNIA + RECEPTIVO (30 min):</h4>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Quarteto (Vocal, Teclado e Dueto de Clarins)</li>
-                                <li>Repertório personalizado + Reuniões</li>
-                            </ul>
-                        </div>
-                        <div class="mb-3">
-                            <h4 class="font-bold text-white mb-2">PÓS CERIMÔNIA:</h4>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Walking Violino - 30min</li>
-                                <li>Show lounge (Trio) - Jazz, Bossa, Pop, etc.</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!" target="_blank" class="mt-6 inline-block w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
-                    </div>
-                    
-                    <button class="package-toggle mt-auto pt-6 w-full text-center bg-gray-200 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-white transition-colors duration-300">SAIBA MAIS</button>
+            <div class="relative rounded-xl shadow-lg hover:shadow-2xl overflow-hidden h-96 md:h-[450px] group transition-all duration-300 transform hover:-translate-y-2">
+                <img src="https://i.imgur.com/Jjo9T3S.png" class="absolute w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Pacote Melodia">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A2B34]/90 to-transparent"></div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end items-center text-center text-white">
+                    <h3 class="text-3xl font-bold font-serif">Melodia</h3>
+                    <p class="mt-1 text-gray-200">Elegância musical para cerimônia e coquetel.</p>
+                    <button class="open-package-modal mt-6 bg-white/90 text-primary-dark font-bold py-2 px-6 rounded-full shadow-lg w-fit hover:bg-white transition-colors duration-300" data-package-id="melodia">
+                        SAIBA MAIS
+                    </button>
                 </div>
             </div>
 
+        </div>
+
+        <div id="package-modal" class="fixed inset-0 bg-primary-dark/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
+            <div class="bg-primary-dark text-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative transform scale-95 transition-all duration-300">
+                <button class="close-modal absolute top-4 right-4 text-gray-300 hover:text-white text-3xl z-10">&times;</button>
+                <img id="modal-package-image" src="" alt="Detalhes do Pacote" class="w-full h-56 md:h-64 object-cover rounded-t-xl">
+                <div class="p-8">
+                    <h3 id="modal-package-title" class="text-3xl font-bold text-accent-color mb-3"></h3>
+                    <p id="modal-package-description" class="text-gray-300 mb-6"></p>
+                    <div id="modal-package-details" class="space-y-6 text-gray-300">
+                        </div>
+                    <a id="modal-whatsapp-link" href="" target="_blank" class="mt-8 inline-block w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Seleciona todos os botões que alternam os detalhes
-            const toggleButtons = document.querySelectorAll('.package-toggle');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Previne a execução do script se ele já tiver sido carregado antes.
+            if (window.formacoesScriptLoaded) return;
+            window.formacoesScriptLoaded = true;
+            
+            const openModalButtons = document.querySelectorAll('.open-package-modal');
+            const packageModal = document.getElementById('package-modal');
 
-            toggleButtons.forEach(button => {
+            // Verifica se o modal existe para evitar erros
+            if (!packageModal) return;
+
+            const closeModalButton = packageModal.querySelector('.close-modal');
+            const modalPackageImage = document.getElementById('modal-package-image');
+            const modalPackageTitle = document.getElementById('modal-package-title');
+            const modalPackageDescription = document.getElementById('modal-package-description');
+            const modalPackageDetails = document.getElementById('modal-package-details');
+            const modalWhatsappLink = document.getElementById('modal-whatsapp-link');
+
+            const packagesData = {
+                intimista: {
+                    image: 'https://i.imgur.com/dwvKP3v.png',
+                    title: 'Pacote Intimista',
+                    shortDesc: 'Perfeito para cerimônias acolhedoras.',
+                    details: `
+                        <div>
+                            <h4 class="font-bold text-white mb-2">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Receptivo dos convidados (30min)</li>
+                                <li>Cerimônia (DUO - Vocal & Teclado OU Violão) + Equipe Técnica</li>
+                                <li>Repertório personalizado + Reunião online de alinhamento</li>
+                            </ul>
+                        </div>
+                    `,
+                    whatsapp: 'https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!'
+                },
+                assinatura: {
+                    image: 'https://i.imgur.com/dTHMSAY.png',
+                    title: 'Pacote Assinatura',
+                    shortDesc: 'A experiência musical completa e inesquecível.',
+                    details: `
+                        <div class="mb-4">
+                            <h4 class="font-bold text-white mb-2">PARA CERIMÔNIA + RECEPTIVO (2h00):</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Sexteto (Vocal, Teclado, Violino, Violão, Dueto de Clarins)</li>
+                                <li>Repertório personalizado + Reuniões</li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-bold text-white mb-2">PÓS CERIMÔNIA (2h30):</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Walking Violino (30min)</li>
+                                <li>Show lounge (Quarteto) - Jazz, Bossa, Pop, etc.</li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-bold text-white mb-2">FESTA:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>DJ do início ao fim</li>
+                                <li>Estrutura de som e iluminação básica</li>
+                            </ul>
+                        </div>
+                        <p class="font-bold text-white">PLUS: SHOW DEMONSTRATIVO CERIMÔNIA (1h)</p>
+                    `,
+                    whatsapp: 'https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!'
+                },
+                melodia: {
+                    image: 'https://i.imgur.com/Jjo9T3S.png',
+                    title: 'Pacote Melodia',
+                    shortDesc: 'Elegância musical para cerimônia e coquetel.',
+                    details: `
+                        <div class="mb-4">
+                            <h4 class="font-bold text-white mb-2">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Quarteto (Vocal, Teclado e Dueto de Clarins)</li>
+                                <li>Repertório personalizado + Reuniões</li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h4 class="font-bold text-white mb-2">PÓS CERIMÔNIA:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Walking Violino - 30min</li>
+                                <li>Show lounge (Trio) - Jazz, Bossa, Pop, etc.</li>
+                            </ul>
+                        </div>
+                    `,
+                    whatsapp: 'https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!'
+                }
+            };
+
+            function openModal(packageId) {
+                const packageInfo = packagesData[packageId];
+                if (packageInfo) {
+                    modalPackageImage.src = packageInfo.image;
+                    modalPackageTitle.textContent = packageInfo.title;
+                    modalPackageDescription.textContent = packageInfo.shortDesc;
+                    modalPackageDetails.innerHTML = packageInfo.details;
+                    modalWhatsappLink.href = packageInfo.whatsapp;
+
+                    packageModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Impede o scroll da página ao fundo
+                    setTimeout(() => {
+                        packageModal.classList.remove('opacity-0');
+                        packageModal.querySelector('.transform').classList.remove('scale-95');
+                    }, 10);
+                }
+            }
+
+            function closeModal() {
+                packageModal.classList.add('opacity-0');
+                packageModal.querySelector('.transform').classList.add('scale-95');
+                document.body.style.overflow = ''; // Libera o scroll
+                setTimeout(() => {
+                    packageModal.classList.add('hidden');
+                }, 300);
+            }
+
+            openModalButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Encontra o card pai do botão
-                    const card = button.closest('.package-card');
-                    // Encontra a seção de detalhes dentro do mesmo card
-                    const details = card.querySelector('.package-details');
-
-                    // Alterna a visibilidade dos detalhes
-                    const isHidden = details.classList.toggle('hidden');
-
-                    // Muda o texto do botão de acordo com a visibilidade
-                    if (isHidden) {
-                        button.textContent = 'SAIBA MAIS';
-                        card.classList.remove('details-visible');
-                    } else {
-                        button.textContent = 'FECHAR';
-                        card.classList.add('details-visible');
-                    }
-
-                    // Esconde o botão de toggle quando os detalhes estiverem visíveis
-                    button.classList.toggle('hidden');
-
+                    const packageId = button.dataset.packageId;
+                    openModal(packageId);
                 });
+            });
+
+            closeModalButton.addEventListener('click', closeModal);
+
+            packageModal.addEventListener('click', (e) => {
+                if (e.target === packageModal) {
+                    closeModal();
+                }
             });
         });
     </script>
-    
-    <style>
-        /* Estilo para garantir que o card cresça para acomodar o conteúdo */
-        .package-card.details-visible {
-            /* Você pode adicionar estilos específicos para o card aberto se desejar */
-        }
-        
-        /* Esconde o botão de 'Saber Mais' e mostra o de 'Solicitar Orçamento' que está dentro dos detalhes */
-        .package-details:not(.hidden) + .package-toggle {
-            display: none;
-        }
-
-        /* Supondo que você tenha essas cores no seu tailwind.config.js */
-        /* Se não, substitua por cores diretas como #f3a3a4 ou use as cores padrão do Tailwind */
-        :root {
-            --color-accent: #F3B3A6; /* Exemplo de cor para o "POPULAR" e botões */
-            --color-primary-dark: #1F2937; /* Exemplo de cor para texto em botões claros */
-            --color-accent-hover: #F1A091; /* Exemplo de cor para hover */
-        }
-        .bg-accent-color { background-color: var(--color-accent); }
-        .text-primary-dark { color: var(--color-primary-dark); }
-        .border-accent-color { border-color: var(--color-accent); }
-        .hover\:bg-accent-hover:hover { background-color: var(--color-accent-hover); }
-
-    </style>
 </section>
 
 <section id="formacoes" class="py-20 md:py-32 bg-primary-light">
