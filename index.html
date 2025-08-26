@@ -189,99 +189,365 @@
 <section id="formacoes" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Formações e Pacotes</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Formações</h2>
+            <p class="mt-2 text-gray-medium">Encontre a trilha sonora perfeita para cada momento do seu sonho.</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="flex border-b border-gray-200 mb-8 justify-center">
+                <button data-tab="intimista" class="tab-button relative py-4 px-6 text-lg font-semibold text-gray-medium hover:text-primary-dark transition-colors duration-300 active">
+                    Intimista
+                </button>
+                <button data-tab="assinatura" class="tab-button relative py-4 px-6 text-lg font-semibold text-gray-medium hover:text-primary-dark transition-colors duration-300">
+                    Assinatura
+                    <span class="absolute top-2 right-2 text-xs bg-accent-color text-primary-dark font-bold px-2 py-0.5 rounded-full">POPULAR</span>
+                </button>
+                <button data-tab="melodia" class="tab-button relative py-4 px-6 text-lg font-semibold text-gray-medium hover:text-primary-dark transition-colors duration-300">
+                    Melodia
+                </button>
+            </div>
+
+            <div id="tab-content" class="bg-white p-8 md:p-10 rounded-lg shadow-xl">
+                <div id="intimista" class="tab-pane active">
+                    <h3 class="text-2xl font-bold text-primary-dark">Pacote Intimista</h3>
+                    <p class="text-gray-medium mt-1 mb-6">Ideal para cerimônias menores e emocionantes.</p>
+                    <div class="space-y-4 text-gray-medium">
+                        <div>
+                            <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                            <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                <li>Receptivo dos convidados (30min)</li>
+                                <li>Cerimônia (DUO - Vocal & Teclado OU Violão) + Equipe Técnica</li>
+                                <li>Repertório personalizado + Reunião online de alinhamento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!" target="_blank" class="mt-8 inline-block w-full md:w-auto text-center bg-accent-color text-white font-bold py-3 px-8 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+
+                <div id="assinatura" class="tab-pane">
+                    <h3 class="text-2xl font-bold text-primary-dark">Pacote Assinatura</h3>
+                    <p class="text-gray-medium mt-1 mb-6">A experiência musical completa, do altar à festa.</p>
+                    <div class="grid md:grid-cols-2 gap-8 text-gray-medium">
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (2h00):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Receptivo dos convidados</li>
+                                    <li>Cerimônia (Sexteto - Vocal, Teclado, Violino, Violão e Dueto de Clarins) + Equipe Técnica</li>
+                                    <li>Repertório personalizado + Reuniões</li>
+                                    <li>Sonorização para cerimônia + microfone</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-bold text-text-dark">FESTA:</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>DJ do início ao fim</li>
+                                    <li>Estrutura de som e iluminação básica c/ máquina de fumaça</li>
+                                    <li>Estrutura de sonorização para banda</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                           <div>
+                                <h4 class="font-bold text-text-dark">PÓS CERIMÔNIA (2h30):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Walking Violino (30min)</li>
+                                    <li>Show lounge (Quarteto) - 2h00</li>
+                                    <li>Repertório: Jazz, Bossa, Pop, etc.</li>
+                                </ul>
+                            </div>
+                             <div class="pt-2">
+                                <h4 class="font-bold text-text-dark">PLUS:</h4>
+                                <p>SHOW DEMONSTRATIVO (1h)</p>
+                            </div>
+                        </div>
+                    </div>
+                     <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!" target="_blank" class="mt-8 inline-block w-full md:w-auto text-center bg-accent-color text-white font-bold py-3 px-8 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+
+                <div id="melodia" class="tab-pane">
+                    <h3 class="text-2xl font-bold text-primary-dark">Pacote Melodia</h3>
+                    <p class="text-gray-medium mt-1 mb-6">Perfeito para a cerimônia e o coquetel.</p>
+                     <div class="space-y-4 text-gray-medium">
+                        <div>
+                            <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                            <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                <li>Receptivo dos convidados</li>
+                                <li>Cerimônia (Quarteto - Vocal, Teclado e Dueto de Clarins) + Equipe Técnica</li>
+                                <li>Repertório personalizado + Reuniões</li>
+                                <li>Sonorização para cerimônia + microfone</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-text-dark">PÓS CERIMÔNIA:</h4>
+                            <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                <li>Walking Violino - 30min</li>
+                                <li>Show lounge (coquetel) - 1h30 (Trio)</li>
+                                <li>Repertório: Jazz, Bossa, Pop, etc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!" target="_blank" class="mt-8 inline-block w-full md:w-auto text-center bg-accent-color text-white font-bold py-3 px-8 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .tab-button.active { color: #0A2B34; /* primary-dark */ }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #C0A084; /* accent-color */
+        }
+        .tab-pane { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active');
+                const targetPane = document.getElementById(button.dataset.tab);
+                if(targetPane) targetPane.classList.add('active');
+            });
+        });
+    });
+    </script>
+</section>
+
+<section id="formacoes" class="py-20 md:py-32 bg-primary-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Formações</h2>
             <p class="mt-2 text-gray-medium">Criamos a trilha sonora perfeita para cada momento do seu sonho.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="max-w-4xl mx-auto space-y-4">
 
-            <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col transition-transform duration-300 hover:scale-105">
-                <h3 class="text-2xl font-bold text-center text-primary-dark">Pacote Intimista</h3>
-                <p class="text-center text-gray-medium mb-6">Ideal para cerimônias menores e emocionantes.</p>
-                <div class="space-y-4 text-gray-medium">
-                    <div>
-                        <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>Receptivo dos convidados (30min)</li>
-                            <li>Cerimônia (DUO - Vocal & Teclado OU Violão) + Equipe Técnica</li>
-                            <li>Repertório personalizado + Reunião online de alinhamento</li>
-                        </ul>
+            <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                <button class="accordion-toggle w-full flex justify-between items-center text-left p-6">
+                    <div class="flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-primary-dark">Pacote Intimista</h3>
+                        <p class="text-sm text-gray-medium mt-1">Ideal para cerimônias menores e emocionantes.</p>
+                    </div>
+                    <span class="accordion-icon text-accent-color text-3xl font-light transform transition-transform duration-300">+</span>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+                    <div class="p-6 pt-0">
+                        <div class="space-y-4 text-gray-medium border-t border-gray-200 pt-4">
+                             <div>
+                                <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Receptivo dos convidados (30min)</li>
+                                    <li>Cerimônia (DUO - Vocal & Teclado OU Violão) + Equipe Técnica</li>
+                                    <li>Repertório personalizado + Reunião online de alinhamento</li>
+                                </ul>
+                            </div>
+                            <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!" target="_blank" class="mt-6 inline-block text-center bg-accent-color text-white font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!" target="_blank" class="mt-auto block w-full text-center bg-white text-accent-color font-bold py-3 px-6 rounded-lg border-2 border-accent-color hover:bg-accent-color hover:text-white transition-colors duration-300">
-                    Solicitar Orçamento
-                </a>
             </div>
 
-            <div class="bg-primary-dark text-white rounded-lg shadow-2xl p-8 flex flex-col ring-4 ring-accent-color scale-105 relative">
-                <span class="absolute top-0 right-4 bg-accent-color text-primary-dark font-bold text-sm px-3 py-1 rounded-b-lg">MAIS POPULAR</span>
-                <h3 class="text-3xl font-bold text-center text-accent-color">Pacote Assinatura</h3>
-                <p class="text-center text-gray-300 mb-6">A experiência musical completa, do altar à festa.</p>
-                <div class="space-y-4 text-gray-300">
-                    <div>
-                        <h4 class="font-bold text-white">PARA CERIMÔNIA + RECEPTIVO (2h00):</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>Receptivo dos convidados</li>
-                            <li>Cerimônia (Sexteto - Vocal, Teclado, Violino, Violão e Dueto de Clarins) + Equipe Técnica</li>
-                            <li>Repertório personalizado + Reuniões</li>
-                            <li>Sonorização para cerimônia + microfone</li>
-                        </ul>
+            <div class="accordion-item bg-primary-dark text-white border border-accent-color rounded-lg shadow-xl overflow-hidden ring-4 ring-accent-color/50">
+                <button class="accordion-toggle w-full flex justify-between items-center text-left p-6">
+                     <div class="flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-accent-color relative">
+                            Pacote Assinatura
+                            <span class="ml-3 text-xs bg-accent-color text-primary-dark font-bold px-2 py-0.5 rounded-full uppercase">Popular</span>
+                        </h3>
+                        <p class="text-sm text-gray-300 mt-1">A experiência musical completa, do altar à festa.</p>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-white">PÓS CERIMÔNIA (2h30):</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>Walking Violino (30min)</li>
-                            <li>Show lounge (Quarteto - Vocal, Violão, Teclado e Percuteria) - 2h00</li>
-                            <li>Repertório: Jazz, Bossa, Pop, Soft Rock e MPB</li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h4 class="font-bold text-white">FESTA:</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>DJ do início ao fim</li>
-                            <li>Estrutura de som e iluminação básica c/ máquina de fumaça</li>
-                            <li>Estrutura de sonorização para banda</li>
-                        </ul>
-                    </div>
-                    <div class="pt-2">
-                        <p><b class="text-white">PLUS:</b> SHOW DEMONSTRATIVO CERIMÔNIA (1h) formato base: VOCAL&VIOLÃO</p>
+                    <span class="accordion-icon text-accent-color text-3xl font-light transform transition-transform duration-300">+</span>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+                     <div class="p-6 pt-0">
+                        <div class="space-y-6 text-gray-300 border-t border-gray-600 pt-4">
+                            <div>
+                                <h4 class="font-bold text-white">PARA CERIMÔNIA + RECEPTIVO (2h00):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Receptivo dos convidados</li>
+                                    <li>Cerimônia (Sexteto - Vocal, Teclado, Violino, Violão e Dueto de Clarins) + Equipe Técnica</li>
+                                    <li>Repertório personalizado + Reuniões</li>
+                                    <li>Sonorização para cerimônia + microfone</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">PÓS CERIMÔNIA (2h30):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Walking Violino (30min)</li>
+                                    <li>Show lounge (Quarteto) - 2h00</li>
+                                    <li>Repertório: Jazz, Bossa, Pop, etc.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-bold text-white">FESTA:</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>DJ do início ao fim</li>
+                                    <li>Estrutura de som e iluminação básica c/ máquina de fumaça</li>
+                                </ul>
+                            </div>
+                             <p><b class="text-white">PLUS:</b> SHOW DEMONSTRATIVO CERIMÔNIA (1h)</p>
+                            <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!" target="_blank" class="mt-6 inline-block text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!" target="_blank" class="mt-auto block w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">
-                    Solicitar Orçamento
-                </a>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col transition-transform duration-300 hover:scale-105">
-                <h3 class="text-2xl font-bold text-center text-primary-dark">Pacote Melodia</h3>
-                <p class="text-center text-gray-medium mb-6">Perfeito para a cerimônia e o coquetel.</p>
-                <div class="space-y-4 text-gray-medium">
-                    <div>
-                        <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>Receptivo dos convidados</li>
-                            <li>Cerimônia (Quarteto - Vocal, Teclado e Dueto de Clarins) + Equipe Técnica</li>
-                            <li>Repertório personalizado + Reuniões</li>
-                            <li>Sonorização para cerimônia + microfone</li>
-                        </ul>
+            <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                <button class="accordion-toggle w-full flex justify-between items-center text-left p-6">
+                     <div class="flex-grow">
+                        <h3 class="text-xl md:text-2xl font-bold text-primary-dark">Pacote Melodia</h3>
+                        <p class="text-sm text-gray-medium mt-1">Perfeito para a cerimônia e o coquetel.</p>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-text-dark">PÓS CERIMÔNIA:</h4>
-                        <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
-                            <li>Walking Violino - 30min</li>
-                            <li>Show lounge (coquetel) - 1h30 (Trio - Vocal, Teclado, Violão)</li>
-                            <li>Repertório: Jazz, Bossa, Pop Internacional e MPB</li>
-                        </ul>
+                    <span class="accordion-icon text-accent-color text-3xl font-light transform transition-transform duration-300">+</span>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+                    <div class="p-6 pt-0">
+                        <div class="space-y-4 text-gray-medium border-t border-gray-200 pt-4">
+                            <div>
+                                <h4 class="font-bold text-text-dark">PARA CERIMÔNIA + RECEPTIVO (30 min):</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Cerimônia (Quarteto - Vocal, Teclado e Dueto de Clarins) + Equipe Técnica</li>
+                                    <li>Repertório personalizado + Reuniões</li>
+                                    <li>Sonorização para cerimônia + microfone</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-dark">PÓS CERIMÔNIA:</h4>
+                                <ul class="list-disc list-inside mt-2 pl-2 space-y-1">
+                                    <li>Walking Violino - 30min</li>
+                                    <li>Show lounge (coquetel) - 1h30 (Trio)</li>
+                                </ul>
+                            </div>
+                            <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!" target="_blank" class="mt-6 inline-block text-center bg-accent-color text-white font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">Solicitar Orçamento</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!" target="_blank" class="mt-auto block w-full text-center bg-white text-accent-color font-bold py-3 px-6 rounded-lg border-2 border-accent-color hover:bg-accent-color hover:text-white transition-colors duration-300">
-                    Solicitar Orçamento
-                </a>
             </div>
 
         </div>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const toggle = item.querySelector('.accordion-toggle');
+            const content = item.querySelector('.accordion-content');
+            const icon = item.querySelector('.accordion-icon');
+
+            toggle.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+
+                // Opcional: Fechar outros acordeões ao abrir um
+                // accordionItems.forEach(i => {
+                //     i.classList.remove('open');
+                //     i.querySelector('.accordion-content').style.maxHeight = '0px';
+                //     i.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+                // });
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(45deg)';
+                } else {
+                    item.classList.remove('open');
+                    content.style.maxHeight = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    });
+    </script>
 </section>
+
+<section id="formacoes" class="py-20 md:py-32 bg-primary-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Formações</h2>
+            <p class="mt-2 text-gray-medium">Compare os pacotes e encontre a combinação perfeita para o seu dia.</p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col text-center transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-bold text-primary-dark">Pacote Intimista</h3>
+                    <p class="text-gray-medium mt-1 mb-6 h-12">Ideal para cerimônias menores e emocionantes.</p>
+                    <div class="text-left space-y-4 text-gray-medium border-t pt-6">
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> <strong>DUO</strong> (Vocal & Teclado/Violão)</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Receptivo de 30 min</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Repertório Personalizado</p>
+                        <p class="flex items-center text-gray-400"><span class="mr-3">✖</span> Walking Violino</p>
+                        <p class="flex items-center text-gray-400"><span class="mr-3">✖</span> Show Lounge (Coquetel/Jantar)</p>
+                        <p class="flex items-center text-gray-400"><span class="mr-3">✖</span> DJ para a Festa</p>
+                    </div>
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Intimista!" target="_blank" class="mt-auto block w-full text-center bg-white text-accent-color font-bold py-3 px-6 rounded-lg border-2 border-accent-color hover:bg-accent-color hover:text-white transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+
+                <div class="bg-primary-dark text-white rounded-lg shadow-2xl p-8 flex flex-col text-center ring-4 ring-accent-color scale-105 relative">
+                     <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-color text-primary-dark font-bold text-sm px-4 py-1 rounded-full uppercase">Mais Popular</span>
+                    <h3 class="text-3xl font-bold text-accent-color">Pacote Assinatura</h3>
+                    <p class="text-gray-300 mt-1 mb-6 h-12">A experiência musical completa, do altar à festa.</p>
+                    <div class="text-left space-y-4 text-gray-300 border-t border-gray-700 pt-6">
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> <strong>SEXTETO</strong> (Formação Completa)</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Receptivo de 2h</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Repertório Personalizado</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Walking Violino</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Show Lounge (Quarteto)</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> DJ para a Festa</p>
+                         <p class="flex items-center pt-2"><span class="text-accent-color mr-3">★</span> <strong>Plus:</strong> Show Demonstrativo</p>
+                    </div>
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Assinatura!" target="_blank" class="mt-auto block w-full text-center bg-accent-color text-primary-dark font-bold py-3 px-6 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col text-center transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-bold text-primary-dark">Pacote Melodia</h3>
+                    <p class="text-gray-medium mt-1 mb-6 h-12">Perfeito para a cerimônia e o coquetel.</p>
+                    <div class="text-left space-y-4 text-gray-medium border-t pt-6">
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> <strong>QUARTETO</strong> (com Clarins)</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Receptivo de 30 min</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Repertório Personalizado</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Walking Violino</p>
+                        <p class="flex items-center"><span class="text-accent-color mr-3">✔</span> Show Lounge (Trio)</p>
+                        <p class="flex items-center text-gray-400"><span class="mr-3">✖</span> DJ para a Festa</p>
+                    </div>
+                     <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Pacote%20Melodia!" target="_blank" class="mt-auto block w-full text-center bg-white text-accent-color font-bold py-3 px-6 rounded-lg border-2 border-accent-color hover:bg-accent-color hover:text-white transition-colors duration-300">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
 
         <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
