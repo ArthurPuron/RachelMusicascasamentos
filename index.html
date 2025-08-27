@@ -186,7 +186,253 @@
     </div>
 </section>
 
+<section class="formacoes">
 
+  <style>
+    /* Adicionando as fontes do Google Fonts usadas no design */
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+
+    /* --- Estilos da Seção Formações --- */
+    .formacoes {
+    background-color: #FFFFFF; /* Fundo branco, ou use #F8F9FA para um branco levemente acinzentado */
+    font-family: 'Montserrat', sans-serif;
+    color: #333333; /* Cor do texto escura para bom contraste */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.formacoes .formacoes-titulo {
+    font-family: 'Lora', serif;
+    font-size: 2.8rem;
+    color: #212529; /* Cor do título bem escura */
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+    .formacoes .formacoes-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    /* --- Estilos dos Cards --- */
+    .formacoes .card {
+        background-color: #2a302a;
+        border-radius: 20px;
+        overflow: hidden;
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        text-align: left;
+    }
+
+    .formacoes .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Modificação aqui para o efeito de degrade */
+    .formacoes .card-image-wrapper {
+        position: relative;
+        height: 220px; /* Mesma altura da imagem */
+        overflow: hidden; /* Garante que a imagem e o gradiente respeitem o border-radius */
+    }
+
+    .formacoes .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block; /* Remove espaço extra abaixo da imagem */
+    }
+
+    .formacoes .card-image-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; /* Altura do degrade, ajuste se necessário */
+        background: linear-gradient(to top, #2a302a 0%, rgba(42, 48, 42, 0.0) 100%);
+        pointer-events: none; /* Permite clicar na imagem por baixo do degrade */
+    }
+    /* Fim da modificação para o degrade */
+
+
+    .formacoes .card-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .formacoes .card-body h3 {
+        font-family: 'Lora', serif;
+        font-size: 1.8rem;
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .formacoes .card-subtitulo {
+        font-size: 0.9rem;
+        color: #b0b0b0;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .formacoes .card-codigo {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* --- Lista de Itens --- */
+    .formacoes .card-lista {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 30px;
+        color: #c7c4b6;
+    }
+
+    .formacoes .card-lista li {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .formacoes .card-lista li::before {
+        content: '•';
+        color: #c7c4b6;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    /* --- Botões --- */
+    .formacoes .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-top: auto;
+        text-align: center;
+        background-color: #c7c4b6;
+        color: #1a1a1a;
+    }
+
+    .formacoes .btn:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* --- Card Popular --- */
+    .formacoes .popular {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .formacoes .popular-tag {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #c7c4b6;
+        color: #1a1a1a;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        z-index: 2; /* Garante que a tag fique acima do degrade */
+    }
+
+    /* --- Responsividade --- */
+    @media (max-width: 1150px) {
+        .formacoes .formacoes-container {
+            flex-direction: column;
+        }
+
+        .formacoes .popular {
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .formacoes .formacoes-titulo {
+            font-size: 2.2rem;
+        }
+        
+        .formacoes .card {
+            width: 100%;
+            max-width: 380px;
+        }
+    }
+  </style>
+
+  <h2 class="formacoes-titulo">Nossas Formações</h2>
+
+  <div class="formacoes-container">
+    
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="https://i.imgur.com/dwvKP3v.png">
+      </div>
+      <div class="card-body">
+        <h3>Pacote Intimista</h3>
+        <p class="card-subtitulo">Formato acústico e emocionante.</p>
+        <p class="card-codigo">S0A2BB3S</p>
+        <a href="#contato" class="btn">Saiba Mais</a>
+      </div>
+    </div>
+
+    <div class="card popular">
+      <span class="popular-tag">POPULAR</span>
+      <div class="card-image-wrapper">
+        <img src="https://i.imgur.com/dTHMSAY.png">
+      </div>
+      <div class="card-body">
+        <h3>Pacote Assinatura</h3>
+        <p class="card-subtitulo">A experiência completa com nossa orquestra.</p>
+        <ul class="card-lista">
+          <li>Formação com 15 músicos</li>
+          <li>Repertório 100% personalizável</li>
+          <li>Instrumentos clássicos e modernos</li>
+          <li>Sistema de som profissional incluso</li>
+          <li>Ideal para grandes cerimônias e eventos</li>
+        </ul>
+        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="https://i.imgur.com/Jjo9T3S.png">
+      </div>
+      <div class="card-body">
+        <h3>Pacote Melodia</h3>
+        <p class="card-subtitulo">A combinação perfeita para sua cerimônia.</p>
+        <ul class="card-lista">
+          <li>Formação com 4 a 6 músicos</li>
+          <li>Opções com piano, violinos e voz</li>
+          <li>Perfeito para casamentos e recepções</li>
+          <li>Consultoria para escolha do repertório</li>
+        </ul>
+        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <section class="formacoes">
 
@@ -435,6 +681,7 @@
 
   </div>
 </section>
+
 <section id="formacoes" class="py-20 md:py-32 bg-primary-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
