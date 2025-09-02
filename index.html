@@ -69,6 +69,33 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(250, 247, 245, 0.4) transparent;
         }
+          .btn-modal {
+    /* Layout e Espaçamento */
+    display: block;
+    width: 100%;
+    padding: 12px 24px; /* Equivalente a py-3 e px-6 */
+    text-align: center;
+
+    /* Cores e Fundo */
+    background-color: #C0A084; /* Sua cor 'accent-color' */
+    color: #0A2B34; /* Sua cor 'text-dark' para melhor contraste */
+
+    /* Estilo do Texto */
+    font-weight: 600; /* Negrito médio (semibold) */
+    text-decoration: none; /* Remove o sublinhado do link */
+
+    /* Bordas e Sombra */
+    border-radius: 8px; /* Bordas arredondadas (rounded-lg) */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* Sombra (shadow-md) */
+
+    /* Efeitos de Transição */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-modal:hover {
+    background-color: #AD8B6E; /* Sua cor 'accent-hover' */
+    transform: translateY(-2px); /* Efeito sutil de levantar ao passar o mouse */
+  }
     </style>
     
     <script>
@@ -552,9 +579,9 @@
                 </ul>
             </div>
             <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Intimist." target="_blank" class="btn block w-full text-center">
-                    Solicitar um Orçamento
-                </a>
+               <a href="..." target="_blank" class="btn-modal">
+    Solicitar um Orçamento
+</a>
             </div>
         </div>
     </div>
@@ -627,9 +654,9 @@
             </div>
 
             <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Essence." target="_blank" class="btn block w-full text-center">
-                    Solicitar um Orçamento
-                </a>
+              <a href="..." target="_blank" class="btn-modal">
+    Solicitar um Orçamento
+</a>
             </div>
         </div>
     </div>
@@ -684,9 +711,9 @@
                 </ul>
             </div>
             <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
-                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Harmonie." target="_blank" class="btn block w-full text-center">
-                    Solicitar um Orçamento
-                </a>
+                <a href="..." target="_blank" class="btn-modal">
+    Solicitar um Orçamento
+</a>
             </div>
         </div>
     </div>
