@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <style>
+   <style>
     /* Estilos Gerais */
     body { font-family: 'Poppins', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
@@ -82,14 +82,16 @@
         transform: translateY(-2px);
     }
 
-    /* Efeito de Vidro para o Painel do Modal */
+    /* Efeito de Vidro para o Painel do Modal (CORRIGIDO) */
     .painel-vidro {
-        background: rgba(10, 43, 52, 25); /* primary-dark com 25% de opacidade */
+        /* CORREÇÃO APLICADA: opacidade como 0.75 (75%) */
+        background: rgba(10, 43, 52, 0.75);
+        
         border-radius: 16px; 
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
         backdrop-filter: blur(9.1px);
         -webkit-backdrop-filter: blur(9.1px);
-       /* border: 1px solid rgba(250, 247, 245, 0.3);  primary-light com 30% de opacidade */
+        /* A linha da borda foi removida completamente */
     }
 </style>
     
