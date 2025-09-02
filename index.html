@@ -34,102 +34,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Ajustes para o Modal Intimist --- */
-/* O container do modal em si (fundo escuro) */
-#modal-intimist.modal {
-    padding: 20px; /* Adiciona um padding para a barra de rolagem ficar "fora" do conteúdo central */
-}
-
-/* O conteúdo principal do modal (imagem + texto) */
-#modal-intimist .modal-content {
-    display: flex; /* Garante que as colunas fiquem lado a lado */
-    gap: 24px; /* O espaçamento que você queria entre a foto e o texto */
-    /* Removido o overflow-hidden daqui para permitir que a barra de rolagem fique no body do modal */
-}
-
-/* Estilização da barra de rolagem para o conteúdo de texto do modal */
-#modal-intimist .modal-content .overflow-y-auto::-webkit-scrollbar {
-  width: 8px; /* Largura da barra */
-  background-color: transparent; /* Certifica-se que a área da barra seja transparente */
-}
-
-/* Fundo (trilho) da barra de rolagem */
-#modal-intimist .modal-content .overflow-y-auto::-webkit-scrollbar-track {
-  background: transparent; /* Deixa o fundo da barra transparente */
-}
-
-/* A barra de rolagem em si */
-#modal-intimist .modal-content .overflow-y-auto::-webkit-scrollbar-thumb {
-  background-color: rgba(250, 247, 245, 0.4); /* Cor da barra (text-light com 40% de opacidade) */
-  border-radius: 10px; /* Bordas arredondadas */
-  /* border: 2px solid transparent; /* Comentado para um visual mais limpo */
-  background-clip: padding-box; /* Garante que a cor preencha a área, sem padding interno transparente */
-}
-
-#modal-intimist .modal-content .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(250, 247, 245, 0.6); /* Cor da barra ao passar o mouse */
-}
-
-/* Para navegadores que não são Webkit (ex: Firefox) */
-#modal-intimist .modal-content .overflow-y-auto {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(250, 247, 245, 0.4) transparent;
-}
-
-/* Responsividade para o gap em telas menores, se desejar */
-@media (max-width: 767px) {
-  #modal-intimist .modal-content {
-    gap: 0; /* Remove o gap em telas pequenas se as colunas estiverem empilhadas */
-  }
-}
-        /* ADICIONE ESTE CÓDIGO NO <STYLE> DO <HEAD> */
-
-/* Estilização da barra de rolagem para o conteúdo do modal */
-.modal-content .overflow-y-auto::-webkit-scrollbar {
-  width: 8px; /* Largura da barra */
-}
-
-/* Fundo (trilho) da barra de rolagem */
-.modal-content .overflow-y-auto::-webkit-scrollbar-track {
-  background: transparent; /* Deixa o fundo da barra transparente */
-}
-
-/* A barra de rolagem em si */
-.modal-content .overflow-y-auto::-webkit-scrollbar-thumb {
-  background-color: rgba(250, 247, 245, 0.4); /* Cor da barra (text-light com 40% de opacidade) */
-  border-radius: 10px; /* Bordas arredondadas */
-  border: 2px solid transparent; /* Cria um preenchimento interno */
-  background-clip: content-box;
-}
-
-.modal-content .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(250, 247, 245, 0.6); /* Cor da barra ao passar o mouse */
-}
+        /* Estilos Gerais */
         body { font-family: 'Poppins', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
         .fade-in-image.is-visible { opacity: 1; }
 
-        body.modal-open {
-  overflow: hidden;
-}
-       /* Estilo base para a transição ser suave em todas as miniaturas */
-    /* Estilo base para a transição ser suave em todas as miniaturas */
-    .video-thumbnail {
-        transition: all 0.3s ease-in-out;
-    }
+        /* Estilos da Galeria de Vídeo */
+        .video-thumbnail { transition: all 0.3s ease-in-out; }
+        .video-thumbnail.active { transform: scale(1.05); filter: brightness(1); }
+        .video-thumbnail.inactive { transform: scale(1); filter: brightness(0.6); }
 
-    /* Efeito ATIVO: um pouco maior e com brilho normal */
-    .video-thumbnail.active {
-        transform: scale(1.05);
-        filter: brightness(1); /* Garante que está com 100% do brilho */
-    }
-
-    /* Efeito INATIVO: com brilho reduzido (mais escuro) */
-    .video-thumbnail.inactive {
-        transform: scale(1);
-        filter: brightness(0.6); /* Deixa 40% mais escuro */
-    }
+        /* Estilos do Modal */
+        body.modal-open { overflow: hidden; }
+        
+        /* Estilização da barra de rolagem para o conteúdo do modal */
+        .modal-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .modal-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .modal-scrollbar::-webkit-scrollbar-thumb {
+          background-color: rgba(250, 247, 245, 0.4);
+          border-radius: 10px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+        .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(250, 247, 245, 0.6);
+        }
+        /* Para Firefox */
+        .modal-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(250, 247, 245, 0.4) transparent;
+        }
     </style>
     
     <script>
@@ -202,10 +141,10 @@
                     </div>
                     <div class="md:w-1/2 text-gray-medium text-base md:text-lg">
                         <p class="mb-4">
-                           Texto de exemplo: Com uma paixão pela música que vai além da técnica, Rachel Puron se dedica a oferecer apresentações personalizadas que unem emoção e funcionalidade...
+                            Texto de exemplo: Com uma paixão pela música que vai além da técnica, Rachel Puron se dedica a oferecer apresentações personalizadas que unem emoção e funcionalidade...
                         </p>
                         <p class="mb-4">
-                           Texto de exemplo: Em nosso trabalho, você encontrará um ambiente acolhedor e profissionalismo para garantir eventos eficazes, seguros e emocionantes...
+                            Texto de exemplo: Em nosso trabalho, você encontrará um ambiente acolhedor e profissionalismo para garantir eventos eficazes, seguros e emocionantes...
                         </p>
                     </div>
                 </div>
@@ -213,358 +152,187 @@
         </section>
 
         <section id="videos" class="py-20 md:py-32 bg-gray-100">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
-            <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
-        </div>
-        <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden max-w-5xl mx-auto">
-            <div class="aspect-w-16 aspect-h-9 bg-black">
-                <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            
-            <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
-                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail da música Hallelujah" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
+                    <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
                 </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Hallelujah (Cover)</p>
-            </div>
-
-            <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
-                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail da música A Thousand Years" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden max-w-5xl mx-auto">
+                    <div class="aspect-w-16 aspect-h-9 bg-black">
+                        <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                 </div>
-                <p class="text-center font-semibold text-text-dark mt-2">A Thousand Years (Cover)</p>
-            </div>
+                <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                    
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
+                        <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail da música Hallelujah" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Hallelujah (Cover)</p>
+                    </div>
 
-            <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
-                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail da música Perfect" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
+                        <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail da música A Thousand Years" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">A Thousand Years (Cover)</p>
+                    </div>
+
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
+                        <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail da música Perfect" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Perfect - Ed Sheeran (Cover)</p>
+                    </div>
+                    
+                    <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
+                        <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                            <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail da música Thinking Out Loud" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+                        </div>
+                        <p class="text-center font-semibold text-text-dark mt-2">Thinking Out Loud (Cover)</p>
+                    </div>
+
                 </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Perfect - Ed Sheeran (Cover)</p>
             </div>
-            
-            <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
-                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                    <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail da música Thinking Out Loud" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+        </section>
+
+        <section class="formacoes" id="formacoes">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+                
+                .formacoes { background-color: #ffffff; font-family: 'Montserrat', sans-serif; color: #0A2B34; padding: 80px 20px; text-align: center; }
+                .formacoes .formacoes-titulo { font-family: 'Lora', serif; font-size: 2.8rem; color: #0A2B34; margin-top: 0; margin-bottom: 60px; }
+                .formacoes .formacoes-container { display: flex; justify-content: center; align-items: stretch; gap: 30px; flex-wrap: wrap; }
+                .formacoes .card { background-color: #0A2B34; border-radius: 20px; overflow: hidden; width: 340px; display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; text-align: left; }
+                .formacoes .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+                .formacoes .card-image-wrapper { position: relative; height: 220px; overflow: hidden; }
+                .formacoes .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+                .formacoes .card-image-wrapper::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); pointer-events: none; }
+                .formacoes .card-body { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+                .formacoes .card-body h3 { font-family: 'Lora', serif; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; color: #ffffff; text-align: center; }
+                .formacoes .card-subtitulo { font-size: 0.9rem; color: #b0b0b0; margin-top: 0; margin-bottom: 20px; text-align: center; }
+                .formacoes .card-lista { list-style: none; padding-left: 0; margin-bottom: 30px; color: #c7c4b6; flex-grow: 1; }
+                .formacoes .card-lista li { margin-bottom: 12px; padding-left: 20px; position: relative; }
+                .formacoes .card-lista li::before { content: '•'; color: #c7c4b6; font-size: 1.2rem; position: absolute; left: 0; top: -2px; }
+                .formacoes .btn { display: inline-block; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; transition: background-color 0.3s ease, color 0.3s ease; margin-top: auto; text-align: center; background-color: #e6e3e3; color: #0A2B34; }
+                .formacoes .btn:hover { background-color: #d1cdcd; }
+                .formacoes .popular { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+                .formacoes .popular-tag { position: absolute; top: 15px; right: 15px; background-color: #c7c4b6; color: #1a1a1a; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; text-transform: uppercase; z-index: 2; }
+                @media (max-width: 1150px) { .formacoes .formacoes-container { flex-direction: column; align-items: center; } .formacoes .popular { transform: scale(1); } }
+                @media (max-width: 768px) { .formacoes .formacoes-titulo { font-size: 2.2rem; } .formacoes .card { width: 100%; max-width: 380px; } }
+            </style>
+
+            <h2 class="formacoes-titulo">Nossas Formações</h2>
+
+            <div class="formacoes-container">
+                
+                <div class="card">
+                  <div class="card-image-wrapper">
+                    <img src="https://i.imgur.com/dwvKP3v.png" alt="Pacote Intimist">
+                  </div>
+                  <div class="card-body">
+                    <h3>Intimist</h3>
+                    <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
+                    <ul class="card-lista">
+                      <li>Música ao vivo para cerimônia</li>
+                      <li>Formação Duo (Voz e instrumento)</li>
+                      <li>Ideal para mini weddings e elopements</li>
+                      <li>Repertório 100% personalizado</li>
+                    </ul>
+                    <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
+                  </div>
                 </div>
-                <p class="text-center font-semibold text-text-dark mt-2">Thinking Out Loud (Cover)</p>
+
+                <div class="card popular">
+                  <span class="popular-tag">POPULAR</span>
+                  <div class="card-image-wrapper">
+                    <img src="https://i.imgur.com/dTHMSAY.png">
+                  </div>
+                  <div class="card-body">
+                    <h3>Essence</h3>
+                    <p class="card-subtitulo">A experiência completa com nossa orquestra.</p>
+                    <ul class="card-lista">
+                      <li>Formação com 15 músicos</li>
+                      <li>Repertório 100% personalizável</li>
+                      <li>Instrumentos clássicos e modernos</li>
+                      <li>Sistema de som profissional incluso</li>
+                      <li>Ideal para grandes cerimônias e eventos</li>
+                    </ul>
+                    <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-image-wrapper">
+                    <img src="https://i.imgur.com/Jjo9T3S.png">
+                  </div>
+                  <div class="card-body">
+                    <h3>Pacote Melodia</h3>
+                    <p class="card-subtitulo">A combinação perfeita para sua cerimônia.</p>
+                    <ul class="card-lista">
+                      <li>Formação com 4 a 6 músicos</li>
+                      <li>Opções com piano, violinos e voz</li>
+                      <li>Perfeito para casamentos e recepções</li>
+                      <li>Consultoria para escolha do repertório</li>
+                    </ul>
+                    <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+                  </div>
+                </div>
+
             </div>
-
-        </div>
-    </div>
-</section>
-
-
-
-<section class="formacoes">
-
-  <style>
-    /* Adicionando as fontes do Google Fonts usadas no design */
-    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
-
-
-  /* --- Estilos da Seção Formações --- */
-.formacoes {
-    background-color: #ffffff; /* MUDOU DE #1a1a1a PARA BRANCO */
-    font-family: 'Montserrat', sans-serif;
-    color: #0A2B34; /* MUDOU DE #e0e0e0 PARA ESCURO PARA SER LEGÍVEL */
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.formacoes .formacoes-titulo {
-    font-family: 'Lora', serif;
-    font-size: 2.8rem;
-    color: #0A2B34; /* MUDOU DE #f0f0e0 PARA ESCURO PARA SER LEGÍVEL */
-    margin-top: 0;
-    margin-bottom: 60px;
-}
-
-    .formacoes .formacoes-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        flex-wrap: wrap;
-    }
-
-    /* --- Estilos dos Cards --- */
-    .formacoes .card {
-    background-color: #0A2B34; /* MUDOU A COR DO FUNDO */
-    border-radius: 20px;
-    overflow: hidden;
-    width: 340px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    text-align: left;
-}
-    .formacoes .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-
-    /* Modificação aqui para o efeito de degrade */
-    .formacoes .card-image-wrapper {
-        position: relative;
-        height: 220px; /* Mesma altura da imagem */
-        overflow: hidden; /* Garante que a imagem e o gradiente respeitem o border-radius */
-    }
-
-    .formacoes .card-image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block; /* Remove espaço extra abaixo da imagem */
-    }
-
-    .formacoes .card-image-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); /* MUDOU A COR DO DEGRADÊ */
-    pointer-events: none;
-}
-    /* Fim da modificação para o degrade */
-
-
-    .formacoes .card-body {
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .formacoes .card-body h3 {
-        font-family: 'Lora', serif;
-        font-size: 1.8rem;
-        margin-top: 0;
-        margin-bottom: 10px;
-        color: #ffffff;
-        text-align: center;
-    }
-
-    .formacoes .card-subtitulo {
-        font-size: 0.9rem;
-        color: #b0b0b0;
-        margin-top: 0;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .formacoes .card-codigo {
-        font-size: 0.9rem;
-        color: #888;
-        margin-top: 0;
-        margin-bottom: 20px;
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    /* --- Lista de Itens --- */
-    .formacoes .card-lista {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 30px;
-        color: #c7c4b6;
-    }
-
-    .formacoes .card-lista li {
-        margin-bottom: 12px;
-        padding-left: 20px;
-        position: relative;
-    }
-
-    .formacoes .card-lista li::before {
-        content: '•';
-        color: #c7c4b6;
-        font-size: 1.2rem;
-        position: absolute;
-        left: 0;
-        top: -2px;
-    }
-
-    /* --- Botões --- */
-  /* --- Botões --- */
-.formacoes .btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-top: auto;
-    text-align: center;
-    background-color: #e6e3e3; /* NOVO: Cinza bem claro */
-    color: #0A2B34;           /* NOVO: Cor escura para o texto */
-}
-
-.formacoes .btn:hover {
-    background-color: #d1cdcd; /* NOVO: Um cinza um pouco mais escuro para o hover */
-}
-
-    /* --- Card Popular --- */
-    .formacoes .popular {
-        transform: scale(1.05);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .formacoes .popular-tag {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background-color: #c7c4b6;
-        color: #1a1a1a;
-        padding: 5px 15px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        z-index: 2; /* Garante que a tag fique acima do degrade */
-    }
-
-    /* --- Responsividade --- */
-    @media (max-width: 1150px) {
-        .formacoes .formacoes-container {
-            flex-direction: column;
-        }
-
-        .formacoes .popular {
-            transform: scale(1);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .formacoes .formacoes-titulo {
-            font-size: 2.2rem;
-        }
-        
-        .formacoes .card {
-            width: 100%;
-            max-width: 380px;
-        }
-    }
-  </style>
-
-  <h2 class="formacoes-titulo">Nossas Formações</h2>
-
-  <div class="formacoes-container">
-    
-  <div class="card">
-  <div class="card-image-wrapper">
-    <img src="https://i.imgur.com/dwvKP3v.png" alt="Pacote Intimist">
-  </div>
-  <div class="card-body">
-    <h3>Intimist</h3>
-    <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
-    <ul class="card-lista">
-      <li>Música ao vivo para cerimônia</li>
-      <li>Formação Duo (Voz e instrumento)</li>
-      <li>Ideal para mini weddings e elopements</li>
-      <li>Repertório 100% personalizado</li>
-    </ul>
-    <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
-  </div>
-</div>
-
-    <div class="card popular">
-      <span class="popular-tag">POPULAR</span>
-      <div class="card-image-wrapper">
-        <img src="https://i.imgur.com/dTHMSAY.png">
-      </div>
-      <div class="card-body">
-        <h3>Essence</h3>
-        <p class="card-subtitulo">A experiência completa com nossa orquestra.</p>
-        <ul class="card-lista">
-          <li>Formação com 15 músicos</li>
-          <li>Repertório 100% personalizável</li>
-          <li>Instrumentos clássicos e modernos</li>
-          <li>Sistema de som profissional incluso</li>
-          <li>Ideal para grandes cerimônias e eventos</li>
-        </ul>
-        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image-wrapper">
-        <img src="https://i.imgur.com/Jjo9T3S.png">
-      </div>
-      <div class="card-body">
-        <h3>Pacote Melodia</h3>
-        <p class="card-subtitulo">A combinação perfeita para sua cerimônia.</p>
-        <ul class="card-lista">
-          <li>Formação com 4 a 6 músicos</li>
-          <li>Opções com piano, violinos e voz</li>
-          <li>Perfeito para casamentos e recepções</li>
-          <li>Consultoria para escolha do repertório</li>
-        </ul>
-        <a href="#orcamento" class="btn">Solicitar Orçamento</a>
-      </div>
-    </div>
-
-  </div>
-</section>
+        </section>
 
 
         <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Nossos Clientes Dizem</h2>
-            <p class="mt-2 text-gray-medium">Histórias de dias inesquecíveis.</p>
-        </div>
-
-        <div class="relative max-w-4xl mx-auto" style="height: 350px;"> <button id="prevBtn" class="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button id="nextBtn" class="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-            </button>
-            
-            <div id="carousel-cards" class="absolute inset-0 w-full h-full">
-                
-                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
-                        <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=A+J" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <p class="italic text-gray-medium mb-4">"A música na nossa cerimônia foi simplesmente mágica. Todos os convidados elogiaram! Obrigado por tornarem nosso dia tão especial."</p>
-                        <p class="font-semibold text-primary-dark mt-auto">- Ana & João</p>
-                    </div>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Nossos Clientes Dizem</h2>
+                    <p class="mt-2 text-gray-medium">Histórias de dias inesquecíveis.</p>
                 </div>
 
-                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
-                         <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=M+L" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <p class="italic text-gray-medium mb-4">"Profissionalismo impecável do início ao fim. A banda da festa animou todo mundo! Foi inesquecível."</p>
-                        <p class="font-semibold text-primary-dark mt-auto">- Mariana & Lucas</p>
+                <div class="relative max-w-4xl mx-auto" style="height: 350px;">
+                    <button id="prevBtn" class="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button id="nextBtn" class="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                    
+                    <div id="carousel-cards" class="absolute inset-0 w-full h-full">
+                        
+                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                            <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
+                                <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=A+J" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
+                                <p class="italic text-gray-medium mb-4">"A música na nossa cerimônia foi simplesmente mágica. Todos os convidados elogiaram! Obrigado por tornarem nosso dia tão especial."</p>
+                                <p class="font-semibold text-primary-dark mt-auto">- Ana & João</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                            <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
+                                 <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=M+L" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
+                                <p class="italic text-gray-medium mb-4">"Profissionalismo impecável do início ao fim. A banda da festa animou todo mundo! Foi inesquecível."</p>
+                                <p class="font-semibold text-primary-dark mt-auto">- Mariana & Lucas</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                            <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
+                                <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=C+P" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
+                                <p class="italic text-gray-medium mb-4">"Não temos palavras para agradecer. A trilha sonora foi a alma da nossa cerimônia. Contrataria mil vezes de novo!"</p>
+                                <p class="font-semibold text-primary-dark mt-auto">- Carla & Pedro</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
-                    <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full">
-                        <img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=C+P" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color">
-                        <p class="italic text-gray-medium mb-4">"Não temos palavras para agradecer. A trilha sonora foi a alma da nossa cerimônia. Contrataria mil vezes de novo!"</p>
-                        <p class="font-semibold text-primary-dark mt-auto">- Carla & Pedro</p>
-                    </div>
-                </div>
-
+                <div id="carousel-indicators" class="flex justify-center mt-8"></div>
             </div>
-        </div>
-        <div id="carousel-indicators" class="flex justify-center mt-8"></div>
-    </div>
-</section>
+        </section>
 
         <section id="faq" class="py-20 md:py-32 bg-gray-100">
             <div class="container mx-auto px-6">
@@ -586,107 +354,63 @@
             <p>© 2025 Rachel Puron. Todos os direitos reservados.</p>
             <p class="text-sm mt-2">Desenvolvido com carinho para construir a trilha sonora dos seus sonhos.</p>
         </div>
-<div id="modal-intimist" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">  
-<div class="modal-content bg-primary-dark text-text-light rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row relative">
-
-  <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
-  
-  <div class="w-full h-48 md:h-auto md:w-1/3 flex-shrink-0">
-    <img src="https://i.imgur.com/dwvKP3v.png" class="w-full h-full object-cover" alt="Pacote Intimist">
-  </div>
-
-  <div class="w-full md:w-2/3 p-6 md:p-8 overflow-y-auto"> </div>
-</div>
-    <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
-    
-    <div class="w-full h-48 md:h-auto md:w-1/3 flex-shrink-0">
-      <img src="https://i.imgur.com/dwvKP3v.png" class="w-full h-full object-cover" alt="Pacote Intimist">
-    </div>
-
-    <div class="w-full md:w-2/3 p-6 md:p-8">
-      <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Intimist</h2>
-      <p class="mb-6 text-gray-300">
-        A escolha ideal para casais que buscam uma atmosfera de intimidade e emoção. O pacote Intimist foca na essência da celebração, criando uma trilha sonora delicada e pessoal que toca o coração de todos os presentes.
-      </p>
-
-      <h3 class="text-xl font-semibold mb-2 text-white">Ideal para:</h3>
-      <p class="mb-6 text-gray-300">
-        Mini weddings, elopements, cerimônias civis e celebrações mais reservadas.
-      </p>
-
-      <h3 class="text-xl font-semibold mb-2 text-white">O que está incluso?</h3>
-      <p class="mb-4 text-gray-300 font-semibold">Cerimônia e Receptivo (Duração total: 1h)</p>
-      <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
-        <li><b>Receptivo dos Convidados (30 min):</b> Música ambiente ao vivo para receber seus convidados com elegância.</li>
-        <li><b>Cerimônia:</b> Apresentação musical durante toda a cerimônia, com os seguintes músicos:
-          <ul class="list-circle list-inside ml-6 mt-2">
-             <li><b>Formação Duo:</b> Vocal (feminino ou masculino) acompanhado por Teclado ou Violão, à sua escolha.</li>
-          </ul>
-        </li>
-        <li><b>Equipe Técnica:</b> Profissional dedicado para garantir a qualidade sonora do evento.</li>
-      </ul>
-
-      <h3 class="text-xl font-semibold mb-2 text-white">Serviços Essenciais</h3>
-      <ul class="list-disc list-inside mb-8 space-y-2 text-gray-300">
-        <li><b>Repertório Personalizado:</b> Seleção de músicas feita em conjunto com os noivos para refletir a história do casal.</li>
-        <li><b>Reunião de Alinhamento:</b> Encontro online para definir todos os detalhes musicais e garantir que tudo saia perfeito.</li>
-      </ul>
-
-      <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Intimist." target="_blank" class="btn block w-full md:w-auto md:inline-block">
-        Solicitar um Orçamento
-      </a>
-    </div>
-  </div>
-</div>
-        
     </footer>
 
+    <div id="modal-intimist" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+      
+      <div class="modal-content bg-primary-dark text-text-light rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden relative">
+
+        <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
+        
+        <div class="w-full h-48 md:h-auto md:w-2/5 flex-shrink-0">
+          <img src="https://i.imgur.com/dwvKP3v.png" class="w-full h-full object-cover" alt="Pacote Intimist">
+        </div>
+
+        <div class="w-full md:w-3/5 flex flex-col">
+            <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
+                <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Intimist</h2>
+                <p class="mb-6 text-gray-300">
+                  A escolha ideal para casais que buscam uma atmosfera de intimidade e emoção. O pacote Intimist foca na essência da celebração, criando uma trilha sonora delicada e pessoal que toca o coração de todos os presentes.
+                </p>
+          
+                <h3 class="text-xl font-semibold mb-2 text-white">Ideal para:</h3>
+                <p class="mb-6 text-gray-300">
+                  Mini weddings, elopements, cerimônias civis e celebrações mais reservadas.
+                </p>
+          
+                <h3 class="text-xl font-semibold mb-2 text-white">O que está incluso?</h3>
+                <p class="mb-4 text-gray-300 font-semibold">Cerimônia e Receptivo (Duração total: 1h)</p>
+                <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                  <li><b>Receptivo dos Convidados (30 min):</b> Música ambiente ao vivo para receber seus convidados com elegância.</li>
+                  <li><b>Cerimônia:</b> Apresentação musical durante toda a cerimônia, com os seguintes músicos:
+                    <ul class="list-circle list-inside ml-6 mt-2">
+                       <li><b>Formação Duo:</b> Vocal (feminino ou masculino) acompanhado por Teclado ou Violão, à sua escolha.</li>
+                    </ul>
+                  </li>
+                  <li><b>Equipe Técnica:</b> Profissional dedicado para garantir a qualidade sonora do evento.</li>
+                </ul>
+          
+                <h3 class="text-xl font-semibold mb-2 text-white">Serviços Essenciais</h3>
+                <ul class="list-disc list-inside mb-8 space-y-2 text-gray-300">
+                  <li><b>Repertório Personalizado:</b> Seleção de músicas feita em conjunto com os noivos para refletir a história do casal.</li>
+                  <li><b>Reunião de Alinhamento:</b> Encontro online para definir todos os detalhes musicais e garantir que tudo saia perfeito.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
+                <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Intimist." target="_blank" class="btn block w-full text-center">
+                  Solicitar um Orçamento
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
 <script>
-    /* ADICIONE ESTE CÓDIGO DENTRO DO SCRIPT NO FINAL DO ARQUIVO */
-// =================================================================
-// LÓGICA DOS MODAIS
-// =================================================================
-document.querySelectorAll('[data-modal-target]').forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget);
-        openModal(modal);
-    });
-});
-
-function openModal(modal) {
-    if (modal == null) return;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.classList.add('modal-open');
-}
-
-function closeModal(modal) {
-    if (modal == null) return;
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.classList.remove('modal-open');
-}
-
-// Fechar modal ao clicar fora ou no botão (X)
-document.querySelectorAll('.modal').forEach(modal => {
-    const closeButton = modal.querySelector('.modal-close');
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
-            closeModal(modal);
-        });
-    }
-    // Clicar fora do conteúdo para fechar
-    modal.addEventListener('click', e => {
-        if (e.target === modal) {
-            closeModal(modal);
-        }
-    });
-});
 document.addEventListener('DOMContentLoaded', function () {
 
-    // =================================================================
     // LÓGICA DO HEADER (MENU QUE ENCOLHE AO ROLAR)
-    // =================================================================
     const header = document.getElementById('header');
     if (header) {
         const headerContainer = header.querySelector('.container');
@@ -705,9 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateHeaderOnScroll();
     }
 
-    // =================================================================
     // LÓGICA DO MENU MOBILE
-    // =================================================================
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenuButton && mobileMenu) {
@@ -717,24 +439,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =================================================================
     // LÓGICA DA GALERIA DE VÍDEOS
-    // =================================================================
     const mainVideoPlayer = document.getElementById('main-video-player');
     const thumbnails = document.querySelectorAll('.video-thumbnail');
     if (mainVideoPlayer && thumbnails.length > 0) {
         function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
-       function setActiveThumbnail(selectedThumbnail) {
-    // Primeiro, aplica o estilo 'inativo' a TODAS as miniaturas
-    thumbnails.forEach(thumb => {
-        thumb.classList.remove('active');
-        thumb.classList.add('inactive');
-    });
-
-    // Depois, remove o 'inativo' e adiciona o 'ativo' APENAS na que foi clicada
-    selectedThumbnail.classList.remove('inactive');
-    selectedThumbnail.classList.add('active');
-}
+        function setActiveThumbnail(selectedThumbnail) {
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('active');
+                thumb.classList.add('inactive');
+            });
+            selectedThumbnail.classList.remove('inactive');
+            selectedThumbnail.classList.add('active');
+        }
         loadVideo(thumbnails[0].dataset.videoId);
         setActiveThumbnail(thumbnails[0]);
         thumbnails.forEach(thumb => {
@@ -745,9 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =================================================================
     // LÓGICA DO CARROSSEL DE DEPOIMENTOS
-    // =================================================================
     const carouselContainer = document.getElementById('carousel-cards');
     if (carouselContainer) {
         const carouselCards = carouselContainer.querySelectorAll('.carousel-card');
@@ -797,14 +512,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (carouselCards.length > 0) updateCarouselUI();
     }
 
-    // =================================================================
-    // LÓGICA DO FADE-IN DA IMAGEM (SEÇÃO SOBRE) - CORRIGIDO
-    // =================================================================
+    // LÓGICA DO FADE-IN DA IMAGEM
     const sobreImage = document.querySelector('#sobre img');
     if(sobreImage){
-        // Adiciona a classe inicial para que a imagem comece invisível
         sobreImage.classList.add('fade-in-image');
-
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -813,22 +524,58 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }, { threshold: 0.5 });
-        
         imageObserver.observe(sobreImage);
     }
     
-    // =================================================================
-    // LÓGICA DO FAQ (SANFONA)
-    // =================================================================
+    // LÓGICA DO FAQ
     const faqToggles = document.querySelectorAll('.faq-toggle');
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('.faq-icon');
-                if(content) content.classList.toggle('hidden');
-                if (icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
-            });
+    faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.faq-icon');
+            if(content) content.classList.toggle('hidden');
+            if (icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
         });
+    });
+
+    // =================================================================
+    // LÓGICA DOS MODAIS (CORRIGIDA)
+    // =================================================================
+    function openModal(modal) {
+        if (modal == null) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeModal(modal) {
+        if (modal == null) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('[data-modal-target]').forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = document.querySelector(button.dataset.modalTarget);
+            openModal(modal);
+        });
+    });
+
+    document.querySelectorAll('.modal').forEach(modal => {
+        const closeButton = modal.querySelector('.modal-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                closeModal(modal);
+            });
+        }
+        modal.addEventListener('click', e => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
 });
 </script>
 
