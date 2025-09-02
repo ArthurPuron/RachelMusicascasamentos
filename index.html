@@ -34,6 +34,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
+        .card-pacote {
+    position: relative;
+    min-height: 500px; /* Garante uma altura mínima para os cards */
+}
+
+.card-pacote .card-content {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0.8) 50%, rgba(10, 43, 52, 0) 100%);
+}
         body { font-family: 'Poppins', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
@@ -186,6 +196,59 @@
     </div>
 </section>
 
+        <section id="formacoes" class="py-20 md:py-32 bg-primary-dark text-text-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold">Nossas Formações</h2>
+            <p class="mt-2 text-gray-300">Opções pensadas para cada momento do seu sonho.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="card-pacote rounded-lg shadow-2xl overflow-hidden flex flex-col h-full bg-cover bg-center" style="background-image: url('https://i.imgur.com/Jjo9T3S.png');">
+                <div class="card-content flex flex-col justify-end h-full p-8 text-white">
+                    <h3 class="text-3xl font-bold mb-2">Pacote Intimista</h3>
+                    <p class="text-gray-200 mb-6">Perfeito para cerimônias menores e mais aconchegantes, criando uma atmosfera única e pessoal.</p>
+                    <button class="btn-saiba-mais bg-white/90 text-primary-dark font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105 w-full" 
+                            data-titulo="Pacote Intimista" 
+                            data-imagem="https://i.imgur.com/Jjo9T3S.png"
+                            data-descricao="Ideal para cerimônias com até 50 convidados. Inclui voz e violão ou teclado, perfeito para criar um ambiente emocionante e acolhedor. O repertório é 100% personalizado para a história do casal."
+                            >
+                        Saiba Mais
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-pacote rounded-lg shadow-2xl overflow-hidden flex flex-col h-full bg-cover bg-center" style="background-image: url('https://i.imgur.com/dwvKP3v.png');">
+                <div class="card-content flex flex-col justify-end h-full p-8 text-white">
+                    <h3 class="text-3xl font-bold mb-2">Pacote Harmonie</h3>
+                    <p class="text-gray-200 mb-6">A combinação clássica que adiciona sofisticação e emoção, com a harmonia de múltiplos instrumentos.</p>
+                     <button class="btn-saiba-mais bg-white/90 text-primary-dark font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105 w-full" 
+                            data-titulo="Pacote Harmonie" 
+                            data-imagem="https://i.imgur.com/dwvKP3v.png"
+                            data-descricao="Formação versátil que inclui 3 a 5 músicos (ex: voz, teclado, violino, violoncelo). Ideal para cerimônias e coquetéis, trazendo um toque de requinte e preenchendo o ambiente com melodias envolventes."
+                            >
+                        Saiba Mais
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-pacote rounded-lg shadow-2xl overflow-hidden flex flex-col h-full bg-cover bg-center" style="background-image: url('https://i.imgur.com/dTHMSAY.png');">
+                <div class="card-content flex flex-col justify-end h-full p-8 text-white">
+                    <h3 class="text-3xl font-bold mb-2">Pacote Essence</h3>
+                    <p class="text-gray-200 mb-6">A experiência completa, com uma banda que transforma sua festa em um evento inesquecível.</p>
+                     <button class="btn-saiba-mais bg-white/90 text-primary-dark font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105 w-full" 
+                            data-titulo="Pacote Essence" 
+                            data-imagem="https://i.imgur.com/dTHMSAY.png"
+                            data-descricao="A formação completa para a festa. Inclui banda com múltiplos integrantes (bateria, baixo, guitarra, teclado, vocais) para animar a pista de dança com um repertório vibrante e eclético, do clássico ao pop."
+                            >
+                        Saiba Mais
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
         
 
 </section>
@@ -1321,6 +1384,50 @@
     </footer>
 
 <script>
+    // =================================================================
+// LÓGICA DO MODAL DE PACOTES
+// =================================================================
+const modal = document.getElementById('modal-pacote');
+if (modal) {
+    const btnsSaibaMais = document.querySelectorAll('.btn-saiba-mais');
+    const btnFecharModal = document.getElementById('btn-fechar-modal');
+    const modalTitulo = document.getElementById('modal-titulo');
+    const modalImagem = document.getElementById('modal-imagem');
+    const modalDescricao = document.getElementById('modal-descricao');
+
+    btnsSaibaMais.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Pega os dados do botão clicado
+            const titulo = this.dataset.titulo;
+            const imagem = this.dataset.imagem;
+            const descricao = this.dataset.descricao;
+
+            // Preenche o modal com os dados
+            modalTitulo.textContent = titulo;
+            modalImagem.src = imagem;
+            modalDescricao.textContent = descricao;
+
+            // Mostra o modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+    });
+
+    // Função para fechar o modal
+    const fecharModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    };
+
+    btnFecharModal.addEventListener('click', fecharModal);
+
+    // Fecha o modal se clicar fora da área de conteúdo
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            fecharModal();
+        }
+    });
+}
 document.addEventListener('DOMContentLoaded', function () {
 
     // =================================================================
@@ -1470,6 +1577,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 </script>
+<div id="modal-pacote" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-primary-light rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden">
+        
+        <div class="w-full md:w-1/2 h-64 md:h-auto">
+            <img id="modal-imagem" src="" alt="Imagem do Pacote" class="w-full h-full object-cover">
+        </div>
 
+        <div class="w-full md:w-1/2 p-8 flex flex-col overflow-y-auto">
+            <div class="flex-grow">
+                <h3 id="modal-titulo" class="text-3xl font-bold text-primary-dark mb-4"></h3>
+                <p id="modal-descricao" class="text-gray-medium text-lg"></p>
+            </div>
+            <div class="mt-8 text-right">
+                <button id="btn-fechar-modal" class="bg-primary-dark text-text-light font-bold px-6 py-2 rounded-lg hover:bg-gray-800 transition-all">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
