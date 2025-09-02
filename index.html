@@ -96,20 +96,33 @@
     background-color: #AD8B6E; /* Sua cor 'accent-hover' */
     transform: translateY(-2px); /* Efeito sutil de levantar ao passar o mouse */
   }
-        .painel-vidro {
-    /* Cor de fundo azul escura e semitransparente */
-    background-color: rgba(10, 43, 52, 0.75); /* Um pouco da sua cor 'primary-dark', mas com 75% de opacidade */
-
-    /* O EFEITO DE VIDRO FOSCO (O mais importante!) */
-    -webkit-backdrop-filter: blur(12px); /* Para compatibilidade com Safari */
-    backdrop-filter: blur(12px);
-
-    /* Borda sutil para definir as arestas do vidro */
-    border: 1px solid rgba(250, 247, 245, 0.2); /* Usa sua cor 'primary-light' bem transparente */
-  
-    /* (Opcional) Efeito de grão/ruído para dar mais vida, como você pediu */
-    background-image: url('https://www.transparenttextures.com/patterns/noise.png');
+       <style>
+  .painel-vidro {
+    /* Cor de fundo azul escura e bem transparente, como no seu exemplo */
+    background: rgba(10, 43, 52, 0.25); /* Sua cor 'primary-dark' com 25% de opacidade */
+    
+    /* Borda arredondada do seu exemplo */
+    border-radius: 16px; 
+    
+    /* Sombra do seu exemplo */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+    
+    /* O efeito de desfoque, com o valor exato que você encontrou */
+    backdrop-filter: blur(9.1px);
+    -webkit-backdrop-filter: blur(9.1px);
+    
+    /* Borda sólida e clara, adaptada para o seu tema */
+    border: 1px solid rgba(250, 247, 245, 0.3); /* Sua cor 'primary-light' com 30% de opacidade */
   }
+
+  /* (O estilo do botão continua o mesmo) */
+  .btn-modal { 
+    /* ... */ 
+  }
+  .btn-modal:hover { 
+    /* ... */ 
+  }
+</style>
     </style>
     
     <script>
@@ -555,7 +568,7 @@
         
     </footer>
 
-    <div id="modal-intimist" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div id="modal-intimist" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
     
     <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
 
@@ -601,7 +614,7 @@
     </div>
 </div>
     
-    <div id="modal-essence" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div id="modal-essence" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
     
     <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
 
@@ -676,7 +689,7 @@
     </div>
 </div>
 
-                    <div id="modal-harmonie" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+                    <div id="modal-harmonie" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
     
     <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
 
