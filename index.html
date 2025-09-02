@@ -96,6 +96,20 @@
     background-color: #AD8B6E; /* Sua cor 'accent-hover' */
     transform: translateY(-2px); /* Efeito sutil de levantar ao passar o mouse */
   }
+        .painel-vidro {
+    /* Cor de fundo azul escura e semitransparente */
+    background-color: rgba(10, 43, 52, 0.75); /* Um pouco da sua cor 'primary-dark', mas com 75% de opacidade */
+
+    /* O EFEITO DE VIDRO FOSCO (O mais importante!) */
+    -webkit-backdrop-filter: blur(12px); /* Para compatibilidade com Safari */
+    backdrop-filter: blur(12px);
+
+    /* Borda sutil para definir as arestas do vidro */
+    border: 1px solid rgba(250, 247, 245, 0.2); /* Usa sua cor 'primary-light' bem transparente */
+  
+    /* (Opcional) Efeito de grão/ruído para dar mais vida, como você pediu */
+    background-image: url('https://www.transparenttextures.com/patterns/noise.png');
+  }
     </style>
     
     <script>
@@ -549,8 +563,8 @@
             <img src="https://i.imgur.com/Qq37MfJ.jpeg" class="w-full h-full object-cover" alt="Pacote Intimist">
         </div>
 
-        <div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
-            <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
+<div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+        <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
             
             <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
                 <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Intimist</h2>
@@ -595,8 +609,8 @@
             <img src="https://i.imgur.com/dTHMSAY.png" class="w-full h-full object-cover" alt="Pacote Essence">
         </div>
 
-        <div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
-            <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
+<div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+        <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
             
             <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
                 <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Essence</h2>
@@ -670,8 +684,8 @@
             <img src="https://i.imgur.com/Jjo9T3S.png" class="w-full h-full object-cover" alt="Pacote Harmonie">
         </div>
 
-        <div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
-            <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
+<div class="w-full md:w-3/5 bg-primary-dark text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+        <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">×</button>
             
             <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
                 <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Harmonie</h2>
