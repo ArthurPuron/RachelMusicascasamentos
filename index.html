@@ -104,6 +104,19 @@
         background: rgba(34, 33, 42, 0.85); /* Cor #22212a com 85% opacidade */
         backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
     }
+    .btn-modal {
+        display: block; width: 100%; padding: 12px 24px; text-align: center;
+        background-color: #C0A084; color: #0A2B34; font-weight: 600;
+        text-decoration: none; border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+        transition: background-color .3s ease, transform .2s ease;
+    }
+    .btn-modal:hover { background-color: #AD8B6E; transform: translateY(-2px); }
+    .painel-vidro {
+        background: rgba(10, 43, 52, 0.75); border-radius: 16px; 
+        box-shadow: 0 4px 30px rgba(0,0,0,.1);
+        backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
+    }
 </style>
     
     <script>
@@ -299,24 +312,139 @@
         </div>
     </footer>
 
-    <div id="modal-intimist" class="modal ..."> ... </div>
-    <div id="modal-essence" class="modal ..."> ... </div>
-    <div id="modal-harmonie" class="modal ..."> ... </div>
+    <div id="modal-intimist" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
+            <div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl">
+                <img src="https://i.imgur.com/kU2EfJq.jpeg" class="w-full h-full object-cover" alt="Pacote Intimist">
+            </div>
+            <div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+                <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
+                <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
+                    <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Intimist</h2>
+                    <p class="mb-6 text-gray-300">A escolha ideal para casais que buscam uma atmosfera de intimidade e emoção...</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Ideal para:</h3>
+                    <p class="mb-6 text-gray-300">Mini weddings, elopements, cerimônias civis e celebrações mais reservadas.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">O que está incluso?</h3>
+                    <p class="mb-4 text-gray-300 font-semibold">Cerimônia e Receptivo (Duração total: 1h)</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Receptivo dos Convidados (30 min):</b> Música ambiente ao vivo para receber seus convidados com elegância.</li>
+                        <li><b>Cerimônia:</b> Apresentação musical durante toda a cerimônia, com os seguintes músicos:<ul class="list-circle list-inside ml-6 mt-2"><li><b>Formação Duo:</b> Vocal (feminino ou masculino) acompanhado por Teclado ou Violão, à sua escolha.</li></ul></li>
+                        <li><b>Equipe Técnica:</b> Profissional dedicado para garantir a qualidade sonora do evento.</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Serviços Essenciais</h3>
+                    <ul class="list-disc list-inside mb-8 space-y-2 text-gray-300">
+                        <li><b>Repertório Personalizado:</b> Seleção de músicas feita em conjunto com os noivos para refletir a história do casal.</li>
+                        <li><b>Reunião de Alinhamento:</b> Encontro online para definir todos os detalhes musicais e garantir que tudo saia perfeito.</li>
+                    </ul>
+                </div>
+                <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Intimist." target="_blank" class="btn-modal">Solicitar um Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-essence" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
+            <div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl">
+                <img src="https://i.imgur.com/dTHMSAY.png" class="w-full h-full object-cover" alt="Pacote Essence">
+            </div>
+            <div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+                <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
+                <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
+                    <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Essence</h2>
+                    <p class="mb-6 text-gray-300">A solução musical completa para um casamento extraordinário...</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Ideal para:</h3>
+                    <p class="mb-6 text-gray-300">Casais que desejam uma experiência musical completa, cobrindo cerimônia, coquetel e festa, sem se preocupar com nada.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">O que está incluso?</h3>
+                    <p class="mb-2 mt-4 text-gray-300 font-semibold">Cerimônia e Receptivo (Duração total: 2h)</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Receptivo dos Convidados (30 min):</b> Uma recepção musical calorosa para todos.</li>
+                        <li><b>Cerimônia:</b> Uma formação musical imponente e cheia de emoção.<ul class="list-circle list-inside ml-6 mt-2"><li><b>Formação Sexteto:</b> Vocal, Teclado, Violino, Violão e um majestoso Dueto de Clarins.</li></ul></li>
+                        <li><b>Sonorização Profissional:</b> Sistema de som e microfone para o celebrante.</li>
+                        <li><b>Equipe Técnica:</b> Suporte técnico integral.</li>
+                    </ul>
+                    <p class="mb-2 mt-4 text-gray-300 font-semibold">Pós-Cerimônia (Duração total: 2h30)</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Walking Violino (30 min):</b> A performance de violino que encanta e surpreende durante os cumprimentos.</li>
+                        <li><b>Show Lounge (2h):</b> Show ao vivo de alta qualidade para o coquetel e jantar.<ul class="list-circle list-inside ml-6 mt-2"><li><b>Formação Quarteto:</b> Vocal, Violão, Teclado e Percuteria (bateria eletrônica/cajon).</li><li><b>Repertório:</b> Ampla seleção de Jazz, Bossa, Pop Internacional, Soft Rock e MPB.</li></ul></li>
+                    </ul>
+                    <p class="mb-2 mt-4 text-gray-300 font-semibold">Festa</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>DJ Profissional:</b> Do início ao fim da festa, mantendo a pista de dança sempre animada.</li>
+                        <li><b>Estrutura Completa:</b> Sistema de som e iluminação básica para a pista de dança, incluindo máquina de fumaça.</li>
+                        <li><b>Sonorização para a Banda:</b> Estrutura de som separada para garantir a melhor qualidade do show lounge.</li>
+                    </ul>
+                    <p class="mb-2 mt-4 text-yellow-300 font-semibold">⭐ PLUS EXCLUSIVO ⭐</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Show Demonstrativo (1h):</b> Uma apresentação ao vivo exclusiva para os noivos...</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mt-6 mb-2 text-white">Serviços Essenciais</h3>
+                    <ul class="list-disc list-inside mb-8 space-y-2 text-gray-300">
+                        <li><b>Repertório Totalmente Personalizado:</b> Curadoria musical para todos os momentos do seu grande dia.</li>
+                        <li><b>Reuniões de Alinhamento:</b> Acompanhamento completo em todas as fases do planejamento.</li>
+                    </ul>
+                </div>
+                <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Essence." target="_blank" class="btn-modal">Solicitar um Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-harmonie" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch">
+            <div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl">
+                <img src="https://i.imgur.com/Jjo9T3S.png" class="w-full h-full object-cover" alt="Pacote Harmonie">
+            </div>
+            <div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]">
+                <button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button>
+                <div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow">
+                    <h2 class="text-3xl font-bold font-serif mb-3 text-white">Pacote Harmonie</h2>
+                    <p class="mb-6 text-gray-300">Para os noivos que desejam uma experiência musical contínua e sofisticada...</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Ideal para:</h3>
+                    <p class="mb-6 text-gray-300">Casamentos que possuem uma recepção ou coquetel após a cerimônia...</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white">O que está incluso?</h3>
+                    <p class="mb-2 mt-4 text-gray-300 font-semibold">Cerimônia e Receptivo (Duração total: 1h30)</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Receptivo dos Convidados (30 min):</b> Música ao vivo para criar o clima perfeito desde o início.</li>
+                        <li><b>Cerimônia:</b> Uma formação rica e emocionante para abrilhantar o "sim".<ul class="list-circle list-inside ml-6 mt-2"><li><b>Formação Quarteto:</b> Vocal, Teclado e um Dueto de Clarins (ou outro instrumento a combinar).</li></ul></li>
+                        <li><b>Sonorização Profissional:</b> Sistema de som completo para a cerimônia...</li>
+                        <li><b>Equipe Técnica:</b> Suporte completo durante toda a cerimônia.</li>
+                    </ul>
+                    <p class="mb-2 mt-4 text-gray-300 font-semibold">Pós-Cerimônia (Duração total: 2h)</p>
+                    <ul class="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                        <li><b>Walking Violino (30 min):</b> Uma performance solo de violino, circulando entre os convidados...</li>
+                        <li><b>Show Lounge (1h30):</b> Música ao vivo ambiente para o coquetel.<ul class="list-circle list-inside ml-6 mt-2"><li><b>Formação Trio:</b> Vocal, Teclado e Violão.</li><li><b>Repertório:</b> Seleção refinada de Jazz, Bossa Nova, Pop Internacional e MPB.</li></ul></li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mt-6 mb-2 text-white">Serviços Essenciais</h3>
+                    <ul class="list-disc list-inside mb-8 space-y-2 text-gray-300">
+                        <li><b>Repertório Personalizado:</b> Consultoria completa para a escolha das músicas...</li>
+                        <li><b>Reuniões de Alinhamento:</b> Encontros para planejar cada detalhe da sua jornada musical.</li>
+                    </ul>
+                </div>
+                <div class="p-6 md:p-8 border-t border-gray-700 mt-auto">
+                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Harmonie." target="_blank" class="btn-modal">Solicitar um Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div id="modal-sugestao-seculares" class="modal modal-sugestoes ..."> ... </div>
-    <div id="modal-sugestao-sacras" class="modal modal-sugestoes ..."> ... </div>
-    <script>
+    <div id="modal-sugestao-seculares" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/gK2n6pY.jpeg" class="w-full h-full object-cover" alt="Sugestões Seculares"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões Seculares</h2><p>Aqui entrará a lista de sugestões de músicas seculares...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-sacras" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/Jjo9T3S.png" class="w-full h-full object-cover" alt="Sugestões Sacras"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões Sacras/Orquestradas</h2><p>Aqui entrará a lista de sugestões de músicas sacras...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-gospel" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/rS2Tj9g.jpeg" class="w-full h-full object-cover" alt="Sugestões Gospel"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões Cristã/Gospel</h2><p>Aqui entrará a lista de sugestões de músicas gospel...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-pop" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/Qq37MfJ.jpeg" class="w-full h-full object-cover" alt="Sugestões POP"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões POP</h2><p>Aqui entrará a lista de sugestões de músicas POP...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-mpb" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/5IbR61G.jpeg" class="w-full h-full object-cover" alt="Sugestões MPB"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões MPB</h2><p>Aqui entrará a lista de sugestões de músicas MPB...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-rock" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/pZz8k5K.jpeg" class="w-full h-full object-cover" alt="Sugestões Rock"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões ROCK</h2><p>Aqui entrará a lista de sugestões de músicas de Rock...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+    <div id="modal-sugestao-sertanejo" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/qL3Zf1y.jpeg" class="w-full h-full object-cover" alt="Sugestões Sertanejo"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões SERTANEJO</h2><p>Aqui entrará a lista de sugestões de músicas de Sertanejo...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
+
+<script>
 document.addEventListener('DOMContentLoaded', function () {
 
-    // =================================================================
-    // LÓGICA DO HEADER (MENU QUE ENCOLHE AO ROLAR)
-    // =================================================================
+    // LÓGICA DO HEADER
     const header = document.getElementById('header');
     if (header) {
-        const headerContainer = header.querySelector('.container');
         const logoImgDesktop = header.querySelector('nav img');
         function updateHeaderOnScroll() {
-            if (!headerContainer || !logoImgDesktop) return;
+            if (!logoImgDesktop) return;
             if (window.scrollY > 50) {
                 logoImgDesktop.classList.remove('h-28');
                 logoImgDesktop.classList.add('h-20');
@@ -329,9 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateHeaderOnScroll();
     }
 
-    // =================================================================
     // LÓGICA DO MENU MOBILE
-    // =================================================================
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenuButton && mobileMenu) {
@@ -341,9 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =================================================================
     // LÓGICA DA GALERIA DE VÍDEOS
-    // =================================================================
     const mainVideoPlayer = document.getElementById('main-video-player');
     const thumbnails = document.querySelectorAll('.video-thumbnail');
     if (mainVideoPlayer && thumbnails.length > 0) {
@@ -366,9 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =================================================================
     // LÓGICA DO CARROSSEL DE DEPOIMENTOS
-    // =================================================================
     const carouselContainer = document.getElementById('carousel-cards');
     if (carouselContainer) {
         const carouselCards = carouselContainer.querySelectorAll('.carousel-card');
@@ -377,7 +499,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const indicatorsContainer = document.getElementById('carousel-indicators');
         let currentIndex = 0;
         let touchstartX = 0;
-
         function updateCarouselUI() {
             if (carouselCards.length === 0) return;
             carouselCards.forEach((card, index) => {
@@ -394,7 +515,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             updateIndicators();
         }
-
         function updateIndicators() {
             if (!indicatorsContainer) return;
             indicatorsContainer.innerHTML = '';
@@ -406,22 +526,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 indicatorsContainer.appendChild(indicator);
             });
         }
-
         if (prevBtn) prevBtn.onclick = () => { currentIndex = (currentIndex - 1 + carouselCards.length) % carouselCards.length; updateCarouselUI(); };
         if (nextBtn) nextBtn.onclick = () => { currentIndex = (currentIndex + 1) % carouselCards.length; updateCarouselUI(); };
-        
         carouselContainer.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
         carouselContainer.addEventListener('touchend', e => {
             if (e.changedTouches[0].screenX < touchstartX - 50) nextBtn.click();
             if (e.changedTouches[0].screenX > touchstartX + 50) prevBtn.click();
         });
-
         if (carouselCards.length > 0) updateCarouselUI();
     }
 
-    // =================================================================
     // LÓGICA DO FADE-IN DA IMAGEM (SEÇÃO SOBRE)
-    // =================================================================
     const sobreImage = document.querySelector('#sobre img');
     if(sobreImage){
         sobreImage.classList.add('fade-in-image');
@@ -436,9 +551,7 @@ document.addEventListener('DOMContentLoaded', function () {
         imageObserver.observe(sobreImage);
     }
     
-    // =================================================================
-    // LÓGICA DO FAQ (SANFONA)
-    // =================================================================
+    // LÓGICA DO FAQ
     const faqToggles = document.querySelectorAll('.faq-toggle');
     faqToggles.forEach(toggle => {
         toggle.addEventListener('click', function() {
@@ -449,47 +562,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // =================================================================
-    // LÓGICA GERAL DOS MODAIS (ABRIR/FECHAR)
-    // =================================================================
+    // LÓGICA GERAL DOS MODAIS
     function openModal(modal) {
         if (modal == null) return;
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.classList.add('modal-open');
     }
-
     function closeModal(modal) {
         if (modal == null) return;
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.classList.remove('modal-open');
     }
-
     document.querySelectorAll('[data-modal-target]').forEach(button => {
         button.addEventListener('click', () => {
             const modal = document.querySelector(button.dataset.modalTarget);
             openModal(modal);
         });
     });
-
     document.querySelectorAll('.modal').forEach(modal => {
         const closeButton = modal.querySelector('.modal-close');
         if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                closeModal(modal);
-            });
+            closeButton.addEventListener('click', () => closeModal(modal));
         }
         modal.addEventListener('click', e => {
-            if (e.target === modal) {
-                closeModal(modal);
-            }
+            if (e.target === modal) closeModal(modal);
         });
     });
 
-    // =================================================================
-    // LÓGICA DA SEÇÃO SUGESTÕES (TROCA DE VISÃO)
-    // =================================================================
+    // LÓGICA DA SEÇÃO SUGESTÕES
     const sugestoesMainView = document.getElementById('sugestoes-main-view');
     const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
     if (sugestoesMainView && sugestoesDetailView) {
@@ -500,14 +602,11 @@ document.addEventListener('DOMContentLoaded', function () {
             cerimonia: document.getElementById('carousel-cerimonia'),
             lounge: document.getElementById('carousel-lounge')
         };
-
         sugestoesBoxes.forEach(box => {
             box.addEventListener('click', () => {
                 const target = box.dataset.sugestoesTarget;
-                
                 sugestoesMainView.classList.add('hidden');
                 sugestoesDetailView.classList.remove('hidden');
-
                 if (target === 'cerimonia') {
                     sugestoesDetailTitle.textContent = 'Para a Cerimônia';
                     carousels.cerimonia.classList.remove('hidden');
@@ -519,7 +618,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-
         if (sugestoesBackBtn) {
             sugestoesBackBtn.addEventListener('click', () => {
                 sugestoesDetailView.classList.add('hidden');
@@ -527,7 +625,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-
 });
 </script>
 
