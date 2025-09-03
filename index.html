@@ -120,97 +120,107 @@
         will-change: transform, opacity; /* Otimização de performance */
     }
 
-    .sugestoes-carousel-card.active {
-        transform: translateX(-50%) scale(1.05); /* Ligeiramente maior para destaque */
-        opacity: 1;
-        z-index: 30;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
+    /* --- Estilos do Carrossel de Sugestões (CORRIGIDO) --- */
+.sugestoes-carousel-container {
+    position: relative;
+    max-width: 900px; /* Limita a largura para melhor visualização */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 4rem; /* Espaço para os botões laterais */
+}
 
-    .sugestoes-carousel-card.prev {
-        transform: translateX(-120%) scale(0.8);
-        opacity: 0.5;
-        z-index: 20;
-    }
+.sugestoes-carousel-cards {
+    position: relative;
+    height: 380px; /* Altura fixa para alinhar os cards */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .sugestoes-carousel-card.next {
-        transform: translateX(20%) scale(0.8);
-        opacity: 0.5;
-        z-index: 20;
-    }
+.sugestoes-carousel-card {
+    background-color: #0A2B34;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 300px; /* Largura dos cards */
+    height: 320px; /* Altura dos cards */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    position: absolute; /* Essencial para o efeito de sobreposição */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
 
-    .sugestoes-carousel-card.hidden-left,
-    .sugestoes-carousel-card.hidden-right {
-        transform: translateX(-50%) scale(0.7); /* Reduz ainda mais */
-        opacity: 0;
-        z-index: 10;
-        pointer-events: none; /* Desabilita clique em cards ocultos */
-    }
+/* Posições e estilos dos cards */
+.sugestoes-carousel-card.active {
+    transform: translateX(-50%) scale(1.05);
+    opacity: 1;
+    z-index: 10;
+}
+.sugestoes-carousel-card.prev {
+    transform: translateX(-125%) scale(0.8);
+    opacity: 0.5;
+    z-index: 5;
+}
+.sugestoes-carousel-card.next {
+    transform: translateX(25%) scale(0.8);
+    opacity: 0.5;
+    z-index: 5;
+}
+.sugestoes-carousel-card.hidden-left {
+    transform: translateX(-150%) scale(0.7);
+    opacity: 0;
+    z-index: 1;
+}
+.sugestoes-carousel-card.hidden-right {
+    transform: translateX(50%) scale(0.7);
+    opacity: 0;
+    z-index: 1;
+}
 
-    .sugestoes-carousel-card-img-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
+.sugestoes-carousel-card-img-wrapper {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+.sugestoes-carousel-card-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.sugestoes-carousel-card-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1.5rem;
+}
+.sugestoes-carousel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
 
-    .sugestoes-carousel-card-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .sugestoes-carousel-card-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 2rem 1rem 1rem;
-        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        height: 100%; /* Ocupa toda a altura para o gradiente */
-    }
-
-    .sugestoes-carousel-card h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        color: white;
-        margin-top: auto; /* Empurra para baixo */
-        margin-bottom: 0.5rem;
-        z-index: 1; /* Garante que o texto fique acima do overlay */
-        position: relative;
-    }
-
-    .sugestoes-carousel-nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(255, 255, 255, 0.8);
-        color: #0A2B34;
-        padding: 0.75rem;
-        border-radius: 9999px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        z-index: 40;
-    }
-
-    .sugestoes-carousel-nav-btn:hover {
-        background-color: rgba(255, 255, 255, 1);
-        transform: translateY(-50%) scale(1.05);
-    }
-
-    .sugestoes-carousel-nav-btn.prev-btn { left: 0.5rem; }
-    .sugestoes-carousel-nav-btn.next-btn { right: 0.5rem; }
-
-    @media (min-width: 768px) { /* Ajustes para telas maiores */
-        .sugestoes-carousel-nav-btn.prev-btn { left: -3rem; }
-        .sugestoes-carousel-nav-btn.next-btn { right: -3rem; }
-    }
+/* Botões de Navegação */
+.sugestoes-carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #0A2B34;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+.sugestoes-carousel-nav-btn:hover {
+    background-color: white;
+    transform: translateY(-50%) scale(1.05);
+}
+.sugestoes-carousel-nav-btn.prev-btn { left: 0; }
+.sugestoes-carousel-nav-btn.next-btn { right: 0; }
 
 
     .modal-sugestoes .painel-vidro {
@@ -736,73 +746,78 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // LÓGICA DA SEÇÃO SUGESTÕES (CARROSSEL)
-    const sugestoesMainView = document.getElementById('sugestoes-main-view');
-    const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
-    
+    // =================================================================
+// LÓGICA DA SEÇÃO SUGESTÕES (CARROSSEL CORRIGIDO)
+// =================================================================
+const sugestoesMainView = document.getElementById('sugestoes-main-view');
+const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
+
+if (sugestoesMainView && sugestoesDetailView) {
     const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
     const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
     const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
 
     const carouselsData = {
-        'carousel-cerimonia': {
+        cerimonia: {
             container: document.getElementById('carousel-cerimonia-container'),
             cardsWrapper: document.getElementById('carousel-cerimonia-cards'),
             cards: [],
-            currentIndex: 0,
-            touchstartX: 0
+            currentIndex: 0
         },
-        'carousel-lounge': {
+        lounge: {
             container: document.getElementById('carousel-lounge-container'),
             cardsWrapper: document.getElementById('carousel-lounge-cards'),
             cards: [],
-            currentIndex: 0,
-            touchstartX: 0
+            currentIndex: 0
         }
     };
 
-    function initializeCarousels() {
-        for (const key in carouselsData) {
-            const carousel = carouselsData[key];
-            if (carousel.cardsWrapper) {
-                carousel.cards = Array.from(carousel.cardsWrapper.querySelectorAll('.sugestoes-carousel-card'));
-                if (carousel.cards.length > 0) {
-                    updateSugestoesCarouselUI(carousel);
-                }
-            }
-        }
-    }
-
     function updateSugestoesCarouselUI(carousel) {
-        if (carousel.cards.length === 0) return;
+        if (!carousel || !carousel.cards || carousel.cards.length === 0) return;
 
         carousel.cards.forEach((card, index) => {
             card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
             
+            const total = carousel.cards.length;
+            const prevIndex = (carousel.currentIndex - 1 + total) % total;
+            const nextIndex = (carousel.currentIndex + 1) % total;
+
             if (index === carousel.currentIndex) {
                 card.classList.add('active');
-            } else if (index === (carousel.currentIndex - 1 + carousel.cards.length) % carousel.cards.length) {
+            } else if (index === prevIndex) {
                 card.classList.add('prev');
-            } else if (index === (carousel.currentIndex + 1) % carousel.cards.length) {
+            } else if (index === nextIndex) {
                 card.classList.add('next');
-            } else if (index < carousel.currentIndex) {
-                card.classList.add('hidden-left');
             } else {
-                card.classList.add('hidden-right');
+                 // Lógica para esconder os outros cards
+                const diff = index - carousel.currentIndex;
+                if ((diff > 0 && diff < total / 2) || (diff < 0 && diff < -total / 2)) {
+                    card.classList.add('hidden-right');
+                } else {
+                    card.classList.add('hidden-left');
+                }
             }
         });
     }
 
     function navigateSugestoesCarousel(carouselId, direction) {
         const carousel = carouselsData[carouselId];
-        if (!carousel || carousel.cards.length === 0) return;
-
+        if (!carousel) return;
+        const total = carousel.cards.length;
         if (direction === 'next') {
-            carousel.currentIndex = (carousel.currentIndex + 1) % carousel.cards.length;
-        } else if (direction === 'prev') {
-            carousel.currentIndex = (carousel.currentIndex - 1 + carousel.cards.length) % carousel.cards.length;
+            carousel.currentIndex = (carousel.currentIndex + 1) % total;
+        } else {
+            carousel.currentIndex = (carousel.currentIndex - 1 + total) % total;
         }
         updateSugestoesCarouselUI(carousel);
+    }
+    
+    // Inicializa os dados dos carrosséis
+    for (const key in carouselsData) {
+        const carousel = carouselsData[key];
+        if (carousel.cardsWrapper) {
+            carousel.cards = Array.from(carousel.cardsWrapper.children);
+        }
     }
 
     sugestoesBoxes.forEach(box => {
@@ -810,19 +825,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const target = box.dataset.sugestoesTarget;
             sugestoesMainView.classList.add('hidden');
             sugestoesDetailView.classList.remove('hidden');
-            
-            for (const key in carouselsData) {
-                carouselsData[key].container.classList.add('hidden');
-            }
 
-            if (target === 'cerimonia') {
-                sugestoesDetailTitle.textContent = 'Para a Cerimônia';
-                carouselsData['carousel-cerimonia'].container.classList.remove('hidden');
-                updateSugestoesCarouselUI(carouselsData['carousel-cerimonia']);
-            } else if (target === 'lounge') {
-                sugestoesDetailTitle.textContent = 'Para o Show Lounge';
-                carouselsData['carousel-lounge'].container.classList.remove('hidden');
-                updateSugestoesCarouselUI(carouselsData['carousel-lounge']);
+            Object.values(carouselsData).forEach(c => c.container.classList.add('hidden'));
+
+            const targetCarousel = carouselsData[target];
+            if (targetCarousel) {
+                sugestoesDetailTitle.textContent = target === 'cerimonia' ? 'Para a Cerimônia' : 'Para o Show Lounge';
+                targetCarousel.container.classList.remove('hidden');
+                updateSugestoesCarouselUI(targetCarousel);
             }
         });
     });
@@ -836,30 +846,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.sugestoes-carousel-nav-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            const carouselId = this.dataset.carouselId;
+            const carouselId = this.dataset.carouselId.replace('-cards', '').replace('carousel-', '');
             const direction = this.classList.contains('next-btn') ? 'next' : 'prev';
             navigateSugestoesCarousel(carouselId, direction);
         });
     });
 
-    // Adiciona suporte a swipe para os carrosséis de sugestões
+    // Adiciona suporte a swipe
     for (const key in carouselsData) {
+        let touchstartX = 0;
         const carousel = carouselsData[key];
         if (carousel.cardsWrapper) {
-            carousel.cardsWrapper.addEventListener('touchstart', e => carousel.touchstartX = e.changedTouches[0].screenX);
+            carousel.cardsWrapper.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
             carousel.cardsWrapper.addEventListener('touchend', e => {
-                if (e.changedTouches[0].screenX < carousel.touchstartX - 50) {
-                    navigateSugestoesCarousel(key, 'next');
-                }
-                if (e.changedTouches[0].screenX > carousel.touchstartX + 50) {
-                    navigateSugestoesCarousel(key, 'prev');
-                }
+                const touchendX = e.changedTouches[0].screenX;
+                if (touchendX < touchstartX - 50) navigateSugestoesCarousel(key, 'next');
+                if (touchendX > touchstartX + 50) navigateSugestoesCarousel(key, 'prev');
             });
         }
     }
-
-    initializeCarousels(); // Inicializa os carrosséis após carregar o DOM
-});
+}
 </script>
 
 </body>
