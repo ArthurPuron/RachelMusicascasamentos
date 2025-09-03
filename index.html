@@ -93,6 +93,93 @@
         -webkit-backdrop-filter: blur(9.1px);
         /* A linha da borda foi removida completamente */
     }
+
+       /* ADICIONE ESTE CÓDIGO NO <STYLE> DO <HEAD> */
+
+/* --- Estilos da Seção Sugestões --- */
+.sugestoes-box {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    width: 100%;
+}
+.sugestoes-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.sugestoes-box-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.sugestoes-box:hover .sugestoes-box-img {
+    transform: scale(1.05);
+}
+.sugestoes-box-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+}
+.sugestoes-box-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-align: left;
+}
+.sugestoes-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem; /* Espaço para a barra de rolagem */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.sugestoes-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+.sugestoes-card {
+    background-color: #0A2B34; /* primary-dark */
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: 280px; /* Largura dos cards menores */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+.sugestoes-card:hover {
+    transform: translateY(-5px);
+}
+.sugestoes-card-img-wrapper {
+    height: 160px;
+    width: 100%;
+}
+.sugestoes-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.sugestoes-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto;
+}
+.modal-sugestoes .painel-vidro {
+    background: rgba(34, 33, 42, 0.75); /* Cor #22212a com 75% de opacidade */
+}
+       
 </style>
     
     <script>
@@ -466,6 +553,58 @@
         </section>
 
 
+        <section id="sugestoes" class="bg-primary-light py-20 md:py-32">
+    <div class="container mx-auto px-6">
+        
+        <div id="sugestoes-main-view">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Sugestões de Repertório</h2>
+                <p class="mt-2 text-gray-medium">Inspire-se com nossas seleções musicais para cada momento.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <button data-sugestoes-target="cerimonia" class="sugestoes-box group">
+                    <img src="https://i.imgur.com/dTHMSAY.png" alt="Música para Cerimônia" class="sugestoes-box-img">
+                    <div class="sugestoes-box-overlay">
+                        <h3 class="sugestoes-box-title">Cerimônia</h3>
+                    </div>
+                </button>
+                <button data-sugestoes-target="lounge" class="sugestoes-box group">
+                    <img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Música para Show Lounge" class="sugestoes-box-img">
+                    <div class="sugestoes-box-overlay">
+                        <h3 class="sugestoes-box-title">Show Lounge</h3>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div id="sugestoes-detail-view" class="hidden">
+            <div class="flex items-center justify-between mb-12">
+                <button id="sugestoes-back-btn" class="text-gray-medium hover:text-primary-dark transition-colors duration-300 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Voltar
+                </button>
+                <h2 id="sugestoes-detail-title" class="text-3xl md:text-4xl font-bold text-primary-dark text-center"></h2>
+                <div class="w-24"></div> </div>
+            
+            <div id="carousel-cerimonia" class="sugestoes-carousel hidden">
+                <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/gK2n6pY.jpeg" alt="Músicas Seculares"></div><h3>Seculares</h3></button>
+                <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div><h3>Sacras/Orquestradas</h3></button>
+                <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/rS2Tj9g.jpeg" alt="Músicas Gospel"></div><h3>Cristã/Gospel</h3></button>
+            </div>
+
+            <div id="carousel-lounge" class="sugestoes-carousel hidden">
+                <button data-modal-target="#modal-sugestao-pop" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div><h3>POP</h3></button>
+                <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/5IbR61G.jpeg" alt="Músicas MPB"></div><h3>MPB</h3></button>
+                <button data-modal-target="#modal-sugestao-rock" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/pZz8k5K.jpeg" alt="Músicas Rock"></div><h3>ROCK</h3></button>
+                <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/qL3Zf1y.jpeg" alt="Músicas Sertanejo"></div><h3>SERTANEJO</h3></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
         <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -715,7 +854,33 @@
         </div>
     </div>
 </div>
+<div id="modal-sugestao-seculares" class="modal modal-sugestoes fixed inset-0 ...">
+    <div class="w-full max-w-5xl ...">
+        <div class="..."><img src="https://i.imgur.com/gK2n6pY.jpeg" ...></div>
+        <div class="... painel-vidro ...">
+            <button class="modal-close ...">&times;</button>
+            <div class="... modal-scrollbar ...">
+                <h2 class="text-3xl ...">Sugestões Seculares</h2>
+                <p>Aqui entrará a lista de sugestões de músicas seculares...</p>
+            </div>
+            <div class="..."><a href="..." class="btn-modal">Solicitar Repertório Completo</a></div>
+        </div>
+    </div>
+</div>
 
+<div id="modal-sugestao-sacras" class="modal modal-sugestoes fixed inset-0 ...">
+    <div class="w-full max-w-5xl ...">
+        <div class="..."><img src="https://i.imgur.com/Jjo9T3S.png" ...></div>
+        <div class="... painel-vidro ...">
+            <button class="modal-close ...">&times;</button>
+            <div class="... modal-scrollbar ...">
+                <h2 class="text-3xl ...">Sugestões Sacras/Orquestradas</h2>
+                <p>Aqui entrará a lista de sugestões de músicas sacras...</p>
+            </div>
+            <div class="..."><a href="..." class="btn-modal">Solicitar Repertório Completo</a></div>
+        </div>
+    </div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -886,6 +1051,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
+// ADICIONE ESTE CÓDIGO DENTRO DO SCRIPT NO FINAL DO ARQUIVO
+
+    // =================================================================
+    // LÓGICA DA SEÇÃO SUGESTÕES
+    // =================================================================
+    const sugestoesMainView = document.getElementById('sugestoes-main-view');
+    const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
+    const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
+    const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
+    const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
+    const carousels = {
+        cerimonia: document.getElementById('carousel-cerimonia'),
+        lounge: document.getElementById('carousel-lounge')
+    };
+
+    sugestoesBoxes.forEach(box => {
+        box.addEventListener('click', () => {
+            const target = box.dataset.sugestoesTarget;
+            
+            // Oculta a visão principal e mostra a de detalhes
+            sugestoesMainView.classList.add('hidden');
+            sugestoesDetailView.classList.remove('hidden');
+
+            // Define o título e mostra o carrossel correto
+            if (target === 'cerimonia') {
+                sugestoesDetailTitle.textContent = 'Para a Cerimônia';
+                carousels.cerimonia.classList.remove('hidden');
+                carousels.lounge.classList.add('hidden');
+            } else if (target === 'lounge') {
+                sugestoesDetailTitle.textContent = 'Para o Show Lounge';
+                carousels.lounge.classList.remove('hidden');
+                carousels.cerimonia.classList.add('hidden');
+            }
+        });
+    });
+
+    sugestoesBackBtn.addEventListener('click', () => {
+        sugestoesDetailView.classList.add('hidden');
+        sugestoesMainView.classList.remove('hidden');
+    });
+    
 </script>
 
 </body>
