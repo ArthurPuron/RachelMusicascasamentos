@@ -84,147 +84,45 @@
         font-weight: 700; color: white; text-align: left;
     }
     .sugestoes-carousel-container {
-        position: relative;
-        overflow: hidden; /* Garante que os elementos fora do container fiquem ocultos */
-        width: 100%;
-        margin: 0 auto;
-        padding-bottom: 2rem; /* Espaço para os botões de navegação */
-        display: flex; /* Adicionado para centralizar os itens de carrossel */
-        justify-content: center; /* Centraliza o conteúdo flex */
+        position: relative; max-width: 900px; margin-left: auto; margin-right: auto;
+        padding: 0 4rem;
     }
-
     .sugestoes-carousel-cards {
-        display: flex;
-        align-items: center; /* Alinha os cards verticalmente */
-        justify-content: center;
-        width: 100%;
-        height: 380px; /* Altura fixa para o carrossel */
-        position: relative;
+        position: relative; height: 380px; display: flex;
+        align-items: center; justify-content: center;
     }
-
     .sugestoes-carousel-card {
-        position: absolute;
-        width: 320px; /* Largura base do card */
-        height: 300px; /* Altura base do card */
-        border-radius: 20px;
-        overflow: hidden;
-        background-color: #0A2B34;
-        color: white;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end; /* Alinha o conteúdo na parte inferior */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        transition: transform 0.5s ease, opacity 0.5s ease, z-index 0s; /* Z-index sem transição */
-        cursor: pointer;
-        will-change: transform, opacity; /* Otimização de performance */
+        background-color: #0A2B34; border-radius: 20px; overflow: hidden;
+        width: 300px; height: 320px; display: flex; flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: pointer;
+        position: absolute; transition: transform 0.5s ease, opacity 0.5s ease;
     }
+    .sugestoes-carousel-card.active { transform: translateX(-50%) scale(1.05); opacity: 1; z-index: 10; }
+    .sugestoes-carousel-card.prev { transform: translateX(-125%) scale(0.8); opacity: 0.5; z-index: 5; }
+    .sugestoes-carousel-card.next { transform: translateX(25%) scale(0.8); opacity: 0.5; z-index: 5; }
+    .sugestoes-carousel-card.hidden-left { transform: translateX(-150%) scale(0.7); opacity: 0; z-index: 1; }
+    .sugestoes-carousel-card.hidden-right { transform: translateX(50%) scale(0.7); opacity: 0; z-index: 1; }
 
-    /* --- Estilos do Carrossel de Sugestões (CORRIGIDO) --- */
-.sugestoes-carousel-container {
-    position: relative;
-    max-width: 900px; /* Limita a largura para melhor visualização */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 4rem; /* Espaço para os botões laterais */
-}
-
-.sugestoes-carousel-cards {
-    position: relative;
-    height: 380px; /* Altura fixa para alinhar os cards */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sugestoes-carousel-card {
-    background-color: #0A2B34;
-    border-radius: 20px;
-    overflow: hidden;
-    width: 300px; /* Largura dos cards */
-    height: 320px; /* Altura dos cards */
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    cursor: pointer;
-    position: absolute; /* Essencial para o efeito de sobreposição */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-/* Posições e estilos dos cards */
-.sugestoes-carousel-card.active {
-    transform: translateX(-50%) scale(1.05);
-    opacity: 1;
-    z-index: 10;
-}
-.sugestoes-carousel-card.prev {
-    transform: translateX(-125%) scale(0.8);
-    opacity: 0.5;
-    z-index: 5;
-}
-.sugestoes-carousel-card.next {
-    transform: translateX(25%) scale(0.8);
-    opacity: 0.5;
-    z-index: 5;
-}
-.sugestoes-carousel-card.hidden-left {
-    transform: translateX(-150%) scale(0.7);
-    opacity: 0;
-    z-index: 1;
-}
-.sugestoes-carousel-card.hidden-right {
-    transform: translateX(50%) scale(0.7);
-    opacity: 0;
-    z-index: 1;
-}
-
-.sugestoes-carousel-card-img-wrapper {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-}
-.sugestoes-carousel-card-img-wrapper img {
-    width: 100%; height: 100%; object-fit: cover;
-}
-.sugestoes-carousel-card-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 100%;
-    background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 1.5rem;
-}
-.sugestoes-carousel-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: white;
-    text-align: center;
-}
-
-/* Botões de Navegação */
-.sugestoes-carousel-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #0A2B34;
-    padding: 0.5rem;
-    border-radius: 9999px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 20;
-}
-.sugestoes-carousel-nav-btn:hover {
-    background-color: white;
-    transform: translateY(-50%) scale(1.05);
-}
-.sugestoes-carousel-nav-btn.prev-btn { left: 0; }
-.sugestoes-carousel-nav-btn.next-btn { right: 0; }
-
+    .sugestoes-carousel-card-img-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .sugestoes-carousel-card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .sugestoes-carousel-card-overlay {
+        position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
+        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+        display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem;
+    }
+    .sugestoes-carousel-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; text-align: center; }
+    .sugestoes-carousel-nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.8); color: #0A2B34;
+        padding: 0.5rem; border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease; z-index: 20;
+    }
+    .sugestoes-carousel-nav-btn:hover { background-color: white; transform: translateY(-50%) scale(1.05); }
+    .sugestoes-carousel-nav-btn.prev-btn { left: 0; }
+    .sugestoes-carousel-nav-btn.next-btn { right: 0; }
 
     .modal-sugestoes .painel-vidro {
-        background: rgba(34, 33, 42, 0.85); /* Cor #22212a com 85% opacidade */
+        background: rgba(34, 33, 42, 0.85);
         backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
     }
     .btn-modal {
@@ -387,47 +285,25 @@
                     </div>
                     
                     <div id="carousel-cerimonia-container" class="sugestoes-carousel-container hidden">
-                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="carousel-cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
                         <div id="carousel-cerimonia-cards" class="sugestoes-carousel-cards">
-                            <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/gK2n6pY.jpeg" alt="Músicas Seculares"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>Seculares</h3></div>
-                            </button>
-                            <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>Sacras/Orquestradas</h3></div>
-                            </button>
-                            <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/rS2Tj9g.jpeg" alt="Músicas Gospel"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>Cristã/Gospel</h3></div>
-                            </button>
+                            <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/gK2n6pY.jpeg" alt="Músicas Seculares"></div><div class="sugestoes-carousel-card-overlay"><h3>Seculares</h3></div></button>
+                            <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div><div class="sugestoes-carousel-card-overlay"><h3>Sacras/Orquestradas</h3></div></button>
+                            <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/rS2Tj9g.jpeg" alt="Músicas Gospel"></div><div class="sugestoes-carousel-card-overlay"><h3>Cristã/Gospel</h3></div></button>
                         </div>
-                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="carousel-cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
                     </div>
 
                     <div id="carousel-lounge-container" class="sugestoes-carousel-container hidden">
-                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="carousel-lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
                         <div id="carousel-lounge-cards" class="sugestoes-carousel-cards">
-                            <button data-modal-target="#modal-sugestao-pop" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>POP</h3></div>
-                            </button>
-                            <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/5IbR61G.jpeg" alt="Músicas MPB"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>MPB</h3></div>
-                            </button>
-                            <button data-modal-target="#modal-sugestao-rock" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/pZz8k5K.jpeg" alt="Músicas Rock"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>ROCK</h3></div>
-                            </button>
-                            <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-carousel-card">
-                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/qL3Zf1y.jpeg" alt="Músicas Sertanejo"></div>
-                                <div class="sugestoes-carousel-card-overlay"><h3>SERTANEJO</h3></div>
-                            </button>
+                            <button data-modal-target="#modal-sugestao-pop" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div><div class="sugestoes-carousel-card-overlay"><h3>POP</h3></div></button>
+                            <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/5IbR61G.jpeg" alt="Músicas MPB"></div><div class="sugestoes-carousel-card-overlay"><h3>MPB</h3></div></button>
+                            <button data-modal-target="#modal-sugestao-rock" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/pZz8k5K.jpeg" alt="Músicas Rock"></div><div class="sugestoes-carousel-card-overlay"><h3>ROCK</h3></div></button>
+                            <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/qL3Zf1y.jpeg" alt="Músicas Sertanejo"></div><div class="sugestoes-carousel-card-overlay"><h3>SERTANEJO</h3></div></button>
                         </div>
-                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="carousel-lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -691,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (carouselCards.length > 0) updateCarouselUI();
     }
 
-    // LÓGICA DO FADE-IN DA IMAGEM (SEÇÃO SOBRE)
+    // LÓGICA DO FADE-IN DA IMAGEM
     const sobreImage = document.querySelector('#sobre img');
     if(sobreImage){
         sobreImage.classList.add('fade-in-image');
@@ -731,7 +607,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('modal-open');
     }
     document.querySelectorAll('[data-modal-target]').forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            // Impede que o clique no card do carrossel feche o modal
+            e.stopPropagation();
             const modal = document.querySelector(button.dataset.modalTarget);
             openModal(modal);
         });
@@ -746,126 +624,117 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // =================================================================
-// LÓGICA DA SEÇÃO SUGESTÕES (CARROSSEL CORRIGIDO)
-// =================================================================
-const sugestoesMainView = document.getElementById('sugestoes-main-view');
-const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
+    // LÓGICA DA SEÇÃO SUGESTÕES
+    const sugestoesMainView = document.getElementById('sugestoes-main-view');
+    const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
+    if (sugestoesMainView && sugestoesDetailView) {
+        const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
+        const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
+        const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
 
-if (sugestoesMainView && sugestoesDetailView) {
-    const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
-    const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
-    const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
+        const carouselsData = {
+            cerimonia: {
+                container: document.getElementById('carousel-cerimonia-container'),
+                cardsWrapper: document.getElementById('carousel-cerimonia-cards'),
+                cards: [],
+                currentIndex: 0
+            },
+            lounge: {
+                container: document.getElementById('carousel-lounge-container'),
+                cardsWrapper: document.getElementById('carousel-lounge-cards'),
+                cards: [],
+                currentIndex: 0
+            }
+        };
 
-    const carouselsData = {
-        cerimonia: {
-            container: document.getElementById('carousel-cerimonia-container'),
-            cardsWrapper: document.getElementById('carousel-cerimonia-cards'),
-            cards: [],
-            currentIndex: 0
-        },
-        lounge: {
-            container: document.getElementById('carousel-lounge-container'),
-            cardsWrapper: document.getElementById('carousel-lounge-cards'),
-            cards: [],
-            currentIndex: 0
-        }
-    };
-
-    function updateSugestoesCarouselUI(carousel) {
-        if (!carousel || !carousel.cards || carousel.cards.length === 0) return;
-
-        carousel.cards.forEach((card, index) => {
-            card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
-            
+        function updateSugestoesCarouselUI(carousel) {
+            if (!carousel || !carousel.cards || carousel.cards.length === 0) return;
             const total = carousel.cards.length;
-            const prevIndex = (carousel.currentIndex - 1 + total) % total;
-            const nextIndex = (carousel.currentIndex + 1) % total;
-
-            if (index === carousel.currentIndex) {
-                card.classList.add('active');
-            } else if (index === prevIndex) {
-                card.classList.add('prev');
-            } else if (index === nextIndex) {
-                card.classList.add('next');
-            } else {
-                 // Lógica para esconder os outros cards
-                const diff = index - carousel.currentIndex;
-                if ((diff > 0 && diff < total / 2) || (diff < 0 && diff < -total / 2)) {
-                    card.classList.add('hidden-right');
+            carousel.cards.forEach((card, index) => {
+                card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
+                const prevIndex = (carousel.currentIndex - 1 + total) % total;
+                const nextIndex = (carousel.currentIndex + 1) % total;
+                if (index === carousel.currentIndex) {
+                    card.classList.add('active');
+                } else if (index === prevIndex) {
+                    card.classList.add('prev');
+                } else if (index === nextIndex) {
+                    card.classList.add('next');
                 } else {
-                    card.classList.add('hidden-left');
+                    const diff = index - carousel.currentIndex;
+                    if ((diff > 0 && diff < total / 2) || (diff < 0 && diff < -total / 2)) {
+                        card.classList.add('hidden-right');
+                    } else {
+                        card.classList.add('hidden-left');
+                    }
                 }
-            }
-        });
-    }
-
-    function navigateSugestoesCarousel(carouselId, direction) {
-        const carousel = carouselsData[carouselId];
-        if (!carousel) return;
-        const total = carousel.cards.length;
-        if (direction === 'next') {
-            carousel.currentIndex = (carousel.currentIndex + 1) % total;
-        } else {
-            carousel.currentIndex = (carousel.currentIndex - 1 + total) % total;
-        }
-        updateSugestoesCarouselUI(carousel);
-    }
-    
-    // Inicializa os dados dos carrosséis
-    for (const key in carouselsData) {
-        const carousel = carouselsData[key];
-        if (carousel.cardsWrapper) {
-            carousel.cards = Array.from(carousel.cardsWrapper.children);
-        }
-    }
-
-    sugestoesBoxes.forEach(box => {
-        box.addEventListener('click', () => {
-            const target = box.dataset.sugestoesTarget;
-            sugestoesMainView.classList.add('hidden');
-            sugestoesDetailView.classList.remove('hidden');
-
-            Object.values(carouselsData).forEach(c => c.container.classList.add('hidden'));
-
-            const targetCarousel = carouselsData[target];
-            if (targetCarousel) {
-                sugestoesDetailTitle.textContent = target === 'cerimonia' ? 'Para a Cerimônia' : 'Para o Show Lounge';
-                targetCarousel.container.classList.remove('hidden');
-                updateSugestoesCarouselUI(targetCarousel);
-            }
-        });
-    });
-
-    if (sugestoesBackBtn) {
-        sugestoesBackBtn.addEventListener('click', () => {
-            sugestoesDetailView.classList.add('hidden');
-            sugestoesMainView.classList.remove('hidden');
-        });
-    }
-
-    document.querySelectorAll('.sugestoes-carousel-nav-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const carouselId = this.dataset.carouselId.replace('-cards', '').replace('carousel-', '');
-            const direction = this.classList.contains('next-btn') ? 'next' : 'prev';
-            navigateSugestoesCarousel(carouselId, direction);
-        });
-    });
-
-    // Adiciona suporte a swipe
-    for (const key in carouselsData) {
-        let touchstartX = 0;
-        const carousel = carouselsData[key];
-        if (carousel.cardsWrapper) {
-            carousel.cardsWrapper.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
-            carousel.cardsWrapper.addEventListener('touchend', e => {
-                const touchendX = e.changedTouches[0].screenX;
-                if (touchendX < touchstartX - 50) navigateSugestoesCarousel(key, 'next');
-                if (touchendX > touchstartX + 50) navigateSugestoesCarousel(key, 'prev');
             });
         }
+
+        function navigateSugestoesCarousel(carouselId, direction) {
+            const carousel = carouselsData[carouselId];
+            if (!carousel) return;
+            const total = carousel.cards.length;
+            if (direction === 'next') {
+                carousel.currentIndex = (carousel.currentIndex + 1) % total;
+            } else {
+                carousel.currentIndex = (carousel.currentIndex - 1 + total) % total;
+            }
+            updateSugestoesCarouselUI(carousel);
+        }
+        
+        for (const key in carouselsData) {
+            const carousel = carouselsData[key];
+            if (carousel.cardsWrapper) {
+                carousel.cards = Array.from(carousel.cardsWrapper.children);
+                updateSugestoesCarouselUI(carousel); // Initial setup
+            }
+        }
+
+        sugestoesBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                const target = box.dataset.sugestoesTarget;
+                sugestoesMainView.classList.add('hidden');
+                sugestoesDetailView.classList.remove('hidden');
+                Object.values(carouselsData).forEach(c => c.container.classList.add('hidden'));
+                const targetCarousel = carouselsData[target];
+                if (targetCarousel) {
+                    sugestoesDetailTitle.textContent = target === 'cerimonia' ? 'Para a Cerimônia' : 'Para o Show Lounge';
+                    targetCarousel.container.classList.remove('hidden');
+                    updateSugestoesCarouselUI(targetCarousel);
+                }
+            });
+        });
+
+        if (sugestoesBackBtn) {
+            sugestoesBackBtn.addEventListener('click', () => {
+                sugestoesDetailView.classList.add('hidden');
+                sugestoesMainView.classList.remove('hidden');
+            });
+        }
+
+        document.querySelectorAll('.sugestoes-carousel-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const carouselId = this.dataset.carouselId;
+                const direction = this.classList.contains('next-btn') ? 'next' : 'prev';
+                navigateSugestoesCarousel(carouselId, direction);
+            });
+        });
+
+        for (const key in carouselsData) {
+            let touchstartX = 0;
+            const carousel = carouselsData[key];
+            if (carousel.cardsWrapper) {
+                carousel.cardsWrapper.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
+                carousel.cardsWrapper.addEventListener('touchend', e => {
+                    const touchendX = e.changedTouches[0].screenX;
+                    if (touchendX < touchstartX - 50) navigateSugestoesCarousel(key, 'next');
+                    if (touchendX > touchstartX + 50) navigateSugestoesCarousel(key, 'prev');
+                });
+            }
+        }
     }
-}
+});
 </script>
 
 </body>
