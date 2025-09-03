@@ -83,23 +83,136 @@
         font-family: 'Playfair Display', serif; font-size: 2rem;
         font-weight: 700; color: white; text-align: left;
     }
-    .sugestoes-carousel {
-        display: flex; gap: 1.5rem; overflow-x: auto;
-        padding-bottom: 1.5rem; -ms-overflow-style: none; scrollbar-width: none;
+    .sugestoes-carousel-container {
+        position: relative;
+        overflow: hidden; /* Garante que os elementos fora do container fiquem ocultos */
+        width: 100%;
+        margin: 0 auto;
+        padding-bottom: 2rem; /* Espaço para os botões de navegação */
+        display: flex; /* Adicionado para centralizar os itens de carrossel */
+        justify-content: center; /* Centraliza o conteúdo flex */
     }
-    .sugestoes-carousel::-webkit-scrollbar { display: none; }
-    .sugestoes-card {
-        background-color: #0A2B34; border-radius: 20px; overflow: hidden;
-        flex-shrink: 0; width: 280px; display: flex; flex-direction: column;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease;
+
+    .sugestoes-carousel-cards {
+        display: flex;
+        align-items: center; /* Alinha os cards verticalmente */
+        justify-content: center;
+        width: 100%;
+        height: 380px; /* Altura fixa para o carrossel */
+        position: relative;
     }
-    .sugestoes-card:hover { transform: translateY(-5px); }
-    .sugestoes-card-img-wrapper { height: 160px; width: 100%; }
-    .sugestoes-card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-    .sugestoes-card h3 {
-        font-family: 'Lora', serif; font-size: 1.25rem; color: white;
-        padding: 1rem; text-align: center; margin-top: auto;
+
+    .sugestoes-carousel-card {
+        position: absolute;
+        width: 320px; /* Largura base do card */
+        height: 300px; /* Altura base do card */
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #0A2B34;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Alinha o conteúdo na parte inferior */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        transition: transform 0.5s ease, opacity 0.5s ease, z-index 0s; /* Z-index sem transição */
+        cursor: pointer;
+        will-change: transform, opacity; /* Otimização de performance */
     }
+
+    .sugestoes-carousel-card.active {
+        transform: translateX(-50%) scale(1.05); /* Ligeiramente maior para destaque */
+        opacity: 1;
+        z-index: 30;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .sugestoes-carousel-card.prev {
+        transform: translateX(-120%) scale(0.8);
+        opacity: 0.5;
+        z-index: 20;
+    }
+
+    .sugestoes-carousel-card.next {
+        transform: translateX(20%) scale(0.8);
+        opacity: 0.5;
+        z-index: 20;
+    }
+
+    .sugestoes-carousel-card.hidden-left,
+    .sugestoes-carousel-card.hidden-right {
+        transform: translateX(-50%) scale(0.7); /* Reduz ainda mais */
+        opacity: 0;
+        z-index: 10;
+        pointer-events: none; /* Desabilita clique em cards ocultos */
+    }
+
+    .sugestoes-carousel-card-img-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .sugestoes-carousel-card-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .sugestoes-carousel-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem 1rem 1rem;
+        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%; /* Ocupa toda a altura para o gradiente */
+    }
+
+    .sugestoes-carousel-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: white;
+        margin-top: auto; /* Empurra para baixo */
+        margin-bottom: 0.5rem;
+        z-index: 1; /* Garante que o texto fique acima do overlay */
+        position: relative;
+    }
+
+    .sugestoes-carousel-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #0A2B34;
+        padding: 0.75rem;
+        border-radius: 9999px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        z-index: 40;
+    }
+
+    .sugestoes-carousel-nav-btn:hover {
+        background-color: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .sugestoes-carousel-nav-btn.prev-btn { left: 0.5rem; }
+    .sugestoes-carousel-nav-btn.next-btn { right: 0.5rem; }
+
+    @media (min-width: 768px) { /* Ajustes para telas maiores */
+        .sugestoes-carousel-nav-btn.prev-btn { left: -3rem; }
+        .sugestoes-carousel-nav-btn.next-btn { right: -3rem; }
+    }
+
+
     .modal-sugestoes .painel-vidro {
         background: rgba(34, 33, 42, 0.85); /* Cor #22212a com 85% opacidade */
         backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
@@ -262,17 +375,49 @@
                         <h2 id="sugestoes-detail-title" class="text-3xl md:text-4xl font-bold text-primary-dark text-center"></h2>
                         <div class="w-24"></div>
                     </div>
-                    <div id="carousel-cerimonia" class="sugestoes-carousel hidden">
-                        <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/gK2n6pY.jpeg" alt="Músicas Seculares"></div><h3>Seculares</h3></button>
-                        <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div><h3>Sacras/Orquestradas</h3></button>
-                        <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/rS2Tj9g.jpeg" alt="Músicas Gospel"></div><h3>Cristã/Gospel</h3></button>
+                    
+                    <div id="carousel-cerimonia-container" class="sugestoes-carousel-container hidden">
+                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="carousel-cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+                        <div id="carousel-cerimonia-cards" class="sugestoes-carousel-cards">
+                            <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/gK2n6pY.jpeg" alt="Músicas Seculares"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>Seculares</h3></div>
+                            </button>
+                            <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>Sacras/Orquestradas</h3></div>
+                            </button>
+                            <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/rS2Tj9g.jpeg" alt="Músicas Gospel"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>Cristã/Gospel</h3></div>
+                            </button>
+                        </div>
+                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="carousel-cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
                     </div>
-                    <div id="carousel-lounge" class="sugestoes-carousel hidden">
-                        <button data-modal-target="#modal-sugestao-pop" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div><h3>POP</h3></button>
-                        <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/5IbR61G.jpeg" alt="Músicas MPB"></div><h3>MPB</h3></button>
-                        <button data-modal-target="#modal-sugestao-rock" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/pZz8k5K.jpeg" alt="Músicas Rock"></div><h3>ROCK</h3></button>
-                        <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-card"><div class="sugestoes-card-img-wrapper"><img src="https://i.imgur.com/qL3Zf1y.jpeg" alt="Músicas Sertanejo"></div><h3>SERTANEJO</h3></button>
+
+                    <div id="carousel-lounge-container" class="sugestoes-carousel-container hidden">
+                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="carousel-lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+                        <div id="carousel-lounge-cards" class="sugestoes-carousel-cards">
+                            <button data-modal-target="#modal-sugestao-pop" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>POP</h3></div>
+                            </button>
+                            <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/5IbR61G.jpeg" alt="Músicas MPB"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>MPB</h3></div>
+                            </button>
+                            <button data-modal-target="#modal-sugestao-rock" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/pZz8k5K.jpeg" alt="Músicas Rock"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>ROCK</h3></div>
+                            </button>
+                            <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-carousel-card">
+                                <div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/qL3Zf1y.jpeg" alt="Músicas Sertanejo"></div>
+                                <div class="sugestoes-carousel-card-overlay"><h3>SERTANEJO</h3></div>
+                            </button>
+                        </div>
+                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="carousel-lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -591,40 +736,129 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // LÓGICA DA SEÇÃO SUGESTÕES
+    // LÓGICA DA SEÇÃO SUGESTÕES (CARROSSEL)
     const sugestoesMainView = document.getElementById('sugestoes-main-view');
     const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
-    if (sugestoesMainView && sugestoesDetailView) {
-        const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
-        const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
-        const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
-        const carousels = {
-            cerimonia: document.getElementById('carousel-cerimonia'),
-            lounge: document.getElementById('carousel-lounge')
-        };
-        sugestoesBoxes.forEach(box => {
-            box.addEventListener('click', () => {
-                const target = box.dataset.sugestoesTarget;
-                sugestoesMainView.classList.add('hidden');
-                sugestoesDetailView.classList.remove('hidden');
-                if (target === 'cerimonia') {
-                    sugestoesDetailTitle.textContent = 'Para a Cerimônia';
-                    carousels.cerimonia.classList.remove('hidden');
-                    carousels.lounge.classList.add('hidden');
-                } else if (target === 'lounge') {
-                    sugestoesDetailTitle.textContent = 'Para o Show Lounge';
-                    carousels.lounge.classList.remove('hidden');
-                    carousels.cerimonia.classList.add('hidden');
+    
+    const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
+    const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
+    const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
+
+    const carouselsData = {
+        'carousel-cerimonia': {
+            container: document.getElementById('carousel-cerimonia-container'),
+            cardsWrapper: document.getElementById('carousel-cerimonia-cards'),
+            cards: [],
+            currentIndex: 0,
+            touchstartX: 0
+        },
+        'carousel-lounge': {
+            container: document.getElementById('carousel-lounge-container'),
+            cardsWrapper: document.getElementById('carousel-lounge-cards'),
+            cards: [],
+            currentIndex: 0,
+            touchstartX: 0
+        }
+    };
+
+    function initializeCarousels() {
+        for (const key in carouselsData) {
+            const carousel = carouselsData[key];
+            if (carousel.cardsWrapper) {
+                carousel.cards = Array.from(carousel.cardsWrapper.querySelectorAll('.sugestoes-carousel-card'));
+                if (carousel.cards.length > 0) {
+                    updateSugestoesCarouselUI(carousel);
                 }
-            });
+            }
+        }
+    }
+
+    function updateSugestoesCarouselUI(carousel) {
+        if (carousel.cards.length === 0) return;
+
+        carousel.cards.forEach((card, index) => {
+            card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
+            
+            if (index === carousel.currentIndex) {
+                card.classList.add('active');
+            } else if (index === (carousel.currentIndex - 1 + carousel.cards.length) % carousel.cards.length) {
+                card.classList.add('prev');
+            } else if (index === (carousel.currentIndex + 1) % carousel.cards.length) {
+                card.classList.add('next');
+            } else if (index < carousel.currentIndex) {
+                card.classList.add('hidden-left');
+            } else {
+                card.classList.add('hidden-right');
+            }
         });
-        if (sugestoesBackBtn) {
-            sugestoesBackBtn.addEventListener('click', () => {
-                sugestoesDetailView.classList.add('hidden');
-                sugestoesMainView.classList.remove('hidden');
+    }
+
+    function navigateSugestoesCarousel(carouselId, direction) {
+        const carousel = carouselsData[carouselId];
+        if (!carousel || carousel.cards.length === 0) return;
+
+        if (direction === 'next') {
+            carousel.currentIndex = (carousel.currentIndex + 1) % carousel.cards.length;
+        } else if (direction === 'prev') {
+            carousel.currentIndex = (carousel.currentIndex - 1 + carousel.cards.length) % carousel.cards.length;
+        }
+        updateSugestoesCarouselUI(carousel);
+    }
+
+    sugestoesBoxes.forEach(box => {
+        box.addEventListener('click', () => {
+            const target = box.dataset.sugestoesTarget;
+            sugestoesMainView.classList.add('hidden');
+            sugestoesDetailView.classList.remove('hidden');
+            
+            for (const key in carouselsData) {
+                carouselsData[key].container.classList.add('hidden');
+            }
+
+            if (target === 'cerimonia') {
+                sugestoesDetailTitle.textContent = 'Para a Cerimônia';
+                carouselsData['carousel-cerimonia'].container.classList.remove('hidden');
+                updateSugestoesCarouselUI(carouselsData['carousel-cerimonia']);
+            } else if (target === 'lounge') {
+                sugestoesDetailTitle.textContent = 'Para o Show Lounge';
+                carouselsData['carousel-lounge'].container.classList.remove('hidden');
+                updateSugestoesCarouselUI(carouselsData['carousel-lounge']);
+            }
+        });
+    });
+
+    if (sugestoesBackBtn) {
+        sugestoesBackBtn.addEventListener('click', () => {
+            sugestoesDetailView.classList.add('hidden');
+            sugestoesMainView.classList.remove('hidden');
+        });
+    }
+
+    document.querySelectorAll('.sugestoes-carousel-nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const carouselId = this.dataset.carouselId;
+            const direction = this.classList.contains('next-btn') ? 'next' : 'prev';
+            navigateSugestoesCarousel(carouselId, direction);
+        });
+    });
+
+    // Adiciona suporte a swipe para os carrosséis de sugestões
+    for (const key in carouselsData) {
+        const carousel = carouselsData[key];
+        if (carousel.cardsWrapper) {
+            carousel.cardsWrapper.addEventListener('touchstart', e => carousel.touchstartX = e.changedTouches[0].screenX);
+            carousel.cardsWrapper.addEventListener('touchend', e => {
+                if (e.changedTouches[0].screenX < carousel.touchstartX - 50) {
+                    navigateSugestoesCarousel(key, 'next');
+                }
+                if (e.changedTouches[0].screenX > carousel.touchstartX + 50) {
+                    navigateSugestoesCarousel(key, 'prev');
+                }
             });
         }
     }
+
+    initializeCarousels(); // Inicializa os carrosséis após carregar o DOM
 });
 </script>
 
