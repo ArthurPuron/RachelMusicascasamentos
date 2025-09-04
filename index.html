@@ -84,13 +84,11 @@
         font-weight: 700; color: white; text-align: left;
     }
     .sugestoes-carousel-container {
-        position: relative;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 4rem;
-        width: 100%; /* CORREÇÃO APLICADA AQUI */
-    }
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Um pouco menor para garantir o espaçamento */
+    padding: 0 4rem;
+}
     .sugestoes-carousel-cards {
         position: relative; height: 380px; display: flex;
         align-items: center; justify-content: center;
@@ -281,8 +279,8 @@
                         <button data-sugestoes-target="lounge" class="sugestoes-box group"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Música para Show Lounge" class="sugestoes-box-img"><div class="sugestoes-box-overlay"><h3 class="sugestoes-box-title">Show Lounge</h3></div></button>
                     </div>
                 </div>
-                <div id="sugestoes-detail-view" class="hidden">
-                    <div class="flex items-center justify-between mb-12">
+<div id="sugestoes-detail-view" class="hidden flex flex-col items-center">
+                <div class="flex items-center justify-between mb-12">
                         <button id="sugestoes-back-btn" class="text-gray-medium hover:text-primary-dark transition-colors duration-300 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>Voltar</button>
                         <h2 id="sugestoes-detail-title" class="text-3xl md:text-4xl font-bold text-primary-dark text-center"></h2>
                         <div class="w-24"></div>
