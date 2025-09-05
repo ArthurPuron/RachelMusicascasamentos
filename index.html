@@ -242,13 +242,14 @@
 
         <section class="formacoes" id="formacoes">
             <style>
-           @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
 
-/* Início do código da Opção 2 */
+/* Início do código da Opção 3 */
 .formacoes { 
-    background-color: #0A2B34; /* Cor de fundo da seção (azul escuro) */
+    /* Fundo em gradiente sutil de branco para bege claro */
+    background: linear-gradient(180deg, #ffffff 0%, #FAF7F5 100%); 
     font-family: 'Montserrat', sans-serif; 
-    color: #FAF7F5; /* Cor do texto padrão da seção (bege claro) */
+    color: #0A2B34; 
     padding: 5vh 20px; 
     text-align: center; 
     min-height: 100vh; 
@@ -259,7 +260,7 @@
 .formacoes .formacoes-titulo { 
     font-family: 'Lora', serif; 
     font-size: 2.5rem; 
-    color: #ffffff; /* Título principal branco para contraste */
+    color: #0A2B34; 
     margin-top: 0; 
     margin-bottom: 40px; 
 }
@@ -271,20 +272,21 @@
     flex-wrap: wrap; 
 }
 .formacoes .card { 
-    background-color: #FAF7F5; /* Fundo dos cards bege claro */
+    background-color: #0A2B34; 
     border-radius: 20px; 
     overflow: hidden; 
     width: 340px; 
     display: flex; 
     flex-direction: column; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+    /* Sombra mais pronunciada para dar profundidade */
+    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     position: relative; 
     text-align: left; 
 }
 .formacoes .card:hover { 
     transform: translateY(-10px); 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
+    box-shadow: 0 20px 40px rgba(10, 43, 52, 0.25), 0 10px 15px rgba(10, 43, 52, 0.15); 
 }
 .formacoes .card-image-wrapper { 
     position: relative; 
@@ -304,7 +306,7 @@
     left: 0; 
     width: 100%; 
     height: 50%; 
-    background: linear-gradient(to top, #FAF7F5 10%, rgba(250, 247, 245, 0) 100%); /* Gradiente para o bege claro */
+    background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); 
     pointer-events: none; 
 }
 .formacoes .card-body { 
@@ -318,12 +320,12 @@
     font-size: 1.5rem; 
     margin-top: 0; 
     margin-bottom: 8px; 
-    color: #0A2B34; /* Título do card escuro */
+    color: #ffffff; 
     text-align: center; 
 }
 .formacoes .card-subtitulo { 
     font-size: 0.85rem; 
-    color: #6c757d; /* Subtítulo cinza */
+    color: #b0b0b0; 
     margin-top: 0; 
     margin-bottom: 16px; 
     text-align: center; 
@@ -333,7 +335,7 @@
     list-style: none; 
     padding-left: 0; 
     margin-bottom: 24px; 
-    color: #0A2B34; /* Cor da lista escura */
+    color: #c7c4b6; 
     flex-grow: 1; 
     font-size: 0.85rem; 
 }
@@ -344,7 +346,7 @@
 }
 .formacoes .card-lista li::before { 
     content: '•'; 
-    color: #0A2B34; /* Bullet escuro para combinar */
+    color: #c7c4b6; 
     font-size: 1.2rem; 
     position: absolute; 
     left: 0; 
@@ -358,40 +360,26 @@
     font-weight: 500; 
     text-transform: uppercase; 
     font-size: 0.8rem; 
-    transition: all 0.3s ease; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
     margin-top: auto; 
     text-align: center; 
     background-color: #C0A084; /* Botão na cor de destaque */
-    color: #0A2B34; /* Texto do botão escuro */
+    color: #0A2B34; 
 }
 .formacoes .btn:hover { 
-    background-color: #AD8B6E; /* Cor de hover do botão */
-    transform: translateY(-2px);
+    background-color: #AD8B6E; 
 }
 .formacoes .popular { 
     transform: scale(1.05); 
-    background-color: #C0A084; /* Fundo do card popular na cor de destaque */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
-}
-.formacoes .popular .card-body h3, .formacoes .popular .card-subtitulo, .formacoes .popular .card-lista, .formacoes .popular .card-lista li::before {
-    color: #0A2B34; /* Garante que o texto no card popular seja escuro */
-}
-.formacoes .popular .card-image-wrapper::after {
-    background: linear-gradient(to top, #C0A084 10%, rgba(192, 160, 132, 0) 100%); /* Gradiente para a cor de destaque */
-}
-.formacoes .popular .btn {
-    background-color: #FAF7F5; /* Botão do card popular claro */
-    color: #0A2B34;
-}
-.formacoes .popular .btn:hover {
-    background-color: #e6e3e3;
+    /* Sombra colorida para dar um brilho sutil ao card popular */
+    box-shadow: 0 20px 40px rgba(10, 43, 52, 0.3), 0 0 30px rgba(192, 160, 132, 0.3);
 }
 .formacoes .popular-tag { 
     position: absolute; 
     top: 15px; 
     right: 15px; 
-    background-color: #FAF7F5; /* Tag clara */
-    color: #0A2B34; /* Texto da tag escuro */
+    background-color: #c7c4b6; 
+    color: #1a1a1a; 
     padding: 5px 15px; 
     border-radius: 15px; 
     font-size: 0.8rem; 
@@ -408,7 +396,7 @@
     .formacoes .formacoes-titulo { font-size: 2.2rem; } 
     .formacoes .card { width: 100%; max-width: 380px; } 
 }
-/* Fim do código da Opção 2 */
+/* Fim do código da Opção 3 */
             </style>
             <h2 class="formacoes-titulo">Nossas Formações</h2>
             <div class="formacoes-container">
