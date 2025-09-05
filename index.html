@@ -242,13 +242,13 @@
 
         <section class="formacoes" id="formacoes">
             <style>
-            @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+           @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
 
-/* Início do código da Opção 1 */
+/* Início do código da Opção 2 */
 .formacoes { 
-    background-color: #FAF7F5; /* Cor de fundo da seção (bege claro) */
+    background-color: #0A2B34; /* Cor de fundo da seção (azul escuro) */
     font-family: 'Montserrat', sans-serif; 
-    color: #0A2B34; 
+    color: #FAF7F5; /* Cor do texto padrão da seção (bege claro) */
     padding: 5vh 20px; 
     text-align: center; 
     min-height: 100vh; 
@@ -259,7 +259,7 @@
 .formacoes .formacoes-titulo { 
     font-family: 'Lora', serif; 
     font-size: 2.5rem; 
-    color: #0A2B34; /* Cor do título principal */
+    color: #ffffff; /* Título principal branco para contraste */
     margin-top: 0; 
     margin-bottom: 40px; 
 }
@@ -271,21 +271,20 @@
     flex-wrap: wrap; 
 }
 .formacoes .card { 
-    background-color: #ffffff; /* Fundo dos cards branco */
-    border: 1px solid #e6e3e3; /* Borda sutil para definir o card */
+    background-color: #FAF7F5; /* Fundo dos cards bege claro */
     border-radius: 20px; 
     overflow: hidden; 
     width: 340px; 
     display: flex; 
     flex-direction: column; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* Sombra mais suave */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     position: relative; 
     text-align: left; 
 }
 .formacoes .card:hover { 
     transform: translateY(-10px); 
-    box-shadow: 0 15px 30px rgba(10, 43, 52, 0.1); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
 }
 .formacoes .card-image-wrapper { 
     position: relative; 
@@ -305,7 +304,7 @@
     left: 0; 
     width: 100%; 
     height: 50%; 
-    background: linear-gradient(to top, #ffffff 10%, rgba(255, 255, 255, 0) 100%); /* Gradiente para branco */
+    background: linear-gradient(to top, #FAF7F5 10%, rgba(250, 247, 245, 0) 100%); /* Gradiente para o bege claro */
     pointer-events: none; 
 }
 .formacoes .card-body { 
@@ -345,7 +344,7 @@
 }
 .formacoes .card-lista li::before { 
     content: '•'; 
-    color: #C0A084; /* Cor do bullet (accent-color) */
+    color: #0A2B34; /* Bullet escuro para combinar */
     font-size: 1.2rem; 
     position: absolute; 
     left: 0; 
@@ -359,27 +358,40 @@
     font-weight: 500; 
     text-transform: uppercase; 
     font-size: 0.8rem; 
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; 
     margin-top: auto; 
     text-align: center; 
-    background-color: #0A2B34; /* Botão escuro */
-    color: #ffffff; /* Texto do botão branco */
+    background-color: #C0A084; /* Botão na cor de destaque */
+    color: #0A2B34; /* Texto do botão escuro */
 }
 .formacoes .btn:hover { 
-    background-color: #1a4a58; 
+    background-color: #AD8B6E; /* Cor de hover do botão */
     transform: translateY(-2px);
 }
 .formacoes .popular { 
     transform: scale(1.05); 
-    border: 2px solid #C0A084; /* Borda de destaque no popular */
-    box-shadow: 0 20px 40px rgba(192, 160, 132, 0.2); 
+    background-color: #C0A084; /* Fundo do card popular na cor de destaque */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+}
+.formacoes .popular .card-body h3, .formacoes .popular .card-subtitulo, .formacoes .popular .card-lista, .formacoes .popular .card-lista li::before {
+    color: #0A2B34; /* Garante que o texto no card popular seja escuro */
+}
+.formacoes .popular .card-image-wrapper::after {
+    background: linear-gradient(to top, #C0A084 10%, rgba(192, 160, 132, 0) 100%); /* Gradiente para a cor de destaque */
+}
+.formacoes .popular .btn {
+    background-color: #FAF7F5; /* Botão do card popular claro */
+    color: #0A2B34;
+}
+.formacoes .popular .btn:hover {
+    background-color: #e6e3e3;
 }
 .formacoes .popular-tag { 
     position: absolute; 
     top: 15px; 
     right: 15px; 
-    background-color: #C0A084; /* Cor da tag (accent-color) */
-    color: #ffffff; /* Texto da tag branco */
+    background-color: #FAF7F5; /* Tag clara */
+    color: #0A2B34; /* Texto da tag escuro */
     padding: 5px 15px; 
     border-radius: 15px; 
     font-size: 0.8rem; 
@@ -396,7 +408,7 @@
     .formacoes .formacoes-titulo { font-size: 2.2rem; } 
     .formacoes .card { width: 100%; max-width: 380px; } 
 }
-/* Fim do código da Opção 1 */    
+/* Fim do código da Opção 2 */
             </style>
             <h2 class="formacoes-titulo">Nossas Formações</h2>
             <div class="formacoes-container">
