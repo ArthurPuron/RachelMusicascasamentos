@@ -132,21 +132,25 @@
     }
 
     /* A MÁGICA ACONTECE AQUI: A BORDA COMO UMA CAMADA SEPARADA */
-    .formacoes .card::after {
-        content: ''; /* Necessário para o pseudo-elemento existir */
-        position: absolute; /* Permite que a borda flutue */
-        
-        /* Posição e Tamanho: faz a borda ser maior que o card */
-        top: -20px; 
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
+.formacoes .card::after {
+    content: '';
+    position: absolute;
+    
+    /* VALORES AJUSTADOS PARA MAIOR VISIBILIDADE DA BORDA */
+    top: -25px; /* Aumenta o deslocamento superior */
+    left: -25px; /* Aumenta o deslocamento esquerdo */
+    right: -25px; /* Aumenta o deslocamento direito */
+    bottom: -25px; /* Aumenta o deslocamento inferior */
 
-        /* A imagem da borda como fundo */
-        background-image: url('./imagem/borda-card.png');
-        background-size: 100% 100%; /* Estica a imagem para preencher o espaço */
-        background-repeat: no-repeat;
-    }
+    background-image: url('./imagem/borda-card.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+    /* ADICIONADO: z-index para garantir que a borda esteja acima, se desejar */
+    z-index: -1; /* Coloca a borda por trás do card */
+    /* OU use z-index: 1; se quiser a borda por cima do card (como uma moldura flutuante) */
+    /* Sugiro -1 para a borda ficar como um fundo do card, como na imagem que você enviou */
+}
 
     .formacoes .card:hover {
         transform: translateY(-10px);
