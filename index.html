@@ -252,8 +252,6 @@
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed; /* Cria o efeito parallax */
 
-    position: relative; /* Necessário para o efeito de sobreposição */
-    z-index: 1;
 
     /* Estilos que já existiam e foram mantidos */
     font-family: 'Montserrat', sans-serif;
@@ -266,17 +264,6 @@
     justify-content: center;
 }
 
-/* Camada escura semi-transparente por cima da imagem para dar contraste */
-.formacoes::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(10, 43, 52, 0.7); /* Cor escura do site com 70% de opacidade */
-    z-index: -1; /* Coloca a camada atrás do conteúdo (título e cards) */
-}
 .formacoes .formacoes-titulo { 
     font-family: 'Lora', serif; 
     font-size: 2.5rem; 
