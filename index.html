@@ -241,8 +241,8 @@
         </section>
 
       <section class="formacoes" id="formacoes">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
 
 /* Início do código da Opção 3 */
 .formacoes { 
@@ -276,12 +276,11 @@
     flex-wrap: wrap; 
 }
 
-/* ESTILO DO CARD - PRINCIPAL CORREÇÃO AQUI */
+/* ESTILO DO CARD */
 .formacoes .card { 
     background-color: #0A2B34; 
-    /* CORREÇÃO CRÍTICA: Desativa border-radius e overflow para a moldura aparecer */
     border-radius: 0 !important; 
-    overflow: visible !important; /* Força para a moldura não ser cortada */
+    overflow: visible !important; 
     width: 340px; 
     display: flex; 
     flex-direction: column; 
@@ -289,27 +288,26 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     position: relative; 
     text-align: left; 
-    /* Padding para criar espaço para a moldura fora do conteúdo */
-    padding: 30px; 
+    /* O padding sumiu para centralizar o conteúdo */
+    padding: 0; 
 }
 
-/* ESTILOS DA MOLDURA */
+/* ESTILOS DA MOLDURA (Container) - Onde a mágica do tamanho acontece */
 .formacoes .moldura-overlay {
     position: absolute;
-    /* Centraliza a moldura para envolver o card */
-    top: -10%; 
-    left: -10%; 
-    width: 120%; /* Estica para cobrir o card e a borda */
-    height: 120%;
+    top: -35px; /* Posição externa superior */
+    left: -35px; /* Posição externa esquerda */
+    width: calc(100% + 70px); /* Largura total do card + margem extra */
+    height: calc(100% + 70px); /* Altura total do card + margem extra */
     pointer-events: none;
-    z-index: 10; 
+    z-index: 10; /* Moldura SEMPRE por cima do conteúdo */
     transition: transform 0.3s ease;
 }
 
 .formacoes .moldura-img {
     width: 100%; 
     height: 100%;
-    object-fit: fill; /* Garante que a imagem preencha o overlay */
+    object-fit: fill; 
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
 }
 
@@ -317,8 +315,6 @@
     transform: translateY(-5px); 
 }
 
-
-/* REAJUSTES DE ESTILOS EXISTENTES */
 .formacoes .popular { 
     transform: none; 
     box-shadow: none;
@@ -327,18 +323,23 @@
     transform: none;
     box-shadow: none; 
 }
+
+/* REAJUSTES CRÍTICOS DE CONTEÚDO */
 .formacoes .card-image-wrapper { 
     position: relative; 
     height: 180px; 
-    overflow: hidden; /* O overflow hidden é permitido apenas no wrapper da imagem */
+    overflow: hidden;
+    /* NOVO: Margem interna para que a imagem não encoste na borda interna da moldura */
+    margin: 25px 25px 0 25px; 
+    z-index: 20; /* Garante que a imagem fique sobre a moldura */
 }
-/* O restante dos estilos é mantido inalterado */
 .formacoes .card-image-wrapper img { 
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
     display: block; 
 }
+/* O gradiente tem que ter z-index maior que a moldura */
 .formacoes .card-image-wrapper::after { 
     content: ''; 
     position: absolute; 
@@ -347,13 +348,16 @@
     width: 100%; 
     height: 50%; 
     background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); 
-    pointer-events: none; 
+    pointer-events: none;
+    z-index: 30; /* Acima de tudo */
 }
 .formacoes .card-body { 
-    padding: 24px 0 0; 
+    /* Margem interna para que o texto não encoste na borda interna da moldura */
+    padding: 15px 30px 30px 30px; 
     display: flex; 
     flex-direction: column; 
     flex-grow: 1; 
+    z-index: 20; /* Garante que o texto fique sobre a moldura */
 }
 .formacoes .card-body h3 { 
     font-family: 'Lora', serif; 
@@ -420,7 +424,7 @@
     font-size: 0.8rem; 
     font-weight: 500; 
     text-transform: uppercase; 
-    z-index: 15;
+    z-index: 30; /* O mais alto de todos */
 }
 @media (max-width: 1150px) { 
     .formacoes { min-height: auto; } 
@@ -431,9 +435,9 @@
     .formacoes .card { width: 100%; max-width: 380px; } 
 }
 /* Fim do código da Opção 3 */
-    </style>
-    <h2 class="formacoes-titulo">Nossas Formações</h2>
-    <div class="formacoes-container">
+    </style>
+    <h2 class="formacoes-titulo">Nossas Formações</h2>
+    <div class="formacoes-container">
         
         <div class="card">
                         <div class="moldura-overlay">
@@ -495,7 +499,7 @@
                 <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
             </div>
         </div>
-    </div>
+    </div>
 </section>
 
         <section id="sugestoes" class="bg-primary-light py-20 md:py-32">
