@@ -280,7 +280,6 @@
 }
 .formacoes .card { 
     background-color: #0A2B34; 
-    border-radius: 20px; 
     overflow: hidden; 
     width: 300px; 
     height: 480px;
@@ -291,6 +290,18 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     position: relative; 
     text-align: left; 
+    /* --- CÓDIGO DA BORDA DE IMAGEM --- */
+    /* 1. Define o espaço para a borda e a torna transparente */
+    border: 25px solid transparent;
+
+    /* 2. Adiciona a sua imagem como borda */
+    border-image-source: url('./imagem/borda-card.jpg');
+
+    /* 3. "Fatia" a imagem para separar os cantos do resto */
+    border-image-slice: 100; /* Este valor "corta" a imagem nos cantos. Ajuste se necessário. */
+
+    /* 4. Define como as laterais da borda se comportam */
+    border-image-repeat: stretch; /* 'stretch' estica a imagem para preencher o espaço, o que é ideal aqui. */
 }
 .formacoes .card:hover { 
     transform: translateY(-10px); 
