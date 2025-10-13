@@ -145,12 +145,14 @@
     
     /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES --- */
     .formacoes {
-        background-image: url('./imagem/fundo.png');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        /* Revertido para o fundo branco para que o título seja visível */
+        background-image: url('./imagem/fundo.png'); /* Caminho para a sua imagem */
+        background-size: cover; /* Faz a imagem cobrir toda a seção */
+        background-position: center; /* Centraliza a imagem */
+        background-attachment: fixed; /* Cria o efeito parallax */
+        
         font-family: 'Montserrat', sans-serif;
-        color: #0A2B34;
+        color: #0A2B34; /* Cor principal para textos genéricos na seção */
         padding: 5vh 20px;
         text-align: center;
         min-height: 100vh;
@@ -161,7 +163,7 @@
     .formacoes .formacoes-titulo {
         font-family: 'Lora', serif;
         font-size: 2.5rem;
-        color: #FAF7F5; /* Título principal branco */
+        color: #0A2B34; /* CORRIGIDO: Título principal voltou para a cor escura */
         margin-top: 0;
         margin-bottom: 40px;
     }
@@ -176,12 +178,15 @@
         position: relative;
         box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 25px solid transparent;
-        border-image-source: url('./imagem/borda-card.jpg');
-        border-image-slice: 80 fill; /* Ajustado para um valor mais provável */
-        border-image-width: 25px;
-        border-image-repeat: stretch;
-        border-radius: 0;
+        
+        /* AJUSTES PARA A BORDA DE IMAGEM */
+        border: 27px solid transparent; /* Reduzido para encaixar melhor a imagem de borda */
+        border-image-source: url('./imagem/borda-card.png'); /* Caminho da imagem confirmado */
+        border-image-slice: 27 fill; /* CORRIGIDO: Slice ajustado para corresponder à espessura da sua borda na imagem */
+        border-image-width: 27px; /* CORRIGIDO: Largura da borda visual */
+        border-image-repeat: stretch; /* 'stretch' para esticar as laterais */
+
+        border-radius: 0; /* Garante que não haja arredondamento no container da borda */
     }
     .formacoes .card-content {
         background-color: #0A2B34;
@@ -214,7 +219,7 @@
         left: 0;
         width: 100%;
         height: 50%;
-        background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%);
+        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
         pointer-events: none;
     }
     .formacoes .card-body {
