@@ -174,20 +174,27 @@
         gap: 30px;
         flex-wrap: wrap;
     }
-    .formacoes .card {
-        position: relative;
-        box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        
-        /* AJUSTES PARA A BORDA DE IMAGEM */
-        border: 27px solid transparent; /* Reduzido para encaixar melhor a imagem de borda */
-        border-image-source: url('./imagem/borda-card.png'); /* Caminho da imagem confirmado */
-        border-image-slice: 27 fill; /* CORRIGIDO: Slice ajustado para corresponder à espessura da sua borda na imagem */
-        border-image-width: 27px; /* CORRIGIDO: Largura da borda visual */
-        border-image-repeat: stretch; /* 'stretch' para esticar as laterais */
+    /* --- ESTILOS PARA O CONTÊINER DA BORDA (O ELEMENTO PAI) --- */
+.formacoes .card {
+    position: relative;
+    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-        border-radius: 0; /* Garante que não haja arredondamento no container da borda */
-    }
+    /* --- AJUSTES FINAIS E CORRIGIDOS DA BORDA --- */
+    /* 1. Define o espaço para a borda */
+    border: 35px solid transparent; 
+
+    /* 2. Confirma o caminho correto da imagem */
+    border-image-source: url('./imagem/borda-card.png'); 
+
+    /* 3. "Fatia" a imagem no tamanho correto do ornamento do canto */
+    border-image-slice: 115; /* VALOR-CHAVE CORRIGIDO: Este número maior deve capturar todo o canto */
+
+    /* 4. Remove o 'fill' e deixa o padrão 'stretch' para as laterais */
+    border-image-repeat: stretch; 
+    
+    border-radius: 0;
+}
     .formacoes .card-content {
         background-color: #0A2B34;
         width: 300px;
