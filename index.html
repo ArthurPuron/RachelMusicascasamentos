@@ -242,167 +242,259 @@
 
         <section class="formacoes" id="formacoes">
             <style>
-          @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
 
 /* Início do código da Opção 3 */
-.formacoes { 
-    /* Fundo em gradiente sutil de branco para bege claro */
-    background: linear-gradient(180deg, #ffffff 0%, #FAF7F5 100%); 
-    font-family: 'Montserrat', sans-serif; 
-    color: #0A2B34; 
-    padding: 5vh 20px; 
-    text-align: center; 
-    min-height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
+.formacoes { 
+    /* NOVO: Fundo com imagem de tile e configurações para cobrir */
+    background-image: url('./imagem/fundo.png');
+    background-size: cover; /* Garante que a imagem cubra toda a seção */
+    background-position: center center; /* Centraliza a imagem */
+    background-color: #FAF7F5; /* Cor de fallback caso a imagem não carregue */
+    
+    font-family: 'Montserrat', sans-serif; 
+    color: #0A2B34; 
+    padding: 5vh 20px; 
+    text-align: center; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
 }
-.formacoes .formacoes-titulo { 
-    font-family: 'Lora', serif; 
-    font-size: 2.5rem; 
-    color: #0A2B34; 
-    margin-top: 0; 
-    margin-bottom: 40px; 
+.formacoes .formacoes-titulo { 
+    font-family: 'Lora', serif; 
+    font-size: 2.5rem; 
+    color: #0A2B34; 
+    margin-top: 0; 
+    margin-bottom: 40px; 
 }
-.formacoes .formacoes-container { 
-    display: flex; 
-    justify-content: center; 
-    align-items: stretch; 
-    gap: 30px; 
-    flex-wrap: wrap; 
+.formacoes .formacoes-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: stretch; 
+    gap: 30px; 
+    flex-wrap: wrap; 
 }
-.formacoes .card { 
-    background-color: #0A2B34; 
-    border-radius: 20px; 
+.formacoes .card { 
+    background-color: #0A2B34; 
+    /* NOVO: Remove borda e sombra antigas para dar lugar à moldura */
+    border-radius: 0; 
     overflow: hidden; 
-    width: 340px; 
-    display: flex; 
-    flex-direction: column; 
-    /* Sombra mais pronunciada para dar profundidade */
-    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    position: relative; 
-    text-align: left; 
+    width: 340px; 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: none; /* Sombra removida */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    position: relative; 
+    text-align: left; 
+    padding: 25px; /* NOVO: Adiciona padding para recuar o conteúdo da moldura */
 }
-.formacoes .card:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 20px 40px rgba(10, 43, 52, 0.25), 0 10px 15px rgba(10, 43, 52, 0.15); 
+
+/* NOVO: Estilos para o Card Popular */
+.formacoes .popular { 
+    transform: none; /* Remove a escala no popular */
+    box-shadow: none;
 }
-.formacoes .card-image-wrapper { 
-    position: relative; 
-    height: 180px; 
-    overflow: hidden; 
+/* NOVO: Estilos para o efeito hover */
+.formacoes .card:hover { 
+    transform: none; /* Remove a elevação no card */
+    box-shadow: none; 
 }
-.formacoes .card-image-wrapper img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block; 
+
+/* NOVO CSS PARA A MOLDURA */
+.formacoes .moldura-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite que o clique vá para o conteúdo */
 }
-.formacoes .card-image-wrapper::after { 
-    content: ''; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 50%; 
-    background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); 
-    pointer-events: none; 
+
+.formacoes .moldura-img {
+    position: absolute;
+    top: -30px; /* Ajuste fino do posicionamento vertical */
+    left: -30px; /* Ajuste fino do posicionamento horizontal */
+    width: calc(100% + 60px); /* Garante que a moldura cubra toda a área */
+    height: calc(100% + 60px);
+    object-fit: contain;
+    z-index: 10; /* Garante que a moldura fique por cima */
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4)); /* Sombra para a moldura */
+    transition: transform 0.3s ease;
 }
-.formacoes .card-body { 
-    padding: 24px; 
-    display: flex; 
-    flex-direction: column; 
-    flex-grow: 1; 
+
+.formacoes .card:hover .moldura-img {
+    transform: translateY(-5px); /* Efeito de elevação sutil no hover */
 }
-.formacoes .card-body h3 { 
-    font-family: 'Lora', serif; 
-    font-size: 1.5rem; 
-    margin-top: 0; 
-    margin-bottom: 8px; 
-    color: #ffffff; 
-    text-align: center; 
+/* FIM NOVO CSS MOLDURA */
+
+.formacoes .card-image-wrapper { 
+    position: relative; 
+    height: 180px; 
+    overflow: hidden; 
 }
-.formacoes .card-subtitulo { 
-    font-size: 0.85rem; 
-    color: #b0b0b0; 
-    margin-top: 0; 
-    margin-bottom: 16px; 
-    text-align: center; 
-    line-height: 1.4; 
+.formacoes .card-image-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
 }
-.formacoes .card-lista { 
-    list-style: none; 
-    padding-left: 0; 
-    margin-bottom: 24px; 
-    color: #c7c4b6; 
-    flex-grow: 1; 
-    font-size: 0.85rem; 
+.formacoes .card-image-wrapper::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 50%; 
+    background: linear-gradient(to top, #0A2B34 0%, rgba(10, 43, 52, 0.0) 100%); 
+    pointer-events: none; 
 }
-.formacoes .card-lista li { 
-    margin-bottom: 8px; 
-    padding-left: 20px; 
-    position: relative; 
+.formacoes .card-body { 
+    padding: 24px 0 0; /* Ajustado o padding top */
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
 }
-.formacoes .card-lista li::before { 
-    content: '•'; 
-    color: #c7c4b6; 
-    font-size: 1.2rem; 
-    position: absolute; 
-    left: 0; 
-    top: -3px; 
+.formacoes .card-body h3 { 
+    font-family: 'Lora', serif; 
+    font-size: 1.5rem; 
+    margin-top: 0; 
+    margin-bottom: 8px; 
+    color: #ffffff; 
+    text-align: center; 
 }
-.formacoes .btn { 
-    display: inline-block; 
-    padding: 10px 20px; 
-    border-radius: 25px; 
-    text-decoration: none; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    font-size: 0.8rem; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
-    margin-top: auto; 
-    text-align: center; 
-    background-color: #C0A084; /* Botão na cor de destaque */
-    color: #0A2B34; 
+.formacoes .card-subtitulo { 
+    font-size: 0.85rem; 
+    color: #b0b0b0; 
+    margin-top: 0; 
+    margin-bottom: 16px; 
+    text-align: center; 
+    line-height: 1.4; 
 }
-.formacoes .btn:hover { 
-    background-color: #AD8B6E; 
+.formacoes .card-lista { 
+    list-style: none; 
+    padding-left: 0; 
+    margin-bottom: 24px; 
+    color: #c7c4b6; 
+    flex-grow: 1; 
+    font-size: 0.85rem; 
 }
-.formacoes .popular { 
-    transform: scale(1.05); 
-    /* Sombra colorida para dar um brilho sutil ao card popular */
-    box-shadow: 0 20px 40px rgba(10, 43, 52, 0.3), 0 0 30px rgba(192, 160, 132, 0.3);
+.formacoes .card-lista li { 
+    margin-bottom: 8px; 
+    padding-left: 20px; 
+    position: relative; 
 }
-.formacoes .popular-tag { 
-    position: absolute; 
-    top: 15px; 
-    right: 15px; 
-    background-color: #c7c4b6; 
-    color: #1a1a1a; 
-    padding: 5px 15px; 
-    border-radius: 15px; 
-    font-size: 0.8rem; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    z-index: 2; 
+.formacoes .card-lista li::before { 
+    content: '•'; 
+    color: #c7c4b6; 
+    font-size: 1.2rem; 
+    position: absolute; 
+    left: 0; 
+    top: -3px; 
 }
-@media (max-width: 1150px) { 
-    .formacoes { min-height: auto; } 
-    .formacoes .formacoes-container { flex-direction: column; align-items: center; } 
-    .formacoes .popular { transform: scale(1); } 
+.formacoes .btn { 
+    display: inline-block; 
+    padding: 10px 20px; 
+    border-radius: 25px; 
+    text-decoration: none; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    font-size: 0.8rem; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-top: auto; 
+    text-align: center; 
+    background-color: #C0A084; /* Botão na cor de destaque */
+    color: #0A2B34; 
 }
-@media (max-width: 768px) { 
-    .formacoes .formacoes-titulo { font-size: 2.2rem; } 
-    .formacoes .card { width: 100%; max-width: 380px; } 
+.formacoes .btn:hover { 
+    background-color: #AD8B6E; 
+}
+.formacoes .popular-tag { 
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    background-color: #c7c4b6; 
+    color: #1a1a1a; 
+    padding: 5px 15px; 
+    border-radius: 15px; 
+    font-size: 0.8rem; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    z-index: 15; /* Z-index mais alto para ficar acima da moldura */
+}
+@media (max-width: 1150px) { 
+    .formacoes { min-height: auto; } 
+    .formacoes .formacoes-container { flex-direction: column; align-items: center; } 
+}
+@media (max-width: 768px) { 
+    .formacoes .formacoes-titulo { font-size: 2.2rem; } 
+    .formacoes .card { width: 100%; max-width: 380px; } 
 }
 /* Fim do código da Opção 3 */
             </style>
             <h2 class="formacoes-titulo">Nossas Formações</h2>
             <div class="formacoes-container">
-                <div class="card"><div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div><div class="card-body"><h3>Intimist</h3><p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p><ul class="card-lista"><li>Música ao vivo para cerimônia</li><li>Formação Duo (Voz e instrumento)</li><li>Ideal para mini weddings e elopements</li><li>Repertório 100% personalizado</li></ul><button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button></div></div>
-                <div class="card popular"><span class="popular-tag">POPULAR</span><div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div><div class="card-body"><h3>Essence</h3><p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p><ul class="card-lista"><li>Cerimônia com Sexteto imponente</li><li>Show lounge + DJ para a festa</li><li>Estrutura completa de som e iluminação</li><li>Show demonstrativo exclusivo para os noivos</li></ul><button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button></div></div>
-                <div class="card"><div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div><div class="card-body"><h3>Harmonie</h3><p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p><ul class="card-lista"><li>Cerimônia com Quarteto musical</li><li>Show lounge ao vivo para o coquetel</li><li>Performance especial "Walking Violino"</li><li>Sonorização profissional inclusa</li></ul><button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button></div></div>
+                
+                <div class="card">
+                    <div class="moldura-overlay">
+                        <img src="./imagem/borda.png" alt="Moldura Decorativa" class="moldura-img">
+                    </div>
+                    <div class="card-image-wrapper">
+                        <img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist">
+                    </div>
+                    <div class="card-body">
+                        <h3>Intimist</h3>
+                        <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
+                        <ul class="card-lista">
+                            <li>Música ao vivo para cerimônia</li>
+                            <li>Formação Duo (Voz e instrumento)</li>
+                            <li>Ideal para mini weddings e elopements</li>
+                            <li>Repertório 100% personalizado</li>
+                        </ul>
+                        <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="card popular">
+                    <span class="popular-tag">POPULAR</span>
+                    <div class="moldura-overlay">
+                        <img src="./imagem/borda.png" alt="Moldura Decorativa" class="moldura-img">
+                    </div>
+                    <div class="card-image-wrapper">
+                        <img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence">
+                    </div>
+                    <div class="card-body">
+                        <h3>Essence</h3>
+                        <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
+                        <ul class="card-lista">
+                            <li>Cerimônia com Sexteto imponente</li>
+                            <li>Show lounge + DJ para a festa</li>
+                            <li>Estrutura completa de som e iluminação</li>
+                            <li>Show demonstrativo exclusivo para os noivos</li>
+                        </ul>
+                        <button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="moldura-overlay">
+                        <img src="./imagem/borda.png" alt="Moldura Decorativa" class="moldura-img">
+                    </div>
+                    <div class="card-image-wrapper">
+                        <img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie">
+                    </div>
+                    <div class="card-body">
+                        <h3>Harmonie</h3>
+                        <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
+                        <ul class="card-lista">
+                            <li>Cerimônia com Quarteto musical</li>
+                            <li>Show lounge ao vivo para o coquetel</li>
+                            <li>Performance especial "Walking Violino"</li>
+                            <li>Sonorização profissional inclusa</li>
+                        </ul>
+                        <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
+                    </div>
+                </div>
             </div>
         </section>
 
