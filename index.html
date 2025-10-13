@@ -278,30 +278,31 @@
     gap: 30px; 
     flex-wrap: wrap; 
 }
-.formacoes .card { 
-    background-color: #0A2B34; 
-    overflow: hidden; 
-    width: 300px; 
-    height: 480px;
-    display: flex; 
-    flex-direction: column; 
-    /* Sombra mais pronunciada para dar profundidade */
+/* --- ESTILOS PARA O CONTÊINER DA BORDA --- */
+.formacoes .card {
+    /* Removemos o fundo, a altura e a largura daqui */
+    position: relative;
     box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    position: relative; 
-    text-align: left; 
-    /* --- CÓDIGO DA BORDA DE IMAGEM --- */
-    /* 1. Define o espaço para a borda e a torna transparente */
-    border: 25px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    /* 2. Adiciona a sua imagem como borda */
-    border-image-source: url('./imagem/borda-card.jpg');
+    /* APLICAÇÃO CORRETA DA BORDA */
+    border: 25px solid transparent; /* Espaço para a borda */
+    border-image-source: url('./imagem/borda.jpg');
+    border-image-slice: 95; /* Ajuste este valor se os cantos não parecerem corretos */
+    border-image-repeat: stretch;
+}
 
-    /* 3. "Fatia" a imagem para separar os cantos do resto */
-    border-image-slice: 100; /* Este valor "corta" a imagem nos cantos. Ajuste se necessário. */
-
-    /* 4. Define como as laterais da borda se comportam */
-    border-image-repeat: stretch; /* 'stretch' estica a imagem para preencher o espaço, o que é ideal aqui. */
+/* --- ESTILOS PARA O CONTEÚDO INTERNO --- */
+.formacoes .card-content {
+    background-color: #0A2B34; /* O fundo escuro vem para cá */
+    width: 300px;              /* A largura vem para cá */
+    height: 480px;             /* A altura vem para cá */
+    overflow: hidden;          /* O overflow vem para cá */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* Adicionamos uma borda arredondada sutil interna, se desejar */
+    /* border-radius: 8px; */ /* Descomente esta linha se quiser os cantos internos um pouco arredondados */
 }
 .formacoes .card:hover { 
     transform: translateY(-10px); 
@@ -419,10 +420,58 @@
             </style>
             <h2 class="formacoes-titulo">Nossas Formações</h2>
             <div class="formacoes-container">
-                <div class="card"><div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div><div class="card-body"><h3>Intimist</h3><p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p><ul class="card-lista"><li>Música ao vivo para cerimônia</li><li>Formação Duo (Voz e instrumento)</li><li>Ideal para mini weddings e elopements</li><li>Repertório 100% personalizado</li></ul><button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button></div></div>
-                <div class="card popular"><span class="popular-tag">POPULAR</span><div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div><div class="card-body"><h3>Essence</h3><p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p><ul class="card-lista"><li>Cerimônia com Sexteto imponente</li><li>Show lounge + DJ para a festa</li><li>Estrutura completa de som e iluminação</li><li>Show demonstrativo exclusivo para os noivos</li></ul><button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button></div></div>
-                <div class="card"><div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div><div class="card-body"><h3>Harmonie</h3><p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p><ul class="card-lista"><li>Cerimônia com Quarteto musical</li><li>Show lounge ao vivo para o coquetel</li><li>Performance especial "Walking Violino"</li><li>Sonorização profissional inclusa</li></ul><button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button></div></div>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div>
+            <div class="card-body">
+                <h3>Intimist</h3>
+                <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
+                <ul class="card-lista">
+                    <li>Música ao vivo para cerimônia</li>
+                    <li>Formação Duo (Voz e instrumento)</li>
+                    <li>Ideal para mini weddings e elopements</li>
+                    <li>Repertório 100% personalizado</li>
+                </ul>
+                <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
             </div>
+        </div>
+    </div>
+
+    <div class="card popular">
+        <div class="card-content">
+            <span class="popular-tag">POPULAR</span>
+            <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
+            <div class="card-body">
+                <h3>Essence</h3>
+                <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
+                <ul class="card-lista">
+                    <li>Cerimônia com Sexteto imponente</li>
+                    <li>Show lounge + DJ para a festa</li>
+                    <li>Estrutura completa de som e iluminação</li>
+                    <li>Show demonstrativo exclusivo para os noivos</li>
+                </ul>
+                <button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div>
+            <div class="card-body">
+                <h3>Harmonie</h3>
+                <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
+                <ul class="card-lista">
+                    <li>Cerimônia com Quarteto musical</li>
+                    <li>Show lounge ao vivo para o coquetel</li>
+                    <li>Performance especial "Walking Violino"</li>
+                    <li>Sonorização profissional inclusa</li>
+                </ul>
+                <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
+            </div>
+        </div>
+    </div>
+</div>
         </section>
 
         <section id="sugestoes" class="bg-primary-light py-20 md:py-32">
