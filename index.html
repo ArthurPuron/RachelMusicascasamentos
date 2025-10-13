@@ -245,17 +245,37 @@
           @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;500&display=swap');
 
 /* Início do código da Opção 3 */
-.formacoes { 
-    /* Fundo em gradiente sutil de branco para bege claro */
-    background: linear-gradient(180deg, #ffffff 0%, #FAF7F5 100%); 
-    font-family: 'Montserrat', sans-serif; 
-    color: #0A2B34; 
-    padding: 5vh 20px; 
-    text-align: center; 
-    min-height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
+.formacoes {
+    /* Propriedades da imagem de fundo */
+    background-image: url('./imagem/fundo.png'); /* Caminho para a sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a seção */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Cria o efeito parallax */
+
+    position: relative; /* Necessário para o efeito de sobreposição */
+    z-index: 1;
+
+    /* Estilos que já existiam e foram mantidos */
+    font-family: 'Montserrat', sans-serif;
+    color: #0A2B34;
+    padding: 5vh 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Camada escura semi-transparente por cima da imagem para dar contraste */
+.formacoes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(10, 43, 52, 0.7); /* Cor escura do site com 70% de opacidade */
+    z-index: -1; /* Coloca a camada atrás do conteúdo (título e cards) */
 }
 .formacoes .formacoes-titulo { 
     font-family: 'Lora', serif; 
