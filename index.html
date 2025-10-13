@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-   <style>
+ <style>
     /* Estilos Gerais */
     body { font-family: 'Poppins', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
@@ -152,7 +152,9 @@
 
         /* Estilos que já existiam e foram mantidos */
         font-family: 'Montserrat', sans-serif;
-        color: #0A2B34;
+        /* A cor #0A2B34 aqui é para elementos que não têm sua própria cor definida,
+           como os bullets da lista ou o texto do "POPULAR" que não está em .card-body */
+        color: #0A2B34; 
         padding: 5vh 20px;
         text-align: center;
         min-height: 100vh;
@@ -177,19 +179,17 @@
     }
     /* --- ESTILOS PARA O CONTÊINER DA BORDA (O ELEMENTO PAI) --- */
     .formacoes .card {
-        /* Removemos o fundo, a altura e a largura daqui */
         position: relative;
         box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         /* APLICAÇÃO CORRETA DA BORDA DE IMAGEM */
-        border: 40px solid transparent; /* Aumentei a largura da borda 'virtual' */
+        border: 50px solid transparent; /* Aumentei para dar mais espaço à imagem da borda */
         border-image-source: url('./imagem/borda.jpg'); /* Caminho da imagem confirmado */
-        border-image-slice: 40 fill; /* CORRIGIDO: Usei 'fill' para garantir que o centro da imagem de borda preencha, e ajustei o slice */
-        border-image-width: 40px; /* CORRIGIDO: Define a largura da borda visual */
+        border-image-slice: 70 fill; /* CORRIGIDO: Valor ajustado e 'fill' para preencher o centro */
+        border-image-width: 50px; /* CORRIGIDO: Define a largura da borda visual */
         border-image-repeat: stretch; /* 'stretch' para esticar as laterais */
 
-        /* É importante que o conteúdo do card não tenha seu próprio border-radius se a imagem já tiver cantos */
         border-radius: 0; /* Garante que não haja arredondamento no container da borda */
     }
 
