@@ -350,46 +350,49 @@
        <section class="formacoes" id="formacoes">
     <h2 class="formacoes-titulo">Nossas Formações</h2>
     <div class="formacoes-container">
-    <div class="card">
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div>
-        <div class="card-body">
-            <h3>Intimist</h3>
-            <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
-            <ul class="card-lista">
-                <li>Música ao vivo para cerimônia</li>
-                <li>Formação Duo (Voz e instrumento)</li>
-                <li>Ideal para mini weddings e elopements</li>
-                <li>Repertório 100% personalizado</li>
-            </ul>
-            <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
-        </div>
+   <div class="card cursor-pointer" data-modal-target="#modal-intimist">
+    <div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div>
+    <div class="card-body">
+        <h3>Intimist</h3>
+        <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
+        <ul class="card-lista">
+            <li>Música ao vivo para cerimônia</li>
+            <li>Formação Duo (Voz e instrumento)</li>
+            <li>Ideal para mini weddings e elopements</li>
+            <li>Repertório 100% personalizado</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Intimist." target="_blank" class="btn">Solicitar Orçamento</a>
     </div>
-    <div class="card popular"> 
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
-        <div class="card-body">
-            <h3>Essence</h3>
-            <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
-            <ul class="card-lista">
-                <li>Cerimônia com Sexteto imponente</li>
-                <li>Show lounge + DJ para a festa</li>
-                <li>Estrutura completa de som e iluminação</li>
-                <li>Show demonstrativo exclusivo para os noivos</li>
-            </ul>
-            <button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button>
-        </div>
+</div>
+
+<div class="card popular cursor-pointer" data-modal-target="#modal-essence"> 
+    <span class="popular-tag">POPULAR</span>
+    <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
+    <div class="card-body">
+        <h3>Essence</h3>
+        <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
+        <ul class="card-lista">
+            <li>Cerimônia com Sexteto imponente</li>
+            <li>Show lounge + DJ para a festa</li>
+            <li>Estrutura completa de som e iluminação</li>
+            <li>Show demonstrativo exclusivo para os noivos</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Essence." target="_blank" class="btn">Solicitar Orçamento</a>
     </div>
-    <div class="card">
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div>
-        <div class="card-body">
-            <h3>Harmonie</h3>
-            <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
-            <ul class="card-lista">
-                <li>Cerimônia com Quarteto musical</li>
-                <li>Show lounge ao vivo para o coquetel</li>
-                <li>Performance especial "Walking Violino"</li>
-                <li>Sonorização profissional inclusa</li>
-            </ul>
-            <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
+</div>
+
+<div class="card cursor-pointer" data-modal-target="#modal-harmonie">
+    <div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div>
+    <div class="card-body">
+        <h3>Harmonie</h3>
+        <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
+        <ul class="card-lista">
+            <li>Cerimônia com Quarteto musical</li>
+            <li>Show lounge ao vivo para o coquetel</li>
+            <li>Performance especial "Walking Violino"</li>
+            <li>Sonorização profissional inclusa</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Pacote%20Harmonie." target="_blank" class="btn">Solicitar Orçamento</a>
         </div>
     </div>
 </div>
@@ -720,27 +723,40 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // LÓGICA GERAL DOS MODAIS
-    function openModal(modal) {
-        if (modal == null) return;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.classList.add('modal-open');
-    }
-    function closeModal(modal) {
-        if (modal == null) return;
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.classList.remove('modal-open');
-    }
-    document.querySelectorAll('[data-modal-target]').forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Impede que o clique no card do carrossel feche o modal
-            e.stopPropagation();
-            const modal = document.querySelector(button.dataset.modalTarget);
-            openModal(modal);
-        });
+  // LÓGICA GERAL DOS MODAIS
+function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.classList.add('modal-open');
+}
+function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.classList.remove('modal-open');
+}
+// Seleciona as DIVs com a classe 'card' E o atributo 'data-modal-target'
+document.querySelectorAll('div.card[data-modal-target]').forEach(cardElement => {
+    cardElement.addEventListener('click', (e) => {
+        // Verifica se o clique foi diretamente no card ou em algum filho que não seja um link para o WhatsApp
+        // Isso evita que, se você tiver um link dentro do card (como o de orçamento), ele também abra o modal
+        if (e.target.closest('a.btn')) { // Se o clique foi no link do botão de orçamento, não abre o modal do card
+            return;
+        }
+        const modal = document.querySelector(cardElement.dataset.modalTarget);
+        openModal(modal);
     });
+});
+document.querySelectorAll('.modal').forEach(modal => {
+    const closeButton = modal.querySelector('.modal-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', () => closeModal(modal));
+    }
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal(modal);
+    });
+});
     document.querySelectorAll('.modal').forEach(modal => {
         const closeButton = modal.querySelector('.modal-close');
         if (closeButton) {
