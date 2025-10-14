@@ -91,18 +91,19 @@
 
     /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES (VERSÃO FINAL) --- */
     .formacoes {
-        background-image: url('./imagem/fundo.png');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        font-family: 'Montserrat', sans-serif;
-        padding: 5vh 20px;
-        text-align: center;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+    background-image: url('./imagem/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    padding: 140px 20px 80px 20px; /* Espaçamento ajustado (Topo, Laterais, Fundo) */
+    text-align: center;
+    /* min-height: 100vh; -->> LINHA REMOVIDA */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: auto; /* Garante que a altura seja automática */
+}
     .formacoes .formacoes-titulo {
         font-family: 'Lora', serif;
         font-size: 2.5rem;
@@ -110,13 +111,13 @@
         margin-top: 0;
         margin-bottom: 40px;
     }
-    .formacoes .formacoes-container {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        gap: 30px;
-        flex-wrap: wrap;
-    }
+   .formacoes .formacoes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Alterado de 'stretch' para 'center' */
+    gap: 30px;
+    flex-wrap: wrap;
+}
     
     /* ESTILOS DO CARD (CONTEÚDO) */
     .formacoes .card {
