@@ -137,10 +137,10 @@
         position: absolute; /* Permite que a borda flutue */
         
         /* Posição e Tamanho: faz a borda ser maior que o card */
-        top: -20px; 
+        top: -15px; 
         left: -10px;
         right: -10px;
-        bottom: -20px;
+        bottom: -15px;
 
         /* A imagem da borda como fundo */
         background-image: url('./imagem/borda-card.png');
@@ -151,6 +151,10 @@
     .formacoes .card:hover {
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(10, 43, 52, 0.25), 0 10px 15px rgba(10, 43, 52, 0.15);
+    }
+    .formacoes .popular {
+        transform: scale(1.05);
+        z-index: 10; /* Garante que ele fique por cima dos outros se houver sobreposição */
     }
     .formacoes .card-image-wrapper {
         position: relative;
@@ -356,7 +360,7 @@
             <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
         </div>
     </div>
-    <div class="card">
+    <div class="card popular"> 
         <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
         <div class="card-body">
             <h3>Essence</h3>
