@@ -137,10 +137,10 @@
         position: absolute; /* Permite que a borda flutue */
         
         /* Posição e Tamanho: faz a borda ser maior que o card */
-        top: -15px; 
+        top: -10px; 
         left: -10px;
         right: -10px;
-        bottom: -15px;
+        bottom: -10px;
 
         /* A imagem da borda como fundo */
         background-image: url('./imagem/borda-card.png');
@@ -221,22 +221,25 @@
         top: -3px;
     }
     .formacoes .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 500;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        margin-top: auto;
-        text-align: center;
-        background-color: #C0A084;
-        color: #0A2B34;
-    }
-    .formacoes .btn:hover {
-        background-color: #AD8B6E;
-    }
+    display: inline-block;
+    padding: 8px 16px; /* Já com o tamanho diminuído */
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600; /* Aumentei um pouco o peso para melhor leitura */
+    text-transform: uppercase;
+    font-size: 0.75rem; /* Diminuí um pouco a fonte também */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Adicionei 'transform' */
+    margin-top: auto;
+    text-align: center;
+    background-color: #c7c4b6;  /* NOVA COR DE FUNDO (bege claro) */
+    color: #0A2B34;             /* Cor do texto (escuro, para contraste) */
+}
+
+.formacoes .btn:hover {
+    background-color: #FAF7F5; /* NOVA COR DE HOVER (um branco-sujo, quase branco) */
+    color: #0A2B34;
+    transform: scale(1.03); /* Efeito suave de crescimento ao passar o mouse */
+}
     @media (max-width: 1150px) {
         .formacoes { min-height: auto; }
         .formacoes .formacoes-container { flex-direction: column; align-items: center; }
