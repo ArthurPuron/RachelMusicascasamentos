@@ -90,27 +90,26 @@
     .painel-vidro { background: rgba(10, 43, 52, 0.75); border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,.1); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
 
     /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES (VERSÃO FINAL) --- */
-    .formacoes {
+   .formacoes {
     background-image: url('./imagem/fundo.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     font-family: 'Montserrat', sans-serif;
-    padding: 140px 20px 80px 20px; /* Espaçamento ajustado (Topo, Laterais, Fundo) */
+    padding: 120px 20px 60px 20px; /* Menos padding no topo e na base */
     text-align: center;
-    /* min-height: 100vh; -->> LINHA REMOVIDA */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: auto; /* Garante que a altura seja automática */
+    min-height: auto;
 }
     .formacoes .formacoes-titulo {
-        font-family: 'Lora', serif;
-        font-size: 2.5rem;
-        color: #0A2B34; /* CORRIGIDO: Cor do título de volta para escura */
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    color: #0A2B34;
+    margin-top: 0;
+    margin-bottom: 30px; /* Margem inferior reduzida */
+}
    .formacoes .formacoes-container {
     display: flex;
     justify-content: center;
@@ -157,11 +156,11 @@
         transform: scale(1.05);
         z-index: 10; /* Garante que ele fique por cima dos outros se houver sobreposição */
     }
-    .formacoes .card-image-wrapper {
-        position: relative;
-        height: 180px; /* Altura da imagem */
-        overflow: hidden;
-    }
+   .formacoes .card-image-wrapper {
+    position: relative;
+    height: 160px; /* Altura da imagem reduzida */
+    overflow: hidden;
+}
     .formacoes .card-image-wrapper img {
         width: 100%;
         height: 100%;
@@ -179,10 +178,11 @@
         pointer-events: none;
     }
     .formacoes .card-body {
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+    padding: 20px; /* Padding interno reduzido */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
     }
     .formacoes .card-body h3 {
         font-family: 'Lora', serif;
@@ -201,13 +201,13 @@
         line-height: 1.4;
     }
     .formacoes .card-lista {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 24px;
-        color: #c7c4b6;
-        flex-grow: 1;
-        font-size: 0.85rem;
-    }
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 16px; /* Margem inferior da lista reduzida */
+    color: #c7c4b6;
+    flex-grow: 1;
+    font-size: 0.85rem;
+}
     .formacoes .card-lista li {
         margin-bottom: 8px;
         padding-left: 20px;
