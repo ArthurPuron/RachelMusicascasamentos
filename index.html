@@ -47,6 +47,7 @@
 
     /* Estilos do Modal */
     body.modal-open { overflow: hidden; }
+    
     .modal-scrollbar::-webkit-scrollbar { width: 8px; }
     .modal-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .modal-scrollbar::-webkit-scrollbar-thumb {
@@ -61,41 +62,97 @@
         scrollbar-color: rgba(250, 247, 245, 0.4) transparent;
     }
     
-    /* Estilos da Seção Sugestões (sem alterações) */
-    .sugestoes-box { position: relative; border-radius: 1rem; overflow: hidden; aspect-ratio: 16 / 10; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; width: 100%; }
-    .sugestoes-box:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+    /* Estilos da Seção Sugestões */
+    .sugestoes-box {
+        position: relative; border-radius: 1rem; overflow: hidden;
+        aspect-ratio: 16 / 10; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: block; width: 100%;
+    }
+    .sugestoes-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
     .sugestoes-box-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
     .sugestoes-box:hover .sugestoes-box-img { transform: scale(1.05); }
-    .sugestoes-box-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 3rem 1.5rem 1.5rem; background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%); }
-    .sugestoes-box-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: white; text-align: left; }
-    .sugestoes-carousel-container { position: relative; width: 100%; max-width: 800px; padding: 0 4rem; }
-    .sugestoes-carousel-cards { position: relative; height: 380px; display: flex; align-items: center; justify-content: center; }
-    .sugestoes-carousel-card { background-color: #0A2B34; border-radius: 20px; overflow: hidden; width: 300px; height: 320px; display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: pointer; position: absolute; left: 50%; transition: transform 0.5s ease, opacity 0.5s ease; }
+    .sugestoes-box-overlay {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 3rem 1.5rem 1.5rem;
+        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+    }
+    .sugestoes-box-title {
+        font-family: 'Playfair Display', serif; font-size: 2rem;
+        font-weight: 700; color: white; text-align: left;
+    }
+    .sugestoes-carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        padding: 0 4rem;
+    }
+    .sugestoes-carousel-cards {
+        position: relative; height: 380px; display: flex;
+        align-items: center; justify-content: center;
+    }
+    .sugestoes-carousel-card {
+        background-color: #0A2B34; border-radius: 20px; overflow: hidden;
+        width: 300px; height: 320px; display: flex; flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: pointer;
+        position: absolute; 
+        left: 50%;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
     .sugestoes-carousel-card.active { transform: translateX(-50%) scale(1.05); opacity: 1; z-index: 10; }
     .sugestoes-carousel-card.prev { transform: translateX(-125%) scale(0.8); opacity: 0.5; z-index: 5; }
     .sugestoes-carousel-card.next { transform: translateX(25%) scale(0.8); opacity: 0.5; z-index: 5; }
     .sugestoes-carousel-card.hidden-left { transform: translateX(-150%) scale(0.7); opacity: 0; z-index: 1; }
     .sugestoes-carousel-card.hidden-right { transform: translateX(50%) scale(0.7); opacity: 0; z-index: 1; }
+
     .sugestoes-carousel-card-img-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .sugestoes-carousel-card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-    .sugestoes-carousel-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%); display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem; }
+    .sugestoes-carousel-card-overlay {
+        position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
+        background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%);
+        display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem;
+    }
     .sugestoes-carousel-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; text-align: center; }
-    .sugestoes-carousel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.8); color: #0A2B34; padding: 0.5rem; border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background-color 0.3s ease, transform 0.3s ease; z-index: 20; }
+    .sugestoes-carousel-nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.8); color: #0A2B34;
+        padding: 0.5rem; border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease; z-index: 20;
+    }
     .sugestoes-carousel-nav-btn:hover { background-color: white; transform: translateY(-50%) scale(1.05); }
     .sugestoes-carousel-nav-btn.prev-btn { left: 0; }
     .sugestoes-carousel-nav-btn.next-btn { right: 0; }
-    .modal-sugestoes .painel-vidro { background: rgba(34, 33, 42, 0.85); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
-    .btn-modal { display: block; width: 100%; padding: 12px 24px; text-align: center; background-color: #C0A084; color: #0A2B34; font-weight: 600; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); transition: background-color .3s ease, transform .2s ease; }
-    .btn-modal:hover { background-color: #AD8B6E; transform: translateY(-2px); }
-    .painel-vidro { background: rgba(10, 43, 52, 0.75); border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,.1); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
 
-    /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES (VERSÃO FINAL) --- */
+    .modal-sugestoes .painel-vidro {
+        background: rgba(34, 33, 42, 0.85);
+        backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
+    }
+    .btn-modal {
+        display: block; width: 100%; padding: 12px 24px; text-align: center;
+        background-color: #C0A084; color: #0A2B34; font-weight: 600;
+        text-decoration: none; border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+        transition: background-color .3s ease, transform .2s ease;
+    }
+    .btn-modal:hover { background-color: #AD8B6E; transform: translateY(-2px); }
+    .painel-vidro {
+        background: rgba(10, 43, 52, 0.75); border-radius: 16px; 
+        box-shadow: 0 4px 30px rgba(0,0,0,.1);
+        backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px);
+    }
+    
+    /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES --- */
     .formacoes {
-        background-image: url('./imagem/fundo.png');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        /* Revertido para o fundo branco para que o título seja visível */
+        background-image: url('./imagem/fundo.png'); /* Caminho para a sua imagem */
+        background-size: cover; /* Faz a imagem cobrir toda a seção */
+        background-position: center; /* Centraliza a imagem */
+        background-attachment: fixed; /* Cria o efeito parallax */
+        
         font-family: 'Montserrat', sans-serif;
+        color: #0A2B34; /* Cor principal para textos genéricos na seção */
         padding: 5vh 20px;
         text-align: center;
         min-height: 100vh;
@@ -106,7 +163,7 @@
     .formacoes .formacoes-titulo {
         font-family: 'Lora', serif;
         font-size: 2.5rem;
-        color: #0A2B34; /* CORRIGIDO: Cor do título de volta para escura */
+        color: #0A2B34; /* CORRIGIDO: Título principal voltou para a cor escura */
         margin-top: 0;
         margin-bottom: 40px;
     }
@@ -117,48 +174,43 @@
         gap: 30px;
         flex-wrap: wrap;
     }
+    /* --- ESTILOS PARA O CONTÊINER DA BORDA (O ELEMENTO PAI) --- */
+.formacoes .card {
+    position: relative;
+    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* --- AJUSTES FINAIS E CORRIGIDOS DA BORDA --- */
+    /* 1. Define o espaço para a borda */
+    border: 35px solid transparent; 
+
+    /* 2. Confirma o caminho correto da imagem */
+    border-image-source: url('./imagem/borda-card.png'); 
+
+    /* 3. "Fatia" a imagem no tamanho correto do ornamento do canto */
+    border-image-slice: 115; /* VALOR-CHAVE CORRIGIDO: Este número maior deve capturar todo o canto */
+
+    /* 4. Remove o 'fill' e deixa o padrão 'stretch' para as laterais */
+    border-image-repeat: stretch; 
     
-    /* ESTILOS DO CARD (CONTEÚDO) */
-    .formacoes .card {
+    border-radius: 0;
+}
+    .formacoes .card-content {
         background-color: #0A2B34;
-        width: 310px; /* Largura do conteúdo */
+        width: 300px;
+        height: 480px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative; /* ESSENCIAL para a borda funcionar */
-        border-radius: 20px; /* Arredonda os cantos do conteúdo escuro */
-        overflow: hidden; /* Garante que o conteúdo não vaze */
+        text-align: left;
     }
-
-    /* A MÁGICA ACONTECE AQUI: A BORDA COMO UMA CAMADA SEPARADA */
-.formacoes .card::after {
-    content: '';
-    position: absolute;
-    
-    /* VALORES AJUSTADOS PARA MAIOR VISIBILIDADE DA BORDA */
-    top: -25px; /* Aumenta o deslocamento superior */
-    left: -25px; /* Aumenta o deslocamento esquerdo */
-    right: -25px; /* Aumenta o deslocamento direito */
-    bottom: -25px; /* Aumenta o deslocamento inferior */
-
-    background-image: url('./imagem/borda-card.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    
-    /* ADICIONADO: z-index para garantir que a borda esteja acima, se desejar */
-    z-index: -1; /* Coloca a borda por trás do card */
-    /* OU use z-index: 1; se quiser a borda por cima do card (como uma moldura flutuante) */
-    /* Sugiro -1 para a borda ficar como um fundo do card, como na imagem que você enviou */
-}
-
     .formacoes .card:hover {
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(10, 43, 52, 0.25), 0 10px 15px rgba(10, 43, 52, 0.15);
     }
     .formacoes .card-image-wrapper {
         position: relative;
-        height: 180px; /* Altura da imagem */
+        height: 200px;
         overflow: hidden;
     }
     .formacoes .card-image-wrapper img {
@@ -239,6 +291,7 @@
     }
     .formacoes .popular {
         transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(10, 43, 52, 0.3), 0 0 30px rgba(192, 160, 132, 0.3);
     }
     .formacoes .popular-tag {
         position: absolute;
@@ -251,7 +304,7 @@
         font-size: 0.8rem;
         font-weight: 500;
         text-transform: uppercase;
-        z-index: 2; /* Para ficar acima do conteúdo */
+        z-index: 2;
     }
     @media (max-width: 1150px) {
         .formacoes { min-height: auto; }
@@ -363,50 +416,56 @@
        <section class="formacoes" id="formacoes">
     <h2 class="formacoes-titulo">Nossas Formações</h2>
     <div class="formacoes-container">
-    <div class="card">
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div>
-        <div class="card-body">
-            <h3>Intimist</h3>
-            <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
-            <ul class="card-lista">
-                <li>Música ao vivo para cerimônia</li>
-                <li>Formação Duo (Voz e instrumento)</li>
-                <li>Ideal para mini weddings e elopements</li>
-                <li>Repertório 100% personalizado</li>
-            </ul>
-            <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-image-wrapper"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Pacote Intimist"></div>
+                <div class="card-body">
+                    <h3>Intimist</h3>
+                    <p class="card-subtitulo">A trilha sonora perfeita para momentos acolhedores.</p>
+                    <ul class="card-lista">
+                        <li>Música ao vivo para cerimônia</li>
+                        <li>Formação Duo (Voz e instrumento)</li>
+                        <li>Ideal para mini weddings e elopements</li>
+                        <li>Repertório 100% personalizado</li>
+                    </ul>
+                    <button data-modal-target="#modal-intimist" class="btn">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+        <div class="card popular">
+            <div class="card-content">
+                <span class="popular-tag">POPULAR</span>
+                <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
+                <div class="card-body">
+                    <h3>Essence</h3>
+                    <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
+                    <ul class="card-lista">
+                        <li>Cerimônia com Sexteto imponente</li>
+                        <li>Show lounge + DJ para a festa</li>
+                        <li>Estrutura completa de som e iluminação</li>
+                        <li>Show demonstrativo exclusivo para os noivos</li>
+                    </ul>
+                    <button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div>
+                <div class="card-body">
+                    <h3>Harmonie</h3>
+                    <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
+                    <ul class="card-lista">
+                        <li>Cerimônia com Quarteto musical</li>
+                        <li>Show lounge ao vivo para o coquetel</li>
+                        <li>Performance especial "Walking Violino"</li>
+                        <li>Sonorização profissional inclusa</li>
+                    </ul>
+                    <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card popular">
-        <span class="popular-tag">POPULAR</span>
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Pacote Essence"></div>
-        <div class="card-body">
-            <h3>Essence</h3>
-            <p class="card-subtitulo">A experiência musical definitiva, do altar à pista de dança.</p>
-            <ul class="card-lista">
-                <li>Cerimônia com Sexteto imponente</li>
-                <li>Show lounge + DJ para a festa</li>
-                <li>Estrutura completa de som e iluminação</li>
-                <li>Show demonstrativo exclusivo para os noivos</li>
-            </ul>
-            <button data-modal-target="#modal-essence" class="btn">Ver Detalhes</button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-image-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Pacote Harmonie"></div>
-        <div class="card-body">
-            <h3>Harmonie</h3>
-            <p class="card-subtitulo">Elegância e sofisticação da cerimônia ao coquetel.</p>
-            <ul class="card-lista">
-                <li>Cerimônia com Quarteto musical</li>
-                <li>Show lounge ao vivo para o coquetel</li>
-                <li>Performance especial "Walking Violino"</li>
-                <li>Sonorização profissional inclusa</li>
-            </ul>
-            <button data-modal-target="#modal-harmonie" class="btn">Ver Detalhes</button>
-        </div>
-    </div>
-</div>
 </section>
 
         <section id="sugestoes" class="bg-primary-light py-20 md:py-32">
