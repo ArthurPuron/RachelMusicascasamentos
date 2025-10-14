@@ -45,6 +45,75 @@
     .video-thumbnail.active { transform: scale(1.05); filter: brightness(1); }
     .video-thumbnail.inactive { transform: scale(1); filter: brightness(0.6); }
 
+/* Estilos da Galeria de Vídeo */
+.video-thumbnail { transition: all 0.3s ease-in-out; }
+.video-thumbnail.active { transform: scale(1.05); filter: brightness(1); }
+.video-thumbnail.inactive { transform: scale(1); filter: brightness(0.6); }
+
+/* Novos estilos para a seção de vídeos */
+.videos-section {
+    background-image: url('./imagem/fundo.png'); /* O mesmo fundo da seção Formações */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.video-player-frame {
+    position: relative;
+    border-radius: 20px; /* Arredondamento do painel */
+    overflow: hidden;
+    padding: 20px; /* Espaçamento interno para a borda */
+    background-color: var(--primary-dark); /* Cor de fundo do painel */
+    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.2), 0 5px 10px rgba(10, 43, 52, 0.1);
+}
+
+.video-player-frame::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: url('./imagem/borda-card.png'); /* A mesma borda dos cards de formação */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none; /* Garante que a borda não bloqueie interações */
+}
+
+/* Estilo para os thumbnails */
+.video-thumbnail-item {
+    position: relative;
+    border-radius: 12px; /* Ajuste o arredondamento dos cantos do thumbnail */
+    overflow: hidden;
+    padding: 5px; /* Espaçamento para a borda */
+    background-color: var(--primary-dark); /* Fundo sutil */
+    transition: all 0.3s ease-in-out;
+}
+
+.video-thumbnail-item::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid transparent; /* Borda padrão transparente */
+    border-radius: 15px; /* Ajuste para combinar com o padding */
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+.video-thumbnail-item.active::after {
+    border-color: var(--accent-color); /* Borda de destaque quando ativo */
+}
+
+.video-thumbnail-title {
+    font-family: 'Playfair Display', serif; /* Fonte elegante para o título */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+    
     /* Estilos do Modal */
     body.modal-open { overflow: hidden; }
     .modal-scrollbar::-webkit-scrollbar { width: 8px; }
@@ -328,23 +397,62 @@
             </div>
         </section>
 
-        <section id="videos" class="py-20 md:py-32 bg-gray-100">
+        <section id="videos" class="videos-section py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
                     <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
                 </div>
-                <div id="main-video-container" class="mb-8 shadow-2xl rounded-lg overflow-hidden max-w-5xl mx-auto">
-                    <div class="aspect-w-16 aspect-h-9 bg-black">
-                        <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div></div><p class="text-center font-semibold text-text-dark mt-2">Close To You<br>(Releitura)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div></div><p class="text-center font-semibold text-text-dark mt-2">Die With a Smile<br>(Releitura)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div></div><p class="text-center font-semibold text-text-dark mt-2">Fly Me To the Moon<br>(Releitura)</p></div>
-                    <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0"><div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9"><img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div></div><p class="text-center font-semibold text-text-dark mt-2">La Vie en Rose<br>(Releitura)</p></div>
-                </div>
+                <div class="video-player-frame mb-8 max-w-5xl mx-auto">
+    <div id="main-video-container" class="rounded-lg overflow-hidden"> <div class="aspect-w-16 aspect-h-9 bg-black">
+            <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+                
+                    <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+
+    <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
+        <div class="video-thumbnail-item">
+            <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+            </div>
+        </div>
+        <p class="text-center video-thumbnail-title mt-2">Close To You<br>(Releitura)</p>
+    </div>
+
+    <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
+        <div class="video-thumbnail-item">
+            <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+            </div>
+        </div>
+        <p class="text-center video-thumbnail-title mt-2">Die With a Smile<br>(Releitura)</p>
+    </div>
+
+    <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
+        <div class="video-thumbnail-item">
+            <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+            </div>
+        </div>
+        <p class="text-center video-thumbnail-title mt-2">Fly Me To the Moon<br>(Releitura)</p>
+    </div>
+
+    <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
+        <div class="video-thumbnail-item">
+            <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
+                <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
+            </div>
+        </div>
+        <p class="text-center video-thumbnail-title mt-2">La Vie en Rose<br>(Releitura)</p>
+    </div>
+
+</div>
             </div>
         </section>
 
@@ -628,28 +736,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // LÓGICA DA GALERIA DE VÍDEOS
-    const mainVideoPlayer = document.getElementById('main-video-player');
-    const thumbnails = document.querySelectorAll('.video-thumbnail');
-    if (mainVideoPlayer && thumbnails.length > 0) {
-        function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
-        function setActiveThumbnail(selectedThumbnail) {
-            thumbnails.forEach(thumb => {
-                thumb.classList.remove('active');
-                thumb.classList.add('inactive');
-            });
-            selectedThumbnail.classList.remove('inactive');
-            selectedThumbnail.classList.add('active');
-        }
-        loadVideo(thumbnails[0].dataset.videoId);
-        setActiveThumbnail(thumbnails[0]);
+   // LÓGICA DA GALERIA DE VÍDEOS
+const mainVideoPlayer = document.getElementById('main-video-player');
+const thumbnails = document.querySelectorAll('.video-thumbnail');
+if (mainVideoPlayer && thumbnails.length > 0) {
+    function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
+    function setActiveThumbnail(selectedThumbnail) {
         thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                loadVideo(this.dataset.videoId);
-                setActiveThumbnail(this);
-            });
+            thumb.classList.remove('active');
+            // A classe 'inactive' pode ser opcional se você só quer destacar o ativo
+            // thumb.classList.add('inactive');
         });
+        selectedThumbnail.classList.add('active'); // Adiciona 'active' para a borda no ::after
+        // selectedThumbnail.classList.remove('inactive'); // Remove 'inactive' se estiver usando
     }
+    loadVideo(thumbnails[0].dataset.videoId);
+    setActiveThumbnail(thumbnails[0]);
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+            loadVideo(this.dataset.videoId);
+            setActiveThumbnail(this);
+        });
+    });
+}
 
     // LÓGICA DO CARROSSEL DE DEPOIMENTOS
     const carouselContainer = document.getElementById('carousel-cards');
