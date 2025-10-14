@@ -89,6 +89,46 @@
     .btn-modal:hover { background-color: #AD8B6E; transform: translateY(-2px); }
     .painel-vidro { background: rgba(10, 43, 52, 0.75); border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,.1); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
 
+/* --- INÍCIO DOS ESTILOS DA SEÇÃO SOBRE --- */
+
+.sobre-section {
+    background-image: url('./imagem/fundo.png'); /* Mesmo fundo da seção Formações */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.foto-moldura {
+    position: relative;
+    padding: 10px; /* Espaço para a borda aparecer */
+}
+
+.foto-moldura::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: url('./imagem/borda-card.png'); /* Mesma borda dos cards */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.texto-sobre p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; /* Tamanho da letra capitular */
+    font-weight: 700;
+    color: var(--primary-dark);
+    float: left;
+    padding-right: 0.75rem;
+    line-height: 0.8;
+}
+
+/* --- FIM DOS ESTILOS DA SEÇÃO SOBRE --- */
+
+
     /* --- INÍCIO DOS ESTILOS DA SEÇÃO FORMAÇÕES (VERSÃO FINAL) --- */
    .formacoes {
     background-image: url('./imagem/fundo.png');
@@ -310,20 +350,20 @@
             </div>
         </section>
 
-        <section id="sobre" class="py-20 md:py-32 bg-primary-light">
+        <section id="sobre" class="sobre-section py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Sobre Rachel Puron</h2>
                     <p class="mt-2 text-gray-medium">Paixão e profissionalismo em cada nota.</p>
                 </div>
                 <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="md:w-1/2">
-                        <img src="https://i.imgur.com/5IbR61G.jpeg" alt="Foto de Rachel Puron" class="rounded-lg shadow-2xl w-full h-auto object-cover fade-in-image">
-                    </div>
-                    <div class="md:w-1/2 text-gray-medium text-base md:text-lg">
-                        <p class="mb-4"> Texto de exemplo: Com uma paixão pela música que vai além da técnica, Rachel Puron se dedica a oferecer apresentações personalizadas que unem emoção e funcionalidade...</p>
-                        <p class="mb-4"> Texto de exemplo: Em nosso trabalho, você encontrará um ambiente acolhedor e profissionalismo para garantir eventos eficazes, seguros e emocionantes...</p>
-                    </div>
+                    <div class="md:w-1/2 foto-moldura">
+    <img src="https://i.imgur.com/5IbR61G.jpeg" alt="Foto de Rachel Puron" class="rounded-lg shadow-2xl w-full h-auto object-cover fade-in-image">
+</div>
+                    <div class="md:w-1/2 text-gray-medium text-base md:text-lg texto-sobre">
+    <p class="mb-4"> Texto de exemplo: Com uma paixão pela música que vai além da técnica, Rachel Puron se dedica a oferecer apresentações personalizadas que unem emoção e funcionalidade...</p>
+    <p class="mb-4"> Texto de exemplo: Em nosso trabalho, você encontrará um ambiente acolhedor e profissionalismo para garantir eventos eficazes, seguros e emocionantes...</p>
+</div>
                 </div>
             </div>
         </section>
