@@ -221,24 +221,24 @@
         top: -3px;
     }
     .formacoes .btn {
-    display: inline-block;
-    padding: 8px 10px; /* Já com o tamanho diminuído */
+    display: block; /* Alterado de inline-block para block */
+    width: fit-content; /* Adicionado para que a largura se ajuste ao conteúdo */
+    padding: 8px 16px; /* Ajuste o padding conforme desejar */
     border-radius: 25px;
     text-decoration: none;
-    font-weight: 600; /* Aumentei um pouco o peso para melhor leitura */
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.75rem; /* Diminuí um pouco a fonte também */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Adicionei 'transform' */
-    margin-top: auto;
-    text-align: center;
-    background-color: #c7c4b6;  /* NOVA COR DE FUNDO (bege claro) */
-    color: #0A2B34;             /* Cor do texto (escuro, para contraste) */
+    font-size: 0.75rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    margin: auto; /* Alterado de margin-top: auto para margin: auto para centralizar */
+    background-color: #c7c4b6;  /* Sugestão de cor de fundo (bege claro) */
+    color: #0A2B34;             /* Cor do texto (escuro) */
 }
 
 .formacoes .btn:hover {
-    background-color: #FAF7F5; /* NOVA COR DE HOVER (um branco-sujo, quase branco) */
+    background-color: #FAF7F5; /* Sugestão de cor de hover (quase branco) */
     color: #0A2B34;
-    transform: scale(1.03); /* Efeito suave de crescimento ao passar o mouse */
+    transform: scale(1.03);
 }
     @media (max-width: 1150px) {
         .formacoes { min-height: auto; }
