@@ -128,47 +128,35 @@
     gap: 16px;
     margin-top: 24px;
 }
+
 .tab-btn {
     padding: 10px 24px;
-    border: 2px solid #C0A084;
+    border: 2px solid #d1d5db; /* Cinza claro para o botão inativo */
     border-radius: 9999px;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: transparent;
-    color: #C0A084;
-}
-.tab-btn.active {
-    background-color: #C0A084;
-    color: #FAF7F5;
-}
-.tab-btn:not(.active):hover {
-    background-color: rgba(192, 160, 132, 0.1);
+    color: #6b7280; /* Cinza médio para o texto inativo */
 }
 
-/* Linha divisória com ornamento */
-.fancy-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.tab-btn.active {
+    background-color: #A98C71; /* Marrom-dourado para o botão ativo */
+    border-color: #A98C71;
+    color: #FAF7F5; /* Texto claro */
+}
+
+.tab-btn:not(.active):hover {
+    border-color: #A98C71;
+    color: #A98C71;
+}
+
+/* Linha divisória com ornamento SVG */
+.fancy-divider-svg {
     margin: 32px auto;
     width: 250px;
-    color: #C0A084;
-}
-.fancy-divider::before,
-.fancy-divider::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background: linear-gradient(to right, rgba(192, 160, 132, 0), #C0A084);
-}
-.fancy-divider::before {
-    background: linear-gradient(to left, rgba(192, 160, 132, 0), #C0A084);
-    margin-right: 16px;
-}
-.fancy-divider::after {
-    margin-left: 16px;
+    color: #A98C71; /* Cor do ornamento e das linhas */
 }
 
 /* Card de conteúdo das músicas */
@@ -179,6 +167,7 @@
     max-width: 450px;
     margin: 0 auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    text-align: left; /* Alinha o texto da lista à esquerda */
 }
 
 /* Lista de músicas */
@@ -202,7 +191,7 @@
     width: 20px;
     height: 20px;
     margin-right: 16px;
-    color: #C0A084;
+    color: #A98C71; /* Cor do ícone de nota musical */
 }
 
 /* Botão "Ver Mais" */
@@ -220,8 +209,8 @@
     transition: all 0.3s ease;
 }
 .btn-ver-mais:hover {
-    border-color: #C0A084;
-    color: #C0A084;
+    border-color: #A98C71;
+    color: #A98C71;
 }
 
 /* --- FIM DOS NOVOS ESTILOS DA SEÇÃO SUGESTÕES --- */
@@ -619,7 +608,7 @@
 </div>
 </section>
 
-       <section id="sugestoes" class="sugestoes-section py-20 md:py-24">
+      <section id="sugestoes" class="sugestoes-section py-20 md:py-24">
     <div class="container mx-auto px-6 text-center">
         
         <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Sugestões de Repertório</h2>
@@ -630,7 +619,15 @@
             <button class="tab-btn" data-tab-target="#lounge-sugestoes">Show Lounge</button>
         </div>
 
-        <div class="fancy-divider">◇</div>
+        <div class="fancy-divider-svg">
+            <svg width="100%" height="20" viewBox="0 0 250 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line y1="9.5" x2="100" y2="9.5" stroke="currentColor"/>
+                <path d="M125 1C122.333 6.16667 116.6 15.4 100 19" stroke="currentColor"/>
+                <path d="M125 1C127.667 6.16667 133.4 15.4 150 19" stroke="currentColor"/>
+                <line x1="150" y1="9.5" x2="250" y2="9.5" stroke="currentColor"/>
+            </svg>
+        </div>
+
 
         <div>
             <div id="cerimonia-sugestoes" class="tab-content-card">
