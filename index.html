@@ -112,34 +112,120 @@
         scrollbar-color: rgba(250, 247, 245, 0.4) transparent;
     }
     
-    /* Estilos da Seção Sugestões (sem alterações) */
-    .sugestoes-box { position: relative; border-radius: 1rem; overflow: hidden; aspect-ratio: 16 / 10; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; width: 100%; }
-    .sugestoes-box:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
-    .sugestoes-box-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-    .sugestoes-box:hover .sugestoes-box-img { transform: scale(1.05); }
-    .sugestoes-box-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 3rem 1.5rem 1.5rem; background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%); }
-    .sugestoes-box-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: white; text-align: left; }
-    .sugestoes-carousel-container { position: relative; width: 100%; max-width: 800px; padding: 0 4rem; }
-    .sugestoes-carousel-cards { position: relative; height: 380px; display: flex; align-items: center; justify-content: center; }
-    .sugestoes-carousel-card { background-color: #0A2B34; border-radius: 20px; overflow: hidden; width: 300px; height: 320px; display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: pointer; position: absolute; left: 50%; transition: transform 0.5s ease, opacity 0.5s ease; }
-    .sugestoes-carousel-card.active { transform: translateX(-50%) scale(1.05); opacity: 1; z-index: 10; }
-    .sugestoes-carousel-card.prev { transform: translateX(-125%) scale(0.8); opacity: 0.5; z-index: 5; }
-    .sugestoes-carousel-card.next { transform: translateX(25%) scale(0.8); opacity: 0.5; z-index: 5; }
-    .sugestoes-carousel-card.hidden-left { transform: translateX(-150%) scale(0.7); opacity: 0; z-index: 1; }
-    .sugestoes-carousel-card.hidden-right { transform: translateX(50%) scale(0.7); opacity: 0; z-index: 1; }
-    .sugestoes-carousel-card-img-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    .sugestoes-carousel-card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-    .sugestoes-carousel-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; background: linear-gradient(to top, rgba(10, 43, 52, 1) 20%, rgba(10, 43, 52, 0) 100%); display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem; }
-    .sugestoes-carousel-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; text-align: center; }
-    .sugestoes-carousel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.8); color: #0A2B34; padding: 0.5rem; border-radius: 9999px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background-color 0.3s ease, transform 0.3s ease; z-index: 20; }
-    .sugestoes-carousel-nav-btn:hover { background-color: white; transform: translateY(-50%) scale(1.05); }
-    .sugestoes-carousel-nav-btn.prev-btn { left: 0; }
-    .sugestoes-carousel-nav-btn.next-btn { right: 0; }
-    .modal-sugestoes .painel-vidro { background: rgba(34, 33, 42, 0.85); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
-    .btn-modal { display: block; width: 100%; padding: 12px 24px; text-align: center; background-color: #C0A084; color: #0A2B34; font-weight: 600; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); transition: background-color .3s ease, transform .2s ease; }
-    .btn-modal:hover { background-color: #AD8B6E; transform: translateY(-2px); }
-    .painel-vidro { background: rgba(10, 43, 52, 0.75); border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,.1); backdrop-filter: blur(9.1px); -webkit-backdrop-filter: blur(9.1px); }
+/* --- INÍCIO DOS NOVOS ESTILOS DA SEÇÃO SUGESTÕES --- */
 
+.sugestoes-section {
+    background-image: url('./imagem/fundo.png'); /* Sua textura de fundo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Estilos para os botões de abas (Cerimônia / Show Lounge) */
+.tab-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+.tab-btn {
+    padding: 10px 24px;
+    border: 2px solid #C0A084;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    color: #C0A084;
+}
+.tab-btn.active {
+    background-color: #C0A084;
+    color: #FAF7F5;
+}
+.tab-btn:not(.active):hover {
+    background-color: rgba(192, 160, 132, 0.1);
+}
+
+/* Linha divisória com ornamento */
+.fancy-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 32px auto;
+    width: 250px;
+    color: #C0A084;
+}
+.fancy-divider::before,
+.fancy-divider::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(192, 160, 132, 0), #C0A084);
+}
+.fancy-divider::before {
+    background: linear-gradient(to left, rgba(192, 160, 132, 0), #C0A084);
+    margin-right: 16px;
+}
+.fancy-divider::after {
+    margin-left: 16px;
+}
+
+/* Card de conteúdo das músicas */
+.tab-content-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 450px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+/* Lista de músicas */
+.music-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.music-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 1rem;
+    color: #6c757d; /* gray-medium */
+    border-bottom: 1px solid #f0f0f0;
+}
+.music-list li:last-child {
+    border-bottom: none;
+}
+.music-list svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    color: #C0A084;
+}
+
+/* Botão "Ver Mais" */
+.btn-ver-mais {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 8px 20px;
+    border: 1px solid #d1d5db; /* Cor de borda cinza claro */
+    color: #6c757d;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+.btn-ver-mais:hover {
+    border-color: #C0A084;
+    color: #C0A084;
+}
+
+/* --- FIM DOS NOVOS ESTILOS DA SEÇÃO SUGESTÕES --- */
+    
 /* --- INÍCIO DOS ESTILOS DA SEÇÃO SOBRE --- */
 
 .sobre-section {
@@ -533,46 +619,43 @@
 </div>
 </section>
 
-        <section id="sugestoes" class="bg-primary-light py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div id="sugestoes-main-view">
-                    <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Sugestões de Repertório</h2><p class="mt-2 text-gray-medium">Inspire-se com nossas seleções musicais para cada momento.</p></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        <button data-sugestoes-target="cerimonia" class="sugestoes-box group"><img src="https://i.imgur.com/dTHMSAY.png" alt="Música para Cerimônia" class="sugestoes-box-img"><div class="sugestoes-box-overlay"><h3 class="sugestoes-box-title">Cerimônia</h3></div></button>
-                        <button data-sugestoes-target="lounge" class="sugestoes-box group"><img src="https://i.imgur.com/kU2EfJq.jpeg" alt="Música para Show Lounge" class="sugestoes-box-img"><div class="sugestoes-box-overlay"><h3 class="sugestoes-box-title">Show Lounge</h3></div></button>
-                    </div>
-                </div>
-<div id="sugestoes-detail-view" class="hidden flex flex-col items-center">
-                <div class="flex items-center justify-between mb-12">
-                        <button id="sugestoes-back-btn" class="text-gray-medium hover:text-primary-dark transition-colors duration-300 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>Voltar</button>
-                        <h2 id="sugestoes-detail-title" class="text-3xl md:text-4xl font-bold text-primary-dark text-center"></h2>
-                        <div class="w-24"></div>
-                    </div>
-                    
-                    <div id="carousel-cerimonia-container" class="sugestoes-carousel-container hidden">
-                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
-                        <div id="carousel-cerimonia-cards" class="sugestoes-carousel-cards">
-                            <button data-modal-target="#modal-sugestao-seculares" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/dwvKP3v.png" alt="Músicas Seculares"></div><div class="sugestoes-carousel-card-overlay"><h3>Seculares</h3></div></button>
-                            <button data-modal-target="#modal-sugestao-sacras" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Sacras"></div><div class="sugestoes-carousel-card-overlay"><h3>Sacras/Orquestradas</h3></div></button>
-                            <button data-modal-target="#modal-sugestao-gospel" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Músicas Gospel"></div><div class="sugestoes-carousel-card-overlay"><h3>Cristã/Gospel</h3></div></button>
-                        </div>
-                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="cerimonia"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
-                    </div>
+       <section id="sugestoes" class="sugestoes-section py-20 md:py-24">
+    <div class="container mx-auto px-6 text-center">
+        
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Sugestões de Repertório</h2>
+        <p class="mt-2 text-gray-medium">Inspire-se com nossas seleções musicais para cada momento.</p>
 
-                    <div id="carousel-lounge-container" class="sugestoes-carousel-container hidden">
-                        <button class="sugestoes-carousel-nav-btn prev-btn" data-carousel-id="lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
-                        <div id="carousel-lounge-cards" class="sugestoes-carousel-cards">
-                            <button data-modal-target="#modal-sugestao-pop" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Qq37MfJ.jpeg" alt="Músicas POP"></div><div class="sugestoes-carousel-card-overlay"><h3>POP</h3></div></button>
-                            <button data-modal-target="#modal-sugestao-mpb" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/dwvKP3v.png" alt="Músicas MPB"></div><div class="sugestoes-carousel-card-overlay"><h3>MPB</h3></div></button>
-                            <button data-modal-target="#modal-sugestao-rock" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/Jjo9T3S.png" alt="Músicas Rock"></div><div class="sugestoes-carousel-card-overlay"><h3>ROCK</h3></div></button>
-                            <button data-modal-target="#modal-sugestao-sertanejo" class="sugestoes-carousel-card"><div class="sugestoes-carousel-card-img-wrapper"><img src="https://i.imgur.com/dTHMSAY.png" alt="Músicas Sertanejo"></div><div class="sugestoes-carousel-card-overlay"><h3>SERTANEJO</h3></div></button>
-                        </div>
-                        <button class="sugestoes-carousel-nav-btn next-btn" data-carousel-id="lounge"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
-                    </div>
-                </div>
+        <div class="tab-btn-group">
+            <button class="tab-btn active" data-tab-target="#cerimonia-sugestoes">Cerimônia</button>
+            <button class="tab-btn" data-tab-target="#lounge-sugestoes">Show Lounge</button>
+        </div>
+
+        <div class="fancy-divider">◇</div>
+
+        <div>
+            <div id="cerimonia-sugestoes" class="tab-content-card">
+                <ul class="music-list">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Marcha Nupcial</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Ave Maria</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Canon in D</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> A Thousand Years</li>
+                </ul>
+                <a href="#" class="btn-ver-mais">Ver Mais</a>
             </div>
-        </section>
 
+            <div id="lounge-sugestoes" class="tab-content-card hidden">
+                <ul class="music-list">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Fly Me To The Moon</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Perfect - Ed Sheeran</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> Stand By Me</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg> All of Me</li>
+                </ul>
+                <a href="#" class="btn-ver-mais">Ver Mais</a>
+            </div>
+        </div>
+    </div>
+</section>
+        
         <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Nossos Clientes Dizem</h2><p class="mt-2 text-gray-medium">Histórias de dias inesquecíveis.</p></div>
@@ -937,116 +1020,28 @@ document.querySelectorAll('.modal').forEach(modal => {
         });
     });
 
-    // LÓGICA DA SEÇÃO SUGESTÕES
-    const sugestoesMainView = document.getElementById('sugestoes-main-view');
-    const sugestoesDetailView = document.getElementById('sugestoes-detail-view');
-    if (sugestoesMainView && sugestoesDetailView) {
-        const sugestoesBoxes = document.querySelectorAll('[data-sugestoes-target]');
-        const sugestoesBackBtn = document.getElementById('sugestoes-back-btn');
-        const sugestoesDetailTitle = document.getElementById('sugestoes-detail-title');
+    // LÓGICA DA SEÇÃO SUGESTÕES (ABAS)
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content-card');
 
-        const carouselsData = {
-            cerimonia: {
-                container: document.getElementById('carousel-cerimonia-container'),
-                cardsWrapper: document.getElementById('carousel-cerimonia-cards'),
-                cards: [],
-                currentIndex: 0
-            },
-            lounge: {
-                container: document.getElementById('carousel-lounge-container'),
-                cardsWrapper: document.getElementById('carousel-lounge-cards'),
-                cards: [],
-                currentIndex: 0
-            }
-        };
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.dataset.tabTarget;
+        const targetContent = document.querySelector(targetId);
 
-        function updateSugestoesCarouselUI(carousel) {
-            if (!carousel || !carousel.cards || carousel.cards.length === 0) return;
-            const total = carousel.cards.length;
-            carousel.cards.forEach((card, index) => {
-                card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
-                const prevIndex = (carousel.currentIndex - 1 + total) % total;
-                const nextIndex = (carousel.currentIndex + 1) % total;
-                if (index === carousel.currentIndex) {
-                    card.classList.add('active');
-                } else if (index === prevIndex) {
-                    card.classList.add('prev');
-                } else if (index === nextIndex) {
-                    card.classList.add('next');
-                } else {
-                    const diff = index - carousel.currentIndex;
-                    if ((diff > 0 && diff < total / 2) || (diff < 0 && diff < -total / 2)) {
-                        card.classList.add('hidden-right');
-                    } else {
-                        card.classList.add('hidden-left');
-                    }
-                }
-            });
+        // Remove a classe 'active' de todos os botões
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        // Adiciona 'active' apenas ao botão clicado
+        button.classList.add('active');
+
+        // Esconde todos os conteúdos
+        tabContents.forEach(content => content.classList.add('hidden'));
+        // Mostra apenas o conteúdo alvo
+        if (targetContent) {
+            targetContent.classList.remove('hidden');
         }
-
-        function navigateSugestoesCarousel(carouselId, direction) {
-            const carousel = carouselsData[carouselId];
-            if (!carousel) return;
-            const total = carousel.cards.length;
-            if (direction === 'next') {
-                carousel.currentIndex = (carousel.currentIndex + 1) % total;
-            } else {
-                carousel.currentIndex = (carousel.currentIndex - 1 + total) % total;
-            }
-            updateSugestoesCarouselUI(carousel);
-        }
-        
-        for (const key in carouselsData) {
-            const carousel = carouselsData[key];
-            if (carousel.cardsWrapper) {
-                carousel.cards = Array.from(carousel.cardsWrapper.children);
-                updateSugestoesCarouselUI(carousel); // Initial setup
-            }
-        }
-
-        sugestoesBoxes.forEach(box => {
-            box.addEventListener('click', () => {
-                const target = box.dataset.sugestoesTarget;
-                sugestoesMainView.classList.add('hidden');
-                sugestoesDetailView.classList.remove('hidden');
-                Object.values(carouselsData).forEach(c => c.container.classList.add('hidden'));
-                const targetCarousel = carouselsData[target];
-                if (targetCarousel) {
-                    sugestoesDetailTitle.textContent = target === 'cerimonia' ? 'Para a Cerimônia' : 'Para o Show Lounge';
-                    targetCarousel.container.classList.remove('hidden');
-                    updateSugestoesCarouselUI(targetCarousel);
-                }
-            });
-        });
-
-        if (sugestoesBackBtn) {
-            sugestoesBackBtn.addEventListener('click', () => {
-                sugestoesDetailView.classList.add('hidden');
-                sugestoesMainView.classList.remove('hidden');
-            });
-        }
-
-        document.querySelectorAll('.sugestoes-carousel-nav-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const carouselId = this.dataset.carouselId;
-                const direction = this.classList.contains('next-btn') ? 'next' : 'prev';
-                navigateSugestoesCarousel(carouselId, direction);
-            });
-        });
-
-        for (const key in carouselsData) {
-            let touchstartX = 0;
-            const carousel = carouselsData[key];
-            if (carousel.cardsWrapper) {
-                carousel.cardsWrapper.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
-                carousel.cardsWrapper.addEventListener('touchend', e => {
-                    const touchendX = e.changedTouches[0].screenX;
-                    if (touchendX < touchstartX - 50) navigateSugestoesCarousel(key, 'next');
-                    if (touchendX > touchstartX + 50) navigateSugestoesCarousel(key, 'prev');
-                });
-            }
-        }
-    }
+    });
+});
 });
 </script>
 
