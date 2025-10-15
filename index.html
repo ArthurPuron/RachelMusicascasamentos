@@ -45,19 +45,53 @@
     .video-thumbnail.active { transform: scale(1.05); filter: brightness(1); }
     .video-thumbnail.inactive { transform: scale(1); filter: brightness(0.6); }
 
-    /* --- INÍCIO DOS NOVOS ESTILOS DA SEÇÃO VÍDEOS --- */
+  /* --- INÍCIO DOS NOVOS ESTILOS DA SEÇÃO VÍDEOS --- */
 
-.video-panel {
-    background-color: #FAF7F5; /* Cor do painel (bg-primary-light) */
-    border-radius: 20px;       /* Cantos arredondados */
-    padding: 24px;             /* Espaçamento interno */
-    box-shadow: 0 10px 25px rgba(10, 43, 52, 0.1), 0 5px 10px rgba(10, 43, 52, 0.05); /* Sombra suave */
+/* Linha divisória estilizada */
+.video-divider {
+    border: none;
+    height: 2px;
+    width: 80px;
+    margin: 24px auto; /* Centraliza e adiciona espaço */
+    background-image: linear-gradient(to right, rgba(192, 160, 132, 0), rgba(192, 160, 132, 1), rgba(192, 160, 132, 0));
 }
 
-.video-thumbnail-title {
-    font-family: 'Playfair Display', serif; /* Fonte elegante para o título */
+/* Overlay do botão de play */
+.play-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Novo botão "Ver todas as apresentações" */
+.btn-outline {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 2px solid #C0A084; /* Cor accent-color */
+    color: #C0A084;
+    border-radius: 9999px; /* Totalmente arredondado */
     font-weight: 600;
-    color: #0A2B34; /* Cor text-dark */
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    margin-top: 32px; /* Espaço acima do botão */
+}
+.btn-outline:hover {
+    background-color: #C0A084;
+    color: #FAF7F5; /* Cor primary-light */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Estilos para o Modal de Vídeo */
+.video-modal {
+    transition: opacity 0.3s ease;
+}
+.video-modal-content {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.video-modal:not(.hidden) .video-modal-content {
+    transform: scale(1);
 }
 
 /* --- FIM DOS NOVOS ESTILOS DA SEÇÃO VÍDEOS --- */
@@ -390,57 +424,61 @@
         </div>
     </div>
 </section>
-<section id="videos" class="py-12" style="background-color: #f5ede3;"> 
+<section id="videos" class="py-20 md:py-24" style="background-image: url('./imagem/fundo.png'); background-size: cover; background-position: center; background-attachment: fixed;">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-8">
+        
+        <div class="text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Nossas Apresentações</h2>
             <p class="mt-2 text-gray-medium">Sinta a emoção da nossa música. Clique em um vídeo abaixo para assistir.</p>
         </div>
 
-        <div class="video-panel max-w-3xl mx-auto mb-8"> 
-            <div id="main-video-container" class="rounded-lg overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 bg-black">
-                    <iframe id="main-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <hr class="video-divider">
+
+        <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            
+            <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-md">
+                    <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center play-overlay">
+                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                    </div>
                 </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Close To You<br>(Releitura)</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-md">
+                    <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center play-overlay">
+                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Die With a Smile<br>(Releitura)</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-md">
+                    <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center play-overlay">
+                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">Fly Me To the Moon<br>(Releitura)</p>
+            </div>
+
+            <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
+                <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-md">
+                    <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center play-overlay">
+                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-center font-semibold text-text-dark mt-2">La Vie en Rose<br>(Releitura)</p>
             </div>
         </div>
 
-        <div class="video-panel max-w-3xl mx-auto"> 
-            <div id="video-thumbnails-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                
-                <div class="video-thumbnail group cursor-pointer" data-video-id="E9afqcr9bfU">
-                    <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                        <img src="https://img.youtube.com/vi/E9afqcr9bfU/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    </div>
-                    <p class="text-center video-thumbnail-title mt-2">Close To You<br>(Releitura)</p>
-                </div>
-
-                <div class="video-thumbnail group cursor-pointer" data-video-id="tfZrH6IR8g4">
-                    <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                        <img src="https://img.youtube.com/vi/tfZrH6IR8g4/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    </div>
-                    <p class="text-center video-thumbnail-title mt-2">Die With a Smile<br>(Releitura)</p>
-                </div>
-
-                <div class="video-thumbnail group cursor-pointer" data-video-id="wd-2rc8QP_Y">
-                    <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                        <img src="https://img.youtube.com/vi/wd-2rc8QP_Y/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    </div>
-                    <p class="text-center video-thumbnail-title mt-2">Fly Me To the Moon<br>(Releitura)</p>
-                </div>
-
-                <div class="video-thumbnail group cursor-pointer" data-video-id="4uEeDFN3vn0">
-                    <div class="relative rounded-lg overflow-hidden aspect-w-16 aspect-h-9">
-                        <img src="https://img.youtube.com/vi/4uEeDFN3vn0/mqdefault.jpg" alt="Thumbnail" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                    </div>
-                    <p class="text-center video-thumbnail-title mt-2">La Vie en Rose<br>(Releitura)</p>
-                </div>
-
-            </div>
+        <div class="text-center">
+            <a href="#" class="btn-outline">Ver Todas Apresentações</a>
         </div>
 
     </div>
@@ -693,7 +731,15 @@
     <div id="modal-sugestao-mpb" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/5IbR61G.jpeg" class="w-full h-full object-cover" alt="Sugestões MPB"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões MPB</h2><p>Aqui entrará a lista de sugestões de músicas MPB...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
     <div id="modal-sugestao-rock" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/pZz8k5K.jpeg" class="w-full h-full object-cover" alt="Sugestões Rock"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões ROCK</h2><p>Aqui entrará a lista de sugestões de músicas de Rock...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
     <div id="modal-sugestao-sertanejo" class="modal modal-sugestoes fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300"><div class="w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row gap-8 relative items-start md:items-stretch"><div class="w-full md:w-2/5 flex-shrink-0 h-64 md:h-full rounded-lg overflow-hidden shadow-xl"><img src="https://i.imgur.com/qL3Zf1y.jpeg" class="w-full h-full object-cover" alt="Sugestões Sertanejo"></div><div class="w-full md:w-3/5 painel-vidro text-text-light rounded-lg shadow-xl flex flex-col relative max-h-[90vh]"><button class="modal-close absolute top-3 right-4 text-text-light text-3xl hover:text-gray-400 z-10">&times;</button><div class="p-6 md:p-8 overflow-y-auto modal-scrollbar flex-grow"><h2 class="text-3xl font-bold font-serif mb-3 text-white">Sugestões SERTANEJO</h2><p>Aqui entrará a lista de sugestões de músicas de Sertanejo...</p></div><div class="p-6 md:p-8 border-t border-gray-700 mt-auto"><a href="#" class="btn-modal">Solicitar Repertório Completo</a></div></div></div></div>
-
+<div id="video-modal" class="video-modal fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+    <button class="modal-close absolute top-4 right-4 text-white text-4xl z-50">&times;</button>
+    
+    <div class="video-modal-content w-full max-w-4xl">
+        <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden shadow-2xl">
+            <iframe id="modal-video-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -725,28 +771,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // LÓGICA DA GALERIA DE VÍDEOS
-    const mainVideoPlayer = document.getElementById('main-video-player');
-    const thumbnails = document.querySelectorAll('.video-thumbnail');
-    if (mainVideoPlayer && thumbnails.length > 0) {
-        function loadVideo(videoId) { mainVideoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; }
-        function setActiveThumbnail(selectedThumbnail) {
-            thumbnails.forEach(thumb => {
-                thumb.classList.remove('active');
-                thumb.classList.add('inactive');
-            });
-            selectedThumbnail.classList.remove('inactive');
-            selectedThumbnail.classList.add('active');
-        }
-        loadVideo(thumbnails[0].dataset.videoId);
-        setActiveThumbnail(thumbnails[0]);
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                loadVideo(this.dataset.videoId);
-                setActiveThumbnail(this);
-            });
+    // LÓGICA DO MODAL DE VÍDEO
+const videoModal = document.getElementById('video-modal');
+if (videoModal) {
+    const modalPlayer = document.getElementById('modal-video-player');
+    const closeModalBtn = videoModal.querySelector('.modal-close');
+    const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+
+    const openVideoModal = (videoId) => {
+        if (!modalPlayer) return;
+        modalPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        videoModal.classList.remove('hidden');
+        videoModal.classList.add('flex');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeVideoModal = () => {
+        if (!modalPlayer) return;
+        // Crucial: define o src como vazio para parar o vídeo
+        modalPlayer.src = ''; 
+        videoModal.classList.add('hidden');
+        videoModal.classList.remove('flex');
+        document.body.classList.remove('modal-open');
+    };
+
+    videoThumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            const videoId = thumb.dataset.videoId;
+            if (videoId) {
+                openVideoModal(videoId);
+            }
         });
-    }
+    });
+
+    closeModalBtn.addEventListener('click', closeVideoModal);
+
+    // Fecha o modal ao clicar no fundo escuro
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            closeVideoModal();
+        }
+    });
+
+    // Fecha o modal ao pressionar a tecla 'Escape'
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
+            closeVideoModal();
+        }
+    });
+}
 
     // LÓGICA DO CARROSSEL DE DEPOIMENTOS
     const carouselContainer = document.getElementById('carousel-cards');
