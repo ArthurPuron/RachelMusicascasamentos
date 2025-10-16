@@ -231,6 +231,55 @@
 }
 
 /* --- FIM DOS NOVOS ESTILOS DA SEÇÃO SUGESTÕES --- */
+
+/* --- INÍCIO DOS ESTILOS DA SEÇÃO DEPOIMENTOS --- */
+
+.depoimentos-section {
+    background-image: url('./imagem/fundo.png'); /* Sua textura de fundo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* O novo estilo para o card de depoimento */
+.depoimento-card-content {
+    background-color: white;
+    border: 1px solid #C0A084; /* Borda fina na cor accent-color */
+    position: relative; /* Essencial para posicionar a aspas */
+    overflow: hidden; /* Garante que a aspas não vaze para fora */
+}
+
+/* A aspas gigante como elemento de fundo */
+.depoimento-card-content::before {
+    content: '“';
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    z-index: 0; /* Coloca a aspas atrás do texto */
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem; /* Tamanho grande */
+    line-height: 1;
+    color: rgba(10, 43, 52, 0.05); /* Cor primária escura, quase transparente */
+}
+
+/* Novo avatar feito com div para permitir a mudança de fonte */
+.depoimento-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 9999px; /* Círculo perfeito */
+    background-color: #FAF7F5; /* Cor primary-light */
+    border: 2px solid #C0A084; /* Borda na cor accent-color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif; /* Fonte correta para as iniciais */
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #0A2B34; /* Cor primary-dark */
+}
+
+/* --- FIM DOS ESTILOS DA SEÇÃO DEPOIMENTOS --- */
     
 /* --- INÍCIO DOS ESTILOS DA SEÇÃO SOBRE --- */
 
@@ -664,22 +713,51 @@
     </div>
 </section>
         
-        <section id="depoimentos" class="py-20 md:py-32 bg-primary-light">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Nossos Clientes Dizem</h2><p class="mt-2 text-gray-medium">Histórias de dias inesquecíveis.</p></div>
-                <div class="relative max-w-4xl mx-auto" style="height: 350px;">
-                    <button id="prevBtn" class="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
-                    <button id="nextBtn" class="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
-                    <div id="carousel-cards" class="absolute inset-0 w-full h-full">
-                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out"><div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full"><img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=A+J" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color"><p class="italic text-gray-medium mb-4">"A música na nossa cerimônia foi simplesmente mágica. Todos os convidados elogiaram! Obrigado por tornarem nosso dia tão especial."</p><p class="font-semibold text-primary-dark mt-auto">- Ana & João</p></div></div>
-                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out"><div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full"><img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=M+L" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color"><p class="italic text-gray-medium mb-4">"Profissionalismo impecável do início ao fim. A banda da festa animou todo mundo! Foi inesquecível."</p><p class="font-semibold text-primary-dark mt-auto">- Mariana & Lucas</p></div></div>
-                        <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out"><div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center h-full"><img src="https://placehold.co/80x80/FAF7F5/0A2B34?text=C+P" alt="Foto do casal" class="rounded-full w-20 h-20 mb-4 object-cover border-2 border-accent-color"><p class="italic text-gray-medium mb-4">"Não temos palavras para agradecer. A trilha sonora foi a alma da nossa cerimônia. Contrataria mil vezes de novo!"</p><p class="font-semibold text-primary-dark mt-auto">- Carla & Pedro</p></div></div>
+      <section id="depoimentos" class="depoimentos-section py-20 md:py-32">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">O Que Nossos Clientes Dizem</h2>
+            <p class="mt-2 text-gray-medium">Histórias de dias inesquecíveis.</p>
+        </div>
+        <div class="relative max-w-4xl mx-auto" style="height: 350px;">
+            <button id="prevBtn" class="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+            <button id="nextBtn" class="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2 bg-white text-gray-dark p-2 rounded-full shadow-lg z-30 hover:bg-gray-200 transition-all"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+            
+            <div id="carousel-cards" class="absolute inset-0 w-full h-full">
+                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                    <div class="depoimento-card-content p-8 rounded-lg flex flex-col items-center text-center h-full">
+                        <div class="relative z-10 w-full flex flex-col items-center h-full">
+                            <div class="depoimento-avatar">A J</div>
+                            <p class="italic text-gray-medium mb-4">"A música na nossa cerimônia foi simplesmente mágica. Todos os convidados elogiaram! Obrigado por tornarem nosso dia tão especial."</p>
+                            <p class="font-semibold text-primary-dark mt-auto">- Ana & João</p>
+                        </div>
                     </div>
                 </div>
-                <div id="carousel-indicators" class="flex justify-center mt-8"></div>
-            </div>
-        </section>
 
+                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                    <div class="depoimento-card-content p-8 rounded-lg flex flex-col items-center text-center h-full">
+                        <div class="relative z-10 w-full flex flex-col items-center h-full">
+                            <div class="depoimento-avatar">M L</div>
+                            <p class="italic text-gray-medium mb-4">"Profissionalismo impecável do início ao fim. A banda da festa animou todo mundo! Foi inesquecível."</p>
+                            <p class="font-semibold text-primary-dark mt-auto">- Mariana & Lucas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-card absolute w-full md:w-8/12 lg:w-7/12 transition-all duration-500 ease-in-out">
+                    <div class="depoimento-card-content p-8 rounded-lg flex flex-col items-center text-center h-full">
+                        <div class="relative z-10 w-full flex flex-col items-center h-full">
+                            <div class="depoimento-avatar">C P</div>
+                            <p class="italic text-gray-medium mb-4">"Não temos palavras para agradecer. A trilha sonora foi a alma da nossa cerimônia. Contrataria mil vezes de novo!"</p>
+                            <p class="font-semibold text-primary-dark mt-auto">- Carla & Pedro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="carousel-indicators" class="flex justify-center mt-8"></div>
+    </div>
+</section>
         <section id="faq" class="py-20 md:py-32 bg-gray-100">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Dúvidas Frequentes (FAQ)</h2><p class="mt-2 text-gray-medium">Respostas para suas perguntas mais comuns.</p></div>
