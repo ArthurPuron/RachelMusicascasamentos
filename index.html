@@ -40,6 +40,26 @@
     .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
     .fade-in-image.is-visible { opacity: 1; }
 
+/* --- INÍCIO DOS NOVOS ESTILOS DA SEÇÃO FAQ --- */
+
+.faq-item {
+    border-bottom: 1px solid #C0A084; /* Linha inferior na cor accent-color */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.faq-chevron {
+    transition: transform 0.3s ease; /* Animação suave da rotação */
+    color: #C0A084; /* Cor accent-color para o ícone */
+}
+
+/* Quando o item estiver aberto, rotaciona o chevron */
+.faq-item.faq-open .faq-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- FIM DOS NOVOS ESTILOS DA SEÇÃO FAQ --- */
+    
     /* Estilos da Galeria de Vídeo */
     .video-thumbnail { transition: all 0.3s ease-in-out; }
     .video-thumbnail.active { transform: scale(1.05); filter: brightness(1); }
@@ -758,16 +778,52 @@
         <div id="carousel-indicators" class="flex justify-center mt-8"></div>
     </div>
 </section>
-        <section id="faq" class="py-20 md:py-32 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Dúvidas Frequentes (FAQ)</h2><p class="mt-2 text-gray-medium">Respostas para suas perguntas mais comuns.</p></div>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow-md"><button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold"><span class="text-primary-dark">Vocês tocam músicas que não estão no repertório?</span><span class="faq-icon text-accent-color text-xl">+</span></button><div class="faq-content mt-4 hidden text-gray-medium">Sim! Adoramos aprender músicas especiais para os noivos. Pedimos que as solicitações sejam feitas com antecedência para prepararmos o arranjo com carinho.</div></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md"><button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold"><span class="text-primary-dark">Com quanto tempo de antecedência devo contratar?</span><span class="faq-icon text-accent-color text-xl">+</span></button><div class="faq-content mt-4 hidden text-gray-medium">Recomendamos de 6 a 12 meses de antecedência, especialmente para datas concorridas, para garantir nossa disponibilidade.</div></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md"><button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold"><span class="text-primary-dark">Vocês fornecem o equipamento de som?</span><span class="faq-icon text-accent-color text-xl">+</span></button><div class="faq-content mt-4 hidden text-gray-medium">Sim, levamos todo o equipamento de som necessário e de alta qualidade para nossas apresentações, adequado ao tamanho do seu evento.</div></div>
+       <section id="faq" class="py-20 md:py-32 bg-primary-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">Esclarecendo Suas Dúvidas</h2>
+            <p class="mt-2 text-gray-medium">Respostas para suas perguntas mais comuns.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-0"> <div class="faq-item">
+                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold">
+                    <span class="text-primary-dark">Vocês tocam músicas que não estão no repertório?</span>
+                    <svg class="faq-chevron w-6 h-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div class="faq-content mt-4 hidden text-gray-medium">
+                    Sim! Adoramos aprender músicas especiais para os noivos. Pedimos que as solicitações sejam feitas com antecedência para prepararmos o arranjo com carinho.
                 </div>
             </div>
-        </section>
+
+            <div class="faq-item">
+                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold">
+                    <span class="text-primary-dark">Com quanto tempo de antecedência devo contratar?</span>
+                    <svg class="faq-chevron w-6 h-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div class="faq-content mt-4 hidden text-gray-medium">
+                    Recomendamos de 6 a 12 meses de antecedência, especialmente para datas concorridas, para garantir nossa disponibilidade.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-toggle w-full flex justify-between items-center text-left text-lg font-semibold">
+                    <span class="text-primary-dark">Vocês fornecem o equipamento de som?</span>
+                    <svg class="faq-chevron w-6 h-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                <div class="faq-content mt-4 hidden text-gray-medium">
+                    Sim, levamos todo o equipamento de som necessário e de alta qualidade para nossas apresentações, adequado ao tamanho do seu evento.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="bg-primary-dark text-text-light py-8">
@@ -1051,16 +1107,19 @@ if (videoModal) {
         imageObserver.observe(sobreImage);
     }
     
-    // LÓGICA DO FAQ
-    const faqToggles = document.querySelectorAll('.faq-toggle');
-    faqToggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const content = this.nextElementSibling;
-            const icon = this.querySelector('.faq-icon');
-            if(content) content.classList.toggle('hidden');
-            if (icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
-        });
+    // LÓGICA DO FAQ (VERSÃO NOVA COM CHEVRON)
+const faqToggles = document.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+        const parentItem = this.closest('.faq-item');
+        const content = parentItem.querySelector('.faq-content');
+
+        if (parentItem && content) {
+            parentItem.classList.toggle('faq-open');
+            content.classList.toggle('hidden');
+        }
     });
+});
 
   // LÓGICA GERAL DOS MODAIS
 function openModal(modal) {
