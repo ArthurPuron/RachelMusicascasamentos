@@ -40,6 +40,58 @@
     .fade-in-image { opacity: 0; transition: opacity 1s ease-out; }
     .fade-in-image.is-visible { opacity: 1; }
 
+/* --- INÍCIO DOS ESTILOS DA SEÇÃO HOME (HERO) --- */
+
+/* Camada de gradiente para o vídeo */
+.hero-overlay-gradient {
+    background: linear-gradient(to bottom, rgba(10, 43, 52, 0.7) 0%, rgba(10, 43, 52, 0.4) 50%, rgba(10, 43, 52, 0.7) 100%);
+}
+
+/* Sombra de texto sutil para o título principal */
+.hero-title {
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para os novos botões da Home */
+.btn-hero {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 8px; /* Cantos levemente arredondados */
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-shadow: none; /* Garante que não herde a sombra do título */
+}
+
+/* Botão Primário (sólido, marrom-dourado) */
+.btn-hero-primary {
+    background-color: #A98C71;
+    color: #FAF7F5;
+    border: 2px solid #A98C71;
+}
+.btn-hero-primary:hover {
+    background-color: #9b7d62; /* Tom um pouco mais escuro no hover */
+    border-color: #9b7d62;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Botão Secundário (contorno) */
+.btn-hero-secondary {
+    background-color: transparent;
+    color: #FAF7F5;
+    border: 2px solid #FAF7F5;
+}
+.btn-hero-secondary:hover {
+    background-color: #FAF7F5;
+    color: #0A2B34;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- FIM DOS ESTILOS DA SEÇÃO HOME (HERO) --- */
+    
 /* --- INÍCIO DOS NOVOS ESTILOS DA SEÇÃO FAQ --- */
 
 .faq-item {
@@ -547,20 +599,23 @@
     </header>
 
     <main>
-        <section id="home" class="relative min-h-screen text-center overflow-hidden pt-20">
-            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-10">
-                <source src="https://res.cloudinary.com/dvagappe3/video/upload/v1755714270/background-loop_aijwzl.mp4" type="video/mp4">
-            </video>
-            <div class="absolute top-0 left-0 w-full h-full bg-primary-dark/60 z-20"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 container w-full px-6">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-text-light leading-tight">A Trilha Sonora do Seu Sim.</h1>
-                <p class="mt-4 text-lg md:text-xl text-text-light max-w-3xl mx-auto">Música ao vivo que emociona e encanta, do altar à pista de dança.</p>
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" class="bg-accent-color text-text-light font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-accent-hover transition-transform duration-300 transform hover:scale-105">Pedir Orçamento</a>
-                    <a href="#videos" class="bg-white/90 text-primary-dark font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition-transform duration-300 transform hover:scale-105">Veja nossos vídeos</a>
-                </div>
-            </div>
-        </section>
+       <section id="home" class="relative min-h-screen text-center overflow-hidden">
+    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-10">
+        <source src="https://res.cloudinary.com/dvagappe3/video/upload/v1755714270/background-loop_aijwzl.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay-gradient absolute top-0 left-0 w-full h-full z-20"></div>
+
+    <div class="relative z-30 flex flex-col items-center justify-center h-screen px-6">
+        <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-text-light leading-tight">A Trilha Sonora do Seu Sim.</h1>
+        <p class="mt-4 text-lg md:text-xl text-text-light max-w-3xl mx-auto">Música ao vivo que emociona e encanta, do altar à pista de dança.</p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+            <a href="https://wa.me/SEUNUMEROAQUI?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" class="btn-hero btn-hero-primary">Pedir Orçamento</a>
+            <a href="#videos" class="btn-hero btn-hero-secondary">Veja nossos vídeos</a>
+        </div>
+    </div>
+</section>
 
 
         <section id="sobre" class="sobre-section min-h-screen flex items-center py-8 md:py-16">
